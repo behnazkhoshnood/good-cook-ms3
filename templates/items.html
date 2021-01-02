@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Cook</title>
+</head>
+<body>
+    {% for item in items %}
+        {{ item.item_name }}<br>
+        {{ item.category_name }}<br>
+        {{ item.marked_as }}<br>
+        {{ item.item_ingrediants }}<br>
+        {{ item.cooking_steps }}<br>
+    {% endfor %}
+</body>
+</html>
