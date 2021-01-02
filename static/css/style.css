@@ -1,3 +1,52 @@
 .text-shadow{
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
+
+.flashes h4{
+    line-height: 2;
+}
+
+/* ------------------------------------------------------invalid input style */
+input.invalid[type=text]:not(.browser-default),
+input.invalid[type=password]:not(.browser-default)
+{
+    border-bottom: #ad1457 ;
+    -webkit-box-shadow: 0 1px 0 0 #ad1457;
+    box-shadow: 0 1px 0 #ad1457;
+}
+
+input.invalid[type=text]:not(.browser-default):focus,
+input.invalid[type=password]:not(.browser-default):focus,
+input[type=text]:not(.browser-defult):focus:not([readonly]),
+input[type=password]:not(.browser-defult):focus:not([readonly]){
+    border-bottom: #ad1457 ;
+    -webkit-box-shadow: 0 1px 0 0 #ad1457;
+    box-shadow: 0 2px 0 #ad1457;
+}
+
+input[type=text]:not(.browser-defult):focus:not([readonly])+label,
+input[type=password]:not(.browser-defult):focus:not([readonly])+label,
+input.invalid[type=text]:not(.browser-default):focus.invalid ~ label,
+input.invalid[type=password]:not(.browser-default):focus.invalid ~ label{
+    color: #ad1457;
+}
+
+/* ------------------------------------------------------valid input style */
+input.valid[type=text]:not(.browser-default),
+input.valid[type=password]:not(.browser-default){
+    border-bottom: #4527a0 ;
+    -webkit-box-shadow: 0 1px 0 0 #4527a0;
+    box-shadow: 0 1px 0 #4527a0;
+}
+
+input.valid[type=text]:not(.browser-default):focus,
+input.valid[type=password]:not(.browser-default):focus{
+    border-bottom: #4527a0 ;
+    -webkit-box-shadow: 0 1px 0 0 #4527a0;
+    box-shadow: 0 2px 0 #4527a0;
+}
+
+input.valid[type=text]:not(.browser-default):focus.valid ~ label,
+input.valid[type=password]:not(.browser-default):focus.valid ~ label{
+    color: #4527a0;
+}
