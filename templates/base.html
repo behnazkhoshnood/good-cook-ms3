@@ -16,17 +16,19 @@
             <!-- top navbar -->
               <nav class="nav-extended text-shadow 5e35b1 deep-purple darken-1" >
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('get_items') }}" class="brand-logo">Good Cook</a>
+                    <a href="{{ url_for('get_items') }}" class="brand-logo center">Good Cook</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                    <ul class="right hide-on-med-and-down">
+                    <ul class="left hide-on-med-and-down">
                         <li><a href="{{ url_for('get_items') }}">Home</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Profile</a></li>
-                        <li><a href="{{ url_for('get_items') }}">New Recipe</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Categories</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Log Out</a></li>
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
-
+                        {% if session.user %}
+                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                            <li><a href="{{ url_for('get_items') }}">New Recipe</a></li>
+                            <li><a href="{{ url_for('get_items') }}">Categories</a></li>
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 </nav>
@@ -35,12 +37,15 @@
                 <ul class="sidenav" id="mobile-demo">
                         <li><h4 class="center-align deep-purple-text text-darken-1">Good Cook</h4></li>
                         <li><a href="{{ url_for('get_items') }}">Home</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Profile</a></li>
-                        <li><a href="{{ url_for('get_items') }}">New Recipe</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Categories</a></li>
-                        <li><a href="{{ url_for('get_items') }}">Log Out</a></li>
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% if session.user %}
+                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                            <li><a href="{{ url_for('get_items') }}">New Recipe</a></li>
+                            <li><a href="{{ url_for('get_items') }}">Categories</a></li>
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
                 </ul>
         </header>
 
