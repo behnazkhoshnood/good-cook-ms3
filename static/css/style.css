@@ -6,6 +6,11 @@
     line-height: 2;
 }
 
+nav ul li:hover,
+#register-btn:hover{
+    background-color: #7e57c2 !important;
+}
+
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default)
