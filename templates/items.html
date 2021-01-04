@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for item in items %}
-        {{ item.item_name }}<br>
-        {{ item.category_name }}<br>
-        {{ item.marked_as }}<br>
-        {{ item.item_ingrediants }}<br>
-        {{ item.cooking_steps }}<br>
-    {% endfor %}
+    <ul class="collapsible">
+        {% for item in items %}
+        <li>
+            <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
+                <i class="fas fa-caret-down"></i>
+                <strong class="center">{{ item.item_name }}</strong> 
+            </div>
+            <div class="collapsible-body">
+                <strong>{{ item.category_name }}</strong><br>
+                <em>{{ item.marked_as }}</em>
+                <ul>
+                    {{ item.item_ingrediants }}
+                </ul>
+                <br>
+                <ol>
+                    {{ item.cooking_steps }}
+                </ol>
+                
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
