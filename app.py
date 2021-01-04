@@ -28,22 +28,40 @@ def get_items():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+
+        # store form inputs in variables
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmpassword = request.form.get("confirm-password")
+
         # check if user already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": username.lower()})
 
         if existing_user:
-            flash("username already exists")
+            flash("username already exists. Please Try again?")
             return redirect(url_for("register"))
+
+        # confirm password
+        if password != confirmpassword:
+            flash("Passwords do not match, please re-enter")
+            return redirect(url_for("register"))
+
+        # register user to mongodb
         register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "first_name": first_name,
+            "last_name": last_name,
+            "username": username,
+            "password": generate_password_hash(password)
         }
         mongo.db.users.insert_one(register)
 
         # push the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Congratulations {}! You have registered successfully."
+              .format(first_name.capitalize()))
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 

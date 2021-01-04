@@ -5,23 +5,49 @@
 
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <div class="card-panel">
+            <!--first name-->
+            <div class="row">
+                    <div class="input-field col s6">
+                        <i class="fas fa-file-signature prefix deep-purple-text text-darken-1 tooltipped"
+                        data-position="left" data-tooltip="Please enter your First and Last Name?"></i>
+                        <input id="first_name" name="first_name" type="text" minlength="2" maxlength="16" 
+                            pattern="^[a-zA-Z.']{2,16}$" class="validate" data-length="16" required>
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <!--last name-->
+                    <div class="input-field col s6">
+                        <input id="last_name" name="last_name" type="text" minlength="2" maxlength="16" 
+                            pattern="^[a-zA-Z.']{2,16}$" class="validate" data-length="16" required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
             <!-- username -->
-                <div class="card-panel">
                     <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-user-plus deep-purple-text text-darken-1 prefix"></i>
-                        <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-z0-9]{5,15}$" type="text" class="validate" required>
+                        <i class="fas fa-user-plus deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Username must be between 5 to 15 characters!"></i>
+                        <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9.@$!%*#?&]{5,15}$" type="text" class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
                 <!-- password -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-user-lock deep-purple-text text-darken-1 prefix"></i>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-z0-9]{5,15}$" class="validate" required>
+                        <i class="fas fa-user-lock deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Password must be between 5 to 15 characters!"></i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9.@$!%*#?&]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
+                <!-- confirm password -->
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="fas fa-user-check prefix deep-purple-text text-darken-1"
+                        data-position="left" data-tooltip="Please Retype Password?"></i>
+						<input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="20" 
+                            pattern="^[a-zA-Z0-9.@$!%*#?&]{4,20}$" class="validate"  data-length="20" required>
+						<label for="confirm-password">Confirm Password</label>
+					</div>
+				</div>
                 <!-- register -->
                 <div class="row">
                     <button type="submit" id="register-btn" class="col s12 btn-large deep-purple darken-1 text-shadow">Register <i class="fas fa-sign-in-alt"></i></button>
