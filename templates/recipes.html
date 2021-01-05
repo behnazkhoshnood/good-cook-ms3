@@ -2,21 +2,21 @@
 {% block content %}
 
     <ul class="collapsible">
-        {% for item in items %}
+        {% for recipe in recipes %}
         <li>
             <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
                 <i class="fas fa-caret-down"></i>
-                <strong class="center">{{ item.item_name }}</strong> 
+                <strong class="center">{{ recipe.recipe_name }}</strong> 
             </div>
             <div class="collapsible-body">
-                <strong>{{ item.category_name }}</strong><br>
-                <em>{{ item.marked_as }}</em>
+                <strong>{{ recipe.category_name }}</strong><br>
+                <em>{{ recipe.marked_as }}</em>
                 <ul>
-                    {{ item.item_ingrediants }}
+                    {{ recipe.recipe_ingrediants }}
                 </ul>
                 <br>
                 <ol>
-                    {{ item.cooking_steps }}
+                    {{ recipe.cooking_steps }}
                 </ol>
                 
             </div>

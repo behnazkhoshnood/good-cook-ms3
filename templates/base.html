@@ -16,14 +16,14 @@
             <!-- top navbar -->
               <nav class="nav-extended text-shadow 5e35b1 deep-purple darken-1" >
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('get_items') }}" class="brand-logo center">Good Cook</a>
+                    <a href="{{ url_for('get_recipes') }}" class="brand-logo center">Good Cook</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                     <ul class="left hide-on-med-and-down">
-                        <li><a href="{{ url_for('get_items') }}">Home</a></li>
+                        <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
                         {% if session.user %}
                             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                             <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                            <li><a href="{{ url_for('get_items') }}">Categories</a></li>
+                            <li><a href="{{ url_for('get_recipes') }}">Categories</a></li>
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% else %}
                             <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -36,11 +36,11 @@
             <!-- mobile sidenav -->
                 <ul class="sidenav" id="mobile-demo">
                         <li><h4 class="center-align deep-purple-text text-darken-1">Good Cook</h4></li>
-                        <li><a href="{{ url_for('get_items') }}">Home</a></li>
+                        <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
                         {% if session.user %}
                             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                             <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                            <li><a href="{{ url_for('get_items') }}">Categories</a></li>
+                            <li><a href="{{ url_for('get_recipes') }}">Categories</a></li>
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% else %}
                             <li><a href="{{ url_for('login') }}">Log In</a></li>

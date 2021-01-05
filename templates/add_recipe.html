@@ -1,21 +1,38 @@
 {% extends "base.html" %}
 {% block content%}
-    <h3 class="deep-purple-text text-darken-1 center-align">Add recepie</h3>
+    <h3 class="deep-purple-text text-darken-1 center-align">Add Recipes</h3>
 
-    <div class="row">
+    <div class="row card-panel gray lighten-5">
         <form class="col s12" method="POST" action="">
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-circle prefix deep-purple-text text-darken-1"></i>
-                    <input id="recipe_name" name="recipe_name" type="text" class="validate">
-                    <label for="icon_prefix">Recipe Name</label>
+                    <i class="fas fa-folder-open prefix deep-purple-text text-darken-1"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled selected>Choose your recipe category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="category_name">Category</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-phone prefix deep-purple-text text-darken-1"></i>
-                    <input id="icon_telephone" type="tel" class="validate">
-                    <label for="icon_telephone">Telephone</label>
+                    <i class="fas fa-pencil-alt prefix deep-purple-text text-darken-1"></i>
+                    <input id="recipe_name" name="recipe_name" minlength="5" maxlength="30" type="text" class="validate" required>
+                    <label for="recipe_name">Recipe Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-exclamation-circle prefix deep-purple-text text-darken-1"></i>
+                    <textarea id="textarea1" class="materialize-textarea validate" required></textarea>
+                    <label for="textarea1">Textarea</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button id="submit-btn" type="submit" class="btn-large deep-purple darken-1 text-shadow">Add Recipe <i class="fas fa-plus-square right"></i></button>
                 </div>
             </div>
         </form>

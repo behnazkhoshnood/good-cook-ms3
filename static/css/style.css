@@ -7,14 +7,22 @@
 }
 
 nav ul li:hover,
-#register-btn:hover{
-    background-color: #7e57c2;
+#register-btn:hover,
+#submit-btn:hover,
+.select-dropdown li.disabled>span{
+    background-color: #7e57c2 !important;
+    color: #ffffff;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span{
+    color: #7e57c2;
 }
 
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
-input.invalid[type=password]:not(.browser-default)
-{
+input.invalid[type=password]:not(.browser-default),
+textarea.materialize-textarea.invalid{
     border-bottom: #ad1457 ;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 1px 0 #ad1457;
@@ -22,8 +30,10 @@ input.invalid[type=password]:not(.browser-default)
 
 input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default):focus,
+textarea.materialize-textarea.invalid:focus,
 input[type=text]:not(.browser-defult):focus:not([readonly]),
-input[type=password]:not(.browser-defult):focus:not([readonly]){
+input[type=password]:not(.browser-defult):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
     border-bottom: #ad1457 ;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 2px 0 #ad1457;
@@ -31,27 +41,32 @@ input[type=password]:not(.browser-defult):focus:not([readonly]){
 
 input[type=text]:not(.browser-defult):focus:not([readonly])+label,
 input[type=password]:not(.browser-defult):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label,
 input.invalid[type=text]:not(.browser-default):focus.invalid ~ label,
-input.invalid[type=password]:not(.browser-default):focus.invalid ~ label{
+input.invalid[type=password]:not(.browser-default):focus.invalid ~ label,
+textarea.materialize-textarea.invalid ~ label{
     color: #ad1457;
 }
 
 /* ------------------------------------------------------valid input style */
 input.valid[type=text]:not(.browser-default),
-input.valid[type=password]:not(.browser-default){
+input.valid[type=password]:not(.browser-default),
+textarea.materialize-textarea.valid{
     border-bottom: #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
     box-shadow: 0 1px 0 #4527a0;
 }
 
 input.valid[type=text]:not(.browser-default):focus,
-input.valid[type=password]:not(.browser-default):focus{
+input.valid[type=password]:not(.browser-default):focus,
+textarea.materialize-textarea.valid:focus{
     border-bottom: #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
     box-shadow: 0 2px 0 #4527a0;
 }
 
 input.valid[type=text]:not(.browser-default):focus.valid ~ label,
-input.valid[type=password]:not(.browser-default):focus.valid ~ label{
+input.valid[type=password]:not(.browser-default):focus.valid ~ label,
+textarea.materialize-textarea.valid:focus ~ label{
     color: #4527a0;
 }
