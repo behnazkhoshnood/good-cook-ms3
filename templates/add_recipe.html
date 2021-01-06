@@ -3,14 +3,16 @@
     <h3 class="deep-purple-text text-darken-1 center-align">Add Recipes</h3>
 
     <div class="row card-panel gray lighten-5">
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix deep-purple-text text-darken-1"></i>
                     <select id="category_name" name="category_name" class="validate" required>
                         <option value="" disabled selected>Choose your recipe category</option>
                         {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            <option value="{{ category.category_name }}">
+                                {{ category.category_name }}
+                            </option>
                         {% endfor %}
                     </select>
                     <label for="category_name">Category</label>
@@ -25,9 +27,17 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    <i class="fas fa-cookie-bite prefix deep-purple-text text-darken-1"></i>
+                    <textarea id="recipe_ingredients" name="recipe_ingredients" class="materialize-textarea validate" required></textarea>
+                    <label for="recipe_ingredients">Ingredients</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
                     <i class="fas fa-exclamation-circle prefix deep-purple-text text-darken-1"></i>
-                    <textarea id="textarea1" class="materialize-textarea validate" required></textarea>
-                    <label for="textarea1">Textarea</label>
+                    <textarea id="cooking_steps" name="cooking_steps" class="materialize-textarea validate"
+                                    required></textarea>
+                    <label for="cooking_steps">Cooking Steps</label>
                 </div>
             </div>
             <div class="row">
