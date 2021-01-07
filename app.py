@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -15,6 +16,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+mongo_client = MongoClient()
 mongo = PyMongo(app)
 
 
@@ -116,8 +118,23 @@ def logout():
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    if request.method == "POST":
+        recipe = {
+            "category_name": request.form.get("category_name"),
+            "mark": request.form.get("mark"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_ingredients": request.form.get.list("recipe_ingredients"),
+            "cooking_steps": request.form.get.list("cooking_steps"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Your Recipe Successfully Added")
+        return redirect(url_for("get_recipes"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_recipe.html", categories=categories)
+    marks = mongo.db.marks.find().sort("mark", 1)
+    return render_template(
+        "add_recipe.html", categories=categories, marks=marks)
 
 
 if __name__ == "__main__":

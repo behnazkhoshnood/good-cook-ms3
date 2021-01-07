@@ -23,7 +23,7 @@ nav ul li:hover,
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
 textarea.materialize-textarea.invalid{
-    border-bottom: #ad1457 ;
+    border-bottom: #ad1457  impo;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 1px 0 #ad1457;
 }
@@ -31,6 +31,7 @@ textarea.materialize-textarea.invalid{
 input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default):focus,
 textarea.materialize-textarea.invalid:focus,
+.select-wrapper input.select-dropdown:focus,
 input[type=text]:not(.browser-defult):focus:not([readonly]),
 input[type=password]:not(.browser-defult):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){

@@ -6,11 +6,11 @@
         <li>
             <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
                 <i class="fas fa-caret-down"></i>
-                <strong class="center">{{ recipe.recipe_name }}</strong> 
+                <strong class="center">{{ recipe.recipe_name }} : <small>by {{ recipe.created_by }}</small></strong> 
             </div>
             <div class="collapsible-body">
                 <strong>{{ recipe.category_name }}</strong><br>
-                <em>{{ recipe.marked_as }}</em>
+                <em>{{ recipe.markes }}</em>
                 <ul>
                     {{ recipe.recipe_ingrediants }}
                 </ul>
