@@ -3,9 +3,9 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -16,7 +16,6 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-mongo_client = MongoClient()
 mongo = PyMongo(app)
 
 
@@ -67,7 +66,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
-
+# Log in Function
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -95,7 +94,7 @@ def login():
 
     return render_template("login.html")
 
-
+# Profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -107,7 +106,7 @@ def profile(username):
 
     return redirect(url_for("login"))
 
-
+# Log out Function
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -115,17 +114,20 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
+# Add a Recipe Function
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
+        todays_date = datetime.today().strftime('%Y-%m-%d')
         recipe = {
             "category_name": request.form.get("category_name"),
             "mark": request.form.get("mark"),
             "recipe_name": request.form.get("recipe_name"),
-            "recipe_ingredients": request.form.get.list("recipe_ingredients"),
-            "cooking_steps": request.form.get.list("cooking_steps"),
-            "created_by": session["user"]
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "cooking_steps": request.form.get("cooking_steps"),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"],
+            "date_added": todays_date
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Your Recipe Successfully Added")
@@ -135,6 +137,41 @@ def add_recipe():
     marks = mongo.db.marks.find().sort("mark", 1)
     return render_template(
         "add_recipe.html", categories=categories, marks=marks)
+
+
+# Edit Recipe
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    # Following code to edit recipe and update database
+    if request.method == "POST":
+        todays_date = datetime.today().strftime('%Y-%m-%d')
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "mark": request.form.get("mark"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "cooking_steps": request.form.get("cooking_steps"),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"],
+            "date_added": todays_date
+        }
+
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    marks = mongo.db.marks.find().sort("mark", 1)
+    return render_template(
+        "edit_recipe.html", recipe=recipe, categories=categories, marks=marks)
+
+
+# Delete Recipe
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile.html"))
 
 
 if __name__ == "__main__":

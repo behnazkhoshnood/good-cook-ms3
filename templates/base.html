@@ -14,11 +14,11 @@
 
         <header>
             <!-- top navbar -->
-              <nav class="nav-extended text-shadow 5e35b1 deep-purple darken-1" >
+              <nav class="nav-extended text-shadow deep-purple darken-1" >
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('get_recipes') }}" class="brand-logo center">Good Cook</a>
+                    <a href="{{ url_for('get_recipes') }}" class="brand-logo left"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                    <ul class="left hide-on-med-and-down">
+                    <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
                         {% if session.user %}
                             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
