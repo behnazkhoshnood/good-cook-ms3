@@ -22,22 +22,20 @@
             <strong>{{ recipe.category_name.capitalize() }}</strong><br>
 
             {% for mark in recipe.marks %}
-            {{ mark.capitalize() }}<br>
+                {{ mark.capitalize() }}<br>
             {% endfor %}
             <br>
             <div class="row">
                 <ul class="col l6 s12">
+                    {% for ingredient in recipe.recipe_ingredients_without_empty_strings %}
                     <li>
-                        {% for ingredient in recipe.recipe_ingredients %}
-                        - {{ ingredient.capitalize() }}<br>
-                        {% endfor %}
+                        - {{ ingredient.capitalize() }}
+                    <br>
                     </li>
+                    {% endfor %}
                 </ul>
-                <div class="col l6 s12 recipe-image">
-                    <div class="card-panel">
-                        <img class="responsive-img" src="{{ recipe.image_url }}"
-                            alt="image of {{ recipe.recipe_name }}" />
-                    </div>
+                <div class="col l6 s12">
+                    <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
                 </div>
             </div>
             <br>

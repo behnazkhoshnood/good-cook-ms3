@@ -66,6 +66,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
+
 # Log in Function
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -94,6 +95,7 @@ def login():
 
     return render_template("login.html")
 
+
 # Profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
@@ -106,6 +108,7 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+
 # Log out Function
 @app.route("/logout")
 def logout():
@@ -114,6 +117,7 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
 # Add a Recipe Function
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -121,14 +125,29 @@ def add_recipe():
         todays_date = datetime.today().strftime('%Y-%m-%d')
         recipe = {
             "category_name": request.form.get("category_name"),
-            "mark": request.form.get("mark"),
             "recipe_name": request.form.get("recipe_name"),
-            "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "cooking_steps": request.form.get("cooking_steps"),
             "image_url": request.form.get("image_url"),
             "created_by": session["user"],
             "date_added": todays_date
         }
+        marks = {
+            "marks": request.form.getlist("marks[]")
+        }
+        recipe_ingredients = {
+            "recipe_ingredients": request.form.get(
+                "recipe_ingredients[]").split("\n")
+        }
+        recipe_ingredients_without_empty_strings = []
+        for string in recipe_ingredients:
+            if (string != ""):
+                recipe_ingredients_without_empty_strings.append(string)
+        cooking_steps = {
+            "cooking_steps": request.form.get(
+                "cooking_steps[]").split("\n")
+        }
+        recipe.update(marks)
+        recipe.update(recipe_ingredients)
+        recipe.update(cooking_steps)
         mongo.db.recipes.insert_one(recipe)
         flash("Your Recipe Successfully Added")
         return redirect(url_for("get_recipes"))
@@ -137,41 +156,6 @@ def add_recipe():
     marks = mongo.db.marks.find().sort("mark", 1)
     return render_template(
         "add_recipe.html", categories=categories, marks=marks)
-
-
-# Edit Recipe
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
-def edit_recipe(recipe_id):
-    # Following code to edit recipe and update database
-    if request.method == "POST":
-        todays_date = datetime.today().strftime('%Y-%m-%d')
-        submit = {
-            "category_name": request.form.get("category_name"),
-            "mark": request.form.get("mark"),
-            "recipe_name": request.form.get("recipe_name"),
-            "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "cooking_steps": request.form.get("cooking_steps"),
-            "image_url": request.form.get("image_url"),
-            "created_by": session["user"],
-            "date_added": todays_date
-        }
-
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-        flash("Recipe Successfully Updated")
-
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    marks = mongo.db.marks.find().sort("mark", 1)
-    return render_template(
-        "edit_recipe.html", recipe=recipe, categories=categories, marks=marks)
-
-
-# Delete Recipe
-@app.route("/delete_recipe/<recipe_id>")
-def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("profile.html"))
 
 
 if __name__ == "__main__":
