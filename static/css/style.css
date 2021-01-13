@@ -23,11 +23,28 @@ nav ul li:hover,
     list-style-type: disc;
 }
 
+.btn-small{
+    margin: 5px;
+}
+
+.done-btn{
+    background-color:#00c853c9;
+}
+
+.edit-btn{
+    background-color: #297ef6;
+}
+
+.collapsible-header .col strong{
+    margin: 5px;
+    line-height: 42px;
+}
+
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
 textarea.materialize-textarea.invalid{
-    border-bottom: #ad1457  impo;
+    border-bottom: #ad1457;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 1px 0 #ad1457;
 }
