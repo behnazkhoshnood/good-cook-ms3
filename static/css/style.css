@@ -19,6 +19,10 @@ nav ul li:hover,
     color: #7e57c2;
 }
 
+#ingredient-list{
+    list-style-type: disc;
+}
+
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),

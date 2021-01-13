@@ -27,11 +27,10 @@
             <br>
             <div class="row">
                 <ul class="col l6 s12">
-                    {% for ingredient in recipe.recipe_ingredients_without_empty_strings %}
-                    <li>
-                        - {{ ingredient.capitalize() }}
-                    <br>
-                    </li>
+                    {% for ingredient in recipe.recipe_ingredients %}
+                            <li id="ingredient-list">
+                                 {{ ingredient.capitalize() }}<br>
+                            </li>
                     {% endfor %}
                 </ul>
                 <div class="col l6 s12">
