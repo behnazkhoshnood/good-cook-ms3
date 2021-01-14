@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.collapsible-li:first').addClass('active');
     $('.collapsible').collapsible();
     $('select').formSelect();
-    $(".tooltipped").tooltip();
+    $('.tooltipped').tooltip();
     $('input#username, input#password, input#confirm-password, input#first_name, input#last_name').characterCounter();
     $('select').formSelect();
     $('li').filter(function () {
@@ -36,6 +36,5 @@ $(document).ready(function () {
         });
     }
 });
-
 
 

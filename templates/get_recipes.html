@@ -11,31 +11,31 @@
             <div class="col s3">
                 <i class="fas fa-caret-down"></i>
                 <a href="" class="btn-small done-btn">Done</a>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small" id="edit-btn">Edit</a>
                 
             </div>
             <div class="col s9">
                 <strong>
-                    {{ recipe.recipe_name.capitalize() }} :
+                    {{ recipe.recipe_name|capitalize }} :
                     <small>
-                        Created by {{ recipe.created_by.capitalize() }} on
+                        Created by {{ recipe.created_by|capitalize }} on
                         {{ recipe.date_added }}
                     </small>
                 </strong>
             </div>
         </div>
         <div class="collapsible-body">
-            <strong>{{ recipe.category_name.capitalize() }}</strong><br>
+            <strong>{{ recipe.category_name|capitalize }}</strong><br>
 
             {% for mark in recipe.marks %}
-                {{ mark.capitalize() }}<br>
+                {{ mark|capitalize }}<br>
             {% endfor %}
             <br>
             <div class="row">
                 <ul class="col l6 s12">
                     {% for ingredient in recipe.recipe_ingredients %}
                             <li id="ingredient-list">
-                                 {{ ingredient.capitalize() }}<br>
+                                 {{ ingredient|capitalize }}<br>
                             </li>
                     {% endfor %}
                 </ul>
@@ -47,7 +47,7 @@
             <ol>
                 {% for step in recipe.cooking_steps %}
                 <li>
-                    {{ step.capitalize() }}<br>
+                    {{ step|capitalize }}<br>
                 </li>
                 {% endfor %}
             </ol>

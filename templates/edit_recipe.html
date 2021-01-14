@@ -13,10 +13,10 @@
                     <option value="" disabled>Choose your recipe category</option>
                     {% for category in categories %}
                         {% if category.category_name == recipe.category_name %}
-                            <option value="{{ category.category_name }}" selected>{{ category.category_name.capitalize() }}
+                            <option value="{{ category.category_name }}" selected>{{ category.category_name|capitalize }}
                             </option>
                         {% else %}
-                            <option value="{{ category.category_name }}">{{ category.category_name.capitalize() }}
+                            <option value="{{ category.category_name }}">{{ category.category_name|capitalize }}
                             </option>
                         {% endif %}
                     {% endfor %}
@@ -28,25 +28,24 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
-                <select id="marks" name="marks[]" multiple class="validate">
+                <select id="mark" name="mark[]" multiple class="validate">
                     <option value="" disabled>Choose your marks( Optional )</option>
-                    {% for mark in marks %}
-                        {% if mark.mark[] == mark.mark[] %}
-                            <option value="{{ mark.mark[] }}" selected>{{ mark.mark.capitalize() }}</option>
-                        {% else %}
-                            <option value="{{ mark.mark }}">{{ mark.mark.capitalize() }}</option>
-                        {% endif %}
+                    {% for mark in recipe.marks %}
+                        <option value="{{ mark }}" selected>{{- mark|capitalize -}}
                     {% endfor %}
+                    {% for mark in marks %}
+                    <option value="{{ mark.mark }}">{{ mark.mark|capitalize }}</option>
+                    {% endfor %}
+                    </option>
                 </select>
-                <label for="mark">marks</label>
+                <label for="mark">Marks</label>
             </div>
         </div>
         <!-- recipe name -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix deep-purple-text text-darken-1"></i>
-                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="30" type="text" class="validate"
-                    required>
+                <input id="recipe_name" name="recipe_name" minlength="5" value="{{ recipe.recipe_name }}" maxlength="30" type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
@@ -54,8 +53,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-cookie-bite prefix deep-purple-text text-darken-1"></i>
-                <textarea id="recipe_ingredients" name="recipe_ingredients[]" aria-multiline="true"
-                    class="materialize-textarea validate lines" required></textarea>
+                    <textarea id="recipe_ingredients" name="recipe_ingredients" aria-multiline="true"
+                    class="materialize-textarea validate lines" required>{% for ingredient in recipe.recipe_ingredients %}{{- ingredient -}}{% endfor %}</textarea>
                 <label for="recipe_ingredients">Ingredients</label>
                 <span class="helper-text">Each ingredient must be entered on a new line.</span>
             </div>
@@ -65,7 +64,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-utensils prefix deep-purple-text text-darken-1"></i>
                 <textarea id="cooking_steps" name="cooking_steps[]" aria-multiline="true"
-                    class="materialize-textarea validate lines" required></textarea>
+                    class="materialize-textarea validate lines" required>{% for steps in recipe.cooking_steps %}{{- steps -}}{% endfor %}</textarea>
                 <label for="cooking_steps">Cooking Steps</label>
                 <span class="helper-text">Add each step in the recipe on a new line.</span>
             </div>
@@ -74,7 +73,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-images prefix deep-purple-text text-darken-1"></i>
-                <input id="image_url" name="image_url" type="text" minlength="5" pattern="https://.*" class="validate"
+                <input id="image_url" name="image_url" type="text" minlength="5"  value="{{ recipe.image_url }}"  pattern="https://.*" class="validate"
                     required />
                 <label for="image_url">Add an image</label>
                 <span class="helper-text">To add an image to your recipe, paste an image URL here. You must

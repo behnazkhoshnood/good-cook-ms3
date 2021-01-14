@@ -31,7 +31,7 @@ nav ul li:hover,
     background-color:#00c853c9;
 }
 
-.edit-btn{
+#edit-btn{
     background-color: #297ef6;
 }
 
@@ -39,6 +39,7 @@ nav ul li:hover,
     margin: 5px;
     line-height: 42px;
 }
+
 
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
