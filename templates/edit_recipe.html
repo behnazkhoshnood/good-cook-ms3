@@ -83,7 +83,9 @@
         <!-- submit btn -->
         <div class="row">
             <div class="col s12 center-align">
-                <button id="submit-btn" type="submit" class="btn-large deep-purple darken-1 text-shadow">Edit Recipe <i
+                <!-- cancle btn -->
+                <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large cancle-btn text-shadow">Cancle</a>
+                <button id="submit-btn" type="submit" class="btn-large edit-btn text-shadow">Edit Recipe <i
                         class="fas fa-edit-square right"></i></button>
             </div>
         </div>

@@ -8,7 +8,6 @@
 
 nav ul li:hover,
 #register-btn:hover,
-#submit-btn:hover,
 .select-dropdown li.disabled>span{
     background-color: #7e57c2 !important;
     color: #ffffff;
@@ -27,12 +26,21 @@ nav ul li:hover,
     margin: 5px;
 }
 
-.done-btn{
-    background-color:#00c853c9;
+.cancle-btn,
+.delete-btn{
+    background-color:#f23863fc;
 }
 
-#edit-btn{
+.cancle-btn:hover,
+.delete-btn:hover{
+    background-color: #d41f6d;
+}
+
+.edit-btn{
     background-color: #297ef6;
+}
+.edit-btn:hover{
+    background-color: #3173d1
 }
 
 .collapsible-header .col strong{
