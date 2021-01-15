@@ -23,7 +23,9 @@ mongo = PyMongo(app)
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    return render_template("get_recipes.html", recipes=recipes)
+    return render_template(
+        "get_recipes.html",
+        recipes=recipes)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -99,12 +101,18 @@ def login():
 # Profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    categories = mongo.db.categories.find().sort("category_name", 1)
 
+    # grab the session user's username from db
     if session["user"]:
-        return render_template("profile.html", username=username)
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        return render_template(
+            "profile.html",
+            username=username,
+            recipes=recipes,
+            categories=categories)
 
     return redirect(url_for("login"))
 
@@ -137,10 +145,6 @@ def add_recipe():
             "recipe_ingredients": request.form.get(
                 "recipe_ingredients[]").split("\n")
         }
-        recipe_ingredients_without_empty_strings = []
-        for string in recipe_ingredients:
-            if (string != ""):
-                recipe_ingredients_without_empty_strings.append(string)
         cooking_steps = {
             "cooking_steps": request.form.get(
                 "cooking_steps[]").split("\n")
