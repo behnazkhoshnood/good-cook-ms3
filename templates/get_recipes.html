@@ -8,22 +8,27 @@
     {% for recipe in recipes %}
     <li class="collapsible-li">
         <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
-                <div class="col s3">
-                    <i class="fas fa-caret-down"></i>
-                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn">Delete</a>
+                <i class="fas fa-caret-down caret"></i>
+                <div class="col s6 center-align edit-delete-div">
+                    {% if session.user|lower == recipe.created_by|lower %}
+                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn hide-on-small-only">Delete</a>
                     <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                    {% endif %}
                 </div>
-            <div class="col s9">
-                <strong>
-                    {{ recipe.recipe_name|capitalize }} :
-                    <small>
-                        Created by {{ recipe.created_by|capitalize }} on
-                        {{ recipe.date_added }}
+            <div class="col s6 head-div">
+                <h6 class="center-align">
+                    {{ recipe.recipe_name|capitalize }} 
+                    <small class="hide-on-med-and-down name">
+                    Created by : {{ recipe.created_by|capitalize }} on {{ recipe.date_added }}
                     </small>
-                </strong>
+                </h6>
             </div>
         </div>
         <div class="collapsible-body">
+            <h6 class="hide-on-large-only center-align">
+                Created by : {{ recipe.created_by|capitalize }}<br>
+                on {{ recipe.date_added }}
+            </h6>
             <strong>{{ recipe.category_name|capitalize }}</strong><br>
 
             {% for mark in recipe.marks %}
@@ -37,12 +42,12 @@
                                  {{ ingredient|capitalize }}<br>
                             </li>
                     {% endfor %}
+                    <br>
                 </ul>
                 <div class="col l6 s12">
                     <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
                 </div>
             </div>
-            <br>
             <ol>
                 {% for step in recipe.cooking_steps %}
                 <li>
@@ -50,7 +55,6 @@
                 </li>
                 {% endfor %}
             </ol>
-
         </div>
     </li>
     {% endfor %}

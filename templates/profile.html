@@ -6,55 +6,63 @@
 <!-- Recipe Details -->
 <ul class="collapsible">
     {% for recipe in recipes %}
-        {% if session.user == recipe.created_by %}
-            <li class="collapsible-li">
-                <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
-                <div class="col s3">
-                    <i class="fas fa-caret-down"></i>
-                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn">Delete</a>
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
-                </div>
-                    <div class="col s9">
-                        <strong>
-                            {{ recipe.recipe_name|capitalize }} :
-                            <small>
-                                Created by {{ recipe.created_by|capitalize }} on
-                                {{ recipe.date_added }}
-                            </small>
-                        </strong>
-                    </div>
-                </div>
-                <div class="collapsible-body">
-                    <strong>{{ recipe.category_name|capitalize }}</strong><br>
-
-                    {% for mark in recipe.marks %}
-                    {{ mark|capitalize }}<br>
+    {% if session.user == recipe.created_by %}
+    <li class="collapsible-li">
+        <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
+            <i class="fas fa-caret-down caret"></i>
+            <!-- edit and delete btn -->
+            <div class="col s3 center-align edit-delete-profile-div">
+                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn">Delete</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+            </div>
+            <div class="col s9 center-align">
+                <!-- recipe name and date -->
+                <h6 class="center-align">
+                    {{ recipe.recipe_name|capitalize }}
+                    <small class="hide-on-med-and-down">
+                       : Created on {{ recipe.date_added }}
+                    </small>
+                </h6>
+            </div>
+        </div>
+        <div class="collapsible-body">
+            <h6 class="hide-on-large-only center-align">
+                Created on {{ recipe.date_added }} <br>
+            </h6>
+            <!-- category name -->
+            <strong>{{ recipe.category_name|capitalize }}</strong><br>
+            <!-- marks -->
+            {% for mark in recipe.marks %}
+            {{ mark|capitalize }}<br>
+            {% endfor %}
+            <br>
+            <div class="row">
+                <!-- recipe ingredients -->
+                <ul class="col l6 s12">
+                    {% for ingredient in recipe.recipe_ingredients %}
+                    <li id="ingredient-list">
+                        {{ ingredient|capitalize }}<br>
+                    </li>
                     {% endfor %}
                     <br>
-                    <div class="row">
-                        <ul class="col l6 s12">
-                            {% for ingredient in recipe.recipe_ingredients %}
-                            <li id="ingredient-list">
-                                {{ ingredient|capitalize }}<br>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                        <div class="col l6 s12">
-                            <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
-                        </div>
-                    </div>
-                    <br>
-                    <ol>
-                        {% for step in recipe.cooking_steps %}
-                        <li>
-                            {{ step|capitalize }}<br>
-                        </li>
-                        {% endfor %}
-                    </ol>
-
+                </ul>
+                <!-- recipe image -->
+                <div class="col l6 s12">
+                    <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
                 </div>
-            </li>
-        {% endif %}
+            </div>
+            <!-- cooking steps -->
+            <ol>
+                {% for step in recipe.cooking_steps %}
+                <li>
+                    {{ step|capitalize }}<br>
+                </li>
+                {% endfor %}
+            </ol>
+
+        </div>
+    </li>
+    {% endif %}
     {% endfor %}
 </ul>
 
