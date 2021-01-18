@@ -9,6 +9,9 @@ $(document).ready(function () {
     $('li').filter(function () {
         return $(this).text().trim() === ''
     }).remove();
+    $('.profile-list').filter(function () {
+        return $(this).text().trim() === ''
+    }).append("<h6 class='profile-note'>You didn't add any recipe yet. Click on add recipe in the menu to add your recipe.</h6>");
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = {"border-bottom": "1px solid #4527a0", "box-shadow": "0 1px 0 0 #4527a0"};

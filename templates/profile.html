@@ -4,10 +4,10 @@
 <h3 class="deep-purple-text text-darken-1 center-align">Your Recipes</h3>
 
 <!-- Recipe Details -->
-<ul class="collapsible">
+<ul class="collapsible profile-list">
     {% for recipe in recipes %}
     {% if session.user == recipe.created_by %}
-    <li class="collapsible-li">
+    <li class="collapsible-li profile-list">
         <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
             <i class="fas fa-caret-down caret"></i>
             <!-- edit and delete btn -->
@@ -20,7 +20,7 @@
                 <h6 class="center-align">
                     {{ recipe.recipe_name|capitalize }}
                     <small class="hide-on-med-and-down">
-                       : Created on {{ recipe.date_added }}
+                        : Created on {{ recipe.date_added }}
                     </small>
                 </h6>
             </div>

@@ -65,7 +65,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Congratulations {}! You have registered successfully."
               .format(first_name.capitalize()))
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("get_recipes"))
     return render_template("register.html")
 
 
@@ -84,7 +84,7 @@ def login():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get(
                       "username").capitalize()))
-                return redirect(url_for("profile", username=session["user"]))
+                return redirect(url_for("get_recipes"))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -152,7 +152,7 @@ def add_recipe():
         recipe.update(cooking_steps)
         mongo.db.recipes.insert_one(recipe)
         flash("Your Recipe Successfully Added")
-        return redirect(url_for("get_recipes"))
+        return redirect(url_for('profile', username=session['user']))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     marks = mongo.db.marks.find().sort("mark", 1)

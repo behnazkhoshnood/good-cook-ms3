@@ -69,6 +69,10 @@ ul:not(.browser-default)> .ingredient-list {
     line-height: 42px;
 }
 
+.profile-note{
+    background-color: #b292c5;
+}
+
 /* ------------------------------------------------------invalid input style */
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
