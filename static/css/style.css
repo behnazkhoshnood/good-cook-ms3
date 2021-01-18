@@ -35,7 +35,7 @@ nav ul li:hover,
     color: #7e57c2;
 }
 
-#ingredient-list{
+ul:not(.browser-default)> .ingredient-list {
     list-style-type: disc;
 }
 
@@ -44,7 +44,9 @@ nav ul li:hover,
 }
 
 .cancle-btn,
-.delete-btn{
+.delete-btn,
+.cancle-btn:focus,
+.delete-btn:focus{
     background-color:#f23863fc;
 }
 
@@ -54,7 +56,8 @@ nav ul li:hover,
     background-color: #d41f6d;
 }
 
-.edit-btn{
+.edit-btn,
+.edit-btn:focus{
     background-color: #297ef6;
 }
 .edit-btn:hover{
@@ -132,17 +135,21 @@ textarea.materialize-textarea.valid:focus ~ label{
 
 @media screen and (max-width: 600px) {
   .delete-btn{
-      margin-top: 10px;
+        margin-top: 10px;
+  }
+    .head-div h6{
+        padding-left: 5px;
+        margin-left: 5px;
   }
 }
 
 @media screen and (min-width: 401px) and (max-width: 980px) {
     .edit-delete-profile-div {
-    min-width: 165px;
+        min-width: 165px;
   }
     .head-div h6{
-      padding-left: 5px;
-      margin-left: 5px;
+        padding-left: 5px;
+        margin-left: 5px;
   }
 }
 

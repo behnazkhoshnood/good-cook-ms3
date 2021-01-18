@@ -11,11 +11,11 @@
         <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
             <i class="fas fa-caret-down caret"></i>
             <!-- edit and delete btn -->
-            <div class="col s3 center-align edit-delete-profile-div">
+            <div class="col s6 center-align edit-delete-profile-div">
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn">Delete</a>
                 <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
             </div>
-            <div class="col s9 center-align">
+            <div class="col s6 center-align head-div">
                 <!-- recipe name and date -->
                 <h6 class="center-align">
                     {{ recipe.recipe_name|capitalize }}
@@ -40,7 +40,7 @@
                 <!-- recipe ingredients -->
                 <ul class="col l6 s12">
                     {% for ingredient in recipe.recipe_ingredients %}
-                    <li id="ingredient-list">
+                    <li class="ingredient-list">
                         {{ ingredient|capitalize }}<br>
                     </li>
                     {% endfor %}

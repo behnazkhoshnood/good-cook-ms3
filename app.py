@@ -114,8 +114,6 @@ def profile(username):
             recipes=recipes,
             categories=categories)
 
-    return redirect(url_for("login"))
-
 
 # Log out Function
 @app.route("/logout")
@@ -171,6 +169,33 @@ def delete_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        todays_date = datetime.today().strftime('%Y-%m-%d')
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"],
+            "date_added": todays_date
+        }
+        marks = {
+            "marks": request.form.getlist("marks[]")
+        }
+        recipe_ingredients = {
+            "recipe_ingredients": request.form.get(
+                "recipe_ingredients[]").split("\n")
+        }
+        cooking_steps = {
+            "cooking_steps": request.form.get(
+                "cooking_steps[]").split("\n")
+        }
+        submit.update(marks)
+        submit.update(recipe_ingredients)
+        submit.update(cooking_steps)
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Your Recipe Successfully Updated")
+        return redirect(url_for('profile', username=session['user']))
+
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     marks = mongo.db.marks.find().sort("mark", 1)

@@ -7,7 +7,8 @@ $(document).ready(function () {
     $('input#username, input#password, input#confirm-password, input#first_name, input#last_name').characterCounter();
     $('select').formSelect();
     $('li').filter(function () {
-        return $(this).text().trim() === ''}).remove();
+        return $(this).text().trim() === ''
+    }).remove();
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = {"border-bottom": "1px solid #4527a0", "box-shadow": "0 1px 0 0 #4527a0"};
@@ -35,6 +36,14 @@ $(document).ready(function () {
             }
         });
     }
+    $('.delete-btn').click(function () {
+        var checkstr = confirm('are you sure you want to delete this recipe?');
+        if (checkstr == true) {
+            // do your code
+        } else {
+            return false;
+        }
+    });
 });
 
 
