@@ -70,7 +70,11 @@ ul:not(.browser-default)> .ingredient-list {
 }
 
 .profile-note{
-    background-color: #b292c5;
+    background-color: #5e35b1 ;
+    color: #ffffff;
+    line-height: 80px;
+    text-align: center;
+    
 }
 
 /* ------------------------------------------------------invalid input style */

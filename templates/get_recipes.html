@@ -8,15 +8,15 @@
     {% for recipe in recipes %}
     <li class="collapsible-li">
         <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
-                <i class="fas fa-caret-down caret"></i>
-                <div class="col s6 center-align edit-delete-div">
-                    {% if session.user|lower == recipe.created_by|lower %}
-                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn hide-on-small-only">Delete</a>
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
-                    {% endif %}
-                </div>
+            <i class="fas fa-caret-down caret"></i>
+            <div class="col s6 center-align edit-delete-div">
+                {% if session.user|lower == recipe.created_by|lower %}
+                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn hide-on-small-only">Delete</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                {% endif %}
+            </div>
             <div class="col s6 head-div">
-                <h6 class="center-align">
+                <h6>
                     {{ recipe.recipe_name|capitalize }} 
                     <small class="hide-on-med-and-down name">
                     Created by : {{ recipe.created_by|capitalize }} on {{ recipe.date_added }}
