@@ -203,6 +203,48 @@ def edit_recipe(recipe_id):
         "edit_recipe.html", recipe=recipe, categories=categories, marks=marks)
 
 
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template(
+        "get_categories.html",
+        categories=categories)
+
+
+@app.route("/get_marks")
+def get_marks():
+    marks = list(mongo.db.marks.find().sort("mark", 1))
+    return render_template(
+        "get_marks.html",
+        marks=marks)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return redirect(url_for('get_categories'))
+
+    return render_template("add_category.html")
+
+
+@app.route("/add_mark", methods=["GET", "POST"])
+def add_mark():
+    if request.method == "POST":
+        mark = {
+            "mark": request.form.get("mark")
+        }
+        mongo.db.marks.insert_one(mark)
+        flash("New Mark Added")
+        return redirect(url_for('get_marks'))
+
+    return render_template("add_mark.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

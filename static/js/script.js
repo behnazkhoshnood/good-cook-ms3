@@ -19,10 +19,10 @@ $(document).ready(function () {
     function validateMaterializeSelect() {
         let classValid = {"border-bottom": "1px solid #4527a0", "box-shadow": "0 1px 0 0 #4527a0"};
         let classInvalid = {"border-bottom": "1px solid #ad1457", "box-shadow": "0 1px 0 0 #ad1457"};
-        if ($("select.validate").prop("required")) {
-            $("select.validate").css({"display": "block", "height": "0", "padding": "0", "width": "0", "position": "absolute"});
+        if ($("input").prop("required")) {
+            $(this).css({"display": "block", "height": "0", "padding": "0", "width": "0", "position": "absolute"});
         }
-        $(".select-wrapper input.select-dropdown").on("focusin", function () {
+        $("input").on("focusin", function () {
             $(this).parent(".select-wrapper").on("change", function () {
                 if ($(this).children("ul").children("li.selected:not(.disabled)").on("click", function () {})) {
                     $(this).children("input").css(classValid);

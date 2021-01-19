@@ -15,18 +15,18 @@
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn">Delete</a>
                 <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
             </div>
-            <div class="col s6 center-align head-div">
+            <div class="col s6 head-div">
                 <!-- recipe name and date -->
-                <h6 class="center-align">
+                <h6>
                     {{ recipe.recipe_name|capitalize }}
-                    <small class="hide-on-med-and-down">
+                    <small class="hide-on-small-only">
                         : Created on {{ recipe.date_added }}
                     </small>
                 </h6>
             </div>
         </div>
         <div class="collapsible-body">
-            <h6 class="hide-on-large-only center-align">
+            <h6 class="hide-on-med-and-up center-align">
                 Created on {{ recipe.date_added }} <br>
             </h6>
             <!-- category name -->

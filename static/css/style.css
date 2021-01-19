@@ -39,10 +39,6 @@ ul:not(.browser-default)> .ingredient-list {
     list-style-type: disc;
 }
 
-.btn-small{
-    margin: 5px;
-}
-
 .cancle-btn,
 .delete-btn,
 .cancle-btn:focus,
@@ -54,6 +50,15 @@ ul:not(.browser-default)> .ingredient-list {
 .cancle-btn:hover,
 .delete-btn:hover{
     background-color: #d41f6d;
+}
+
+.edit-btn,
+.delete-btn{
+    margin: auto 0;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 .edit-btn,
@@ -81,7 +86,7 @@ ul:not(.browser-default)> .ingredient-list {
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=password]:not(.browser-default),
 textarea.materialize-textarea.invalid{
-    border-bottom: #ad1457;
+    border-bottom: 1px solid #ad1457;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 1px 0 #ad1457;
 }
@@ -89,29 +94,28 @@ textarea.materialize-textarea.invalid{
 input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default):focus,
 textarea.materialize-textarea.invalid:focus,
-.select-wrapper input.select-dropdown:focus,
 input[type=text]:not(.browser-defult):focus:not([readonly]),
 input[type=password]:not(.browser-defult):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){
-    border-bottom: #ad1457 ;
+    border-bottom: 1px solid #ad1457 ;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
     box-shadow: 0 2px 0 #ad1457;
 }
 
 input[type=text]:not(.browser-defult):focus:not([readonly])+label,
 input[type=password]:not(.browser-defult):focus:not([readonly])+label,
-textarea.materialize-textarea:focus:not([readonly])+label,
-input.invalid[type=text]:not(.browser-default):focus.invalid ~ label,
-input.invalid[type=password]:not(.browser-default):focus.invalid ~ label,
-textarea.materialize-textarea.invalid ~ label{
+textarea.materialize-textarea:focus:not([readonly])+label{
     color: #ad1457;
 }
 
 /* ------------------------------------------------------valid input style */
 input.valid[type=text]:not(.browser-default),
 input.valid[type=password]:not(.browser-default),
-textarea.materialize-textarea.valid{
-    border-bottom: #4527a0 ;
+textarea.materialize-textarea.valid,
+.select-wrapper input.select-dropdown:focus:not([readonly])+label,
+.select-wrapper input.select-dropdown:focus,
+.select-wrapper input.select-dropdown:focus:not([readonly]){
+    border-bottom: 1px solid #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
     box-shadow: 0 1px 0 #4527a0;
 }
@@ -119,7 +123,7 @@ textarea.materialize-textarea.valid{
 input.valid[type=text]:not(.browser-default):focus,
 input.valid[type=password]:not(.browser-default):focus,
 textarea.materialize-textarea.valid:focus{
-    border-bottom: #4527a0 ;
+    border-bottom: 1px solid #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
     box-shadow: 0 2px 0 #4527a0;
 }
@@ -142,9 +146,6 @@ textarea.materialize-textarea.valid:focus ~ label{
 }
 
 @media screen and (max-width: 600px) {
-  .delete-btn{
-        margin-top: 10px;
-  }
     .head-div h6{
         padding-left: 5px;
         margin-left: 5px;
@@ -169,4 +170,15 @@ textarea.materialize-textarea.valid:focus ~ label{
     .brand-logo{
         margin-left: 10px;
     }
+}
+
+.card .card-content .card-title{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+.manage-title{
+    height: 90px;
 }
