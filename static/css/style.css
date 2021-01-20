@@ -52,17 +52,25 @@ ul:not(.browser-default)> .ingredient-list {
     list-style-type: disc;
 }
 
-.cancle-btn,
 .delete-btn,
-.cancle-btn:focus,
 .delete-btn:focus{
     background-color:#f23863fc;
 }
 
-
-.cancle-btn:hover,
 .delete-btn:hover{
     background-color: #d41f6d;
+}
+
+.cancel-btn,
+.cancel-btn:focus{
+    background-color:#13af8dfc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.cancel-btn:hover{
+    background-color:#0f9276fc;
 }
 
 .edit-btn,
@@ -138,10 +146,11 @@ input.valid[type=url]:not(.browser-default),
 input.valid[type=url]:not(.browser-default):focus,
 input.valid[type=search]:not(.browser-default),
 input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid,
-textarea.materialize-textarea.valid:focus{
+textarea.materialize-textarea.valid:focus,
+.select-wrapper input.select-dropdown:focus{
     border-bottom: 1px solid #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
-    box-shadow: 0 1px 0 #4527a0;
+    box-shadow: 0 1px 0 0 #4527a0;
 }
 
 input:not([type]):focus.valid ~ label,
@@ -164,9 +173,17 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
 }
 
 @media screen and (max-width: 600px) {
+    h3,
+    h4,
+    div span{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
     .head-div h6{
-        padding-left: 5px;
-        margin-left: 5px;
+        padding-left: 10px;
+        margin-left: 10px;
+        font-size: 13px;
   }
 }
 
@@ -193,8 +210,7 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
 .card .card-content .card-title{
     font-size: 20px;
     margin-bottom: 5px;
-    margin-top: 10px;
-    line-height: 20px;
+    line-height: 29px;
 }
 
 .manage-title{

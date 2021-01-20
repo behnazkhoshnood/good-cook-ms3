@@ -164,7 +164,7 @@ def add_recipe():
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted!")
-    return redirect(url_for("get_recipes"))
+    return redirect(url_for('profile', username=session['user']))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -232,6 +232,20 @@ def add_category():
     return render_template("add_category.html")
 
 
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for('get_categories'))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
+
+
 @app.route("/add_mark", methods=["GET", "POST"])
 def add_mark():
     if request.method == "POST":
@@ -243,6 +257,20 @@ def add_mark():
         return redirect(url_for('get_marks'))
 
     return render_template("add_mark.html")
+
+
+@app.route("/edit_mark/<mark_id>", methods=["GET", "POST"])
+def edit_mark(mark_id):
+    if request.method == "POST":
+        submit = {
+            "mark": request.form.get("mark")
+        }
+        mongo.db.marks.update({"_id": ObjectId(mark_id)}, submit)
+        flash("Mark Successfully Updated")
+        return redirect(url_for('get_marks'))
+
+    mark = mongo.db.marks.find_one({"_id": ObjectId(mark_id)})
+    return render_template("edit_mark.html", mark=mark)
 
 
 if __name__ == "__main__":

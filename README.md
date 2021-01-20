@@ -9,17 +9,19 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - As a first time user, I would like to be able to easily navigate to the recipes.
   - I have achieved this by having a button on get_recipies.html that will take the user to the recipes page. There is also a clear description of where the button will take the user.
 - As a first time user, I would like to be told how I can add my own recipes.
-  - I have achieved this by indicating for not registered users on get_recipies.html page, that the user is able to add recipes to the page by registering a profile, once the user has registered they can add recipes by clicking on add recipe on the top navbar. There is also a note for users that haven't add any recipies yet to their profile page that guides them to add recipe buttton in the top navbar.
+  - I have achieved this by indicating for not registered users on get_recipies.html page, that the user is able to add recipes to the page by registering a profile, once the user has registered they can add recipes by clicking on add recipe on the top navbar. There is also a note for users that haven't add any recipies yet to their profile page, when they enter their profile, that guides them to add recipe buttton in the top navbar in order to add theirown recipes.
 
 *Returning Users*
 
 - As a returning user, I would like to see all of my own recipes seperate from other users.
-  - I have achieved this by creating the 'my_profile.html' page. This page consists of all of the recipes that are created by the session user.
+  - I have achieved this by creating the 'profile.html' page. This page consists of all of the recipes that are created by the session user.
 
 *Admin Users*
 
 - As an Admin User, I want total control of all recipes on the page (To edit and delete recipes added by other users).
   - I have achieved this by creating a loop over all the edit and delete buttons specialized for the admin. other users can only edit or delete their own recipies.
+- As an admin User, I want to be able to manage the categories and marks for the recipes.
+  - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
 - Home Page
   - Desktop
@@ -63,8 +65,9 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Unregistered users and all the other users are able to view all recipes that have been uploaded by registered users on All recipes page.
   - Upon registering/loggin in, the user will be greeted with the flash note on top of the "All Recipes" page(get_recipes.html)
   - All recipies are shown in a collapsible drop down list.
-  - The recipe name, created_by and date of insertion of the recipe is shown on the header of the collapsible list for desktop view but in smaller views just the recipe name is shown on the header and the user name and date of insertion is added on top of the body section of the collapsible.
-  - First collapsible body is open on loading the page and recipe informations like recipe category, marks, ingredients, cooking steps and recipe image are included in body of the collapsible.
+  - The recipe name, created_by and date of the recipe is shown on the header of the collapsible list for desktop view but in smaller views just the recipe name is shown on the header and the user name and date of insertion is added on top of the body section of the collapsible.
+  - First collapsible body is open on loading the page to make the page more appealing.
+  - Recipes information like recipe category, marks, ingredients, cooking steps and recipe image are included in body of the collapsible.
   - Admin Users, will be able to delete or edit the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own.
 
 - Register/Login
@@ -73,9 +76,16 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - A user will need to register a profile to be able to add any recipes, this infomation is on get_recipe.html.
   - If a user tries to register a username which is used by someone else already, they will not be allowed to use that username. The user will be notified of this by use of Flash Messages - "Username already exists!".
   - If a user password and confirm password dosen't match user gets a flash message - "Passwords do not match, please re-enter"
+  - tooltips provided on each input field to give more guidence tothe user.
   - When a user has successfully registered their new profile, they will be redirected to 'get_recipes.html'.
   - When a returning user logs in successfully, they will also be redirected to 'get_recipes.html'.
   - If a registered user puts their infomation in incorrectly when loging in, they will be notified by the use of Flash Messages - "Incorrect Username and/or Password".
+
+- log out
+
+  - user is provided by the option to log out when clicking on the button provided on the navbar.
+  - By clicking on "Log Out" button user get a message to check if they really want to log out.
+  - On log out user redirects to log in page and getting a flash message - "You have been logged out!"
 
 - Profile
 
@@ -91,17 +101,22 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - Edit form
 
   - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. This button will reveal the efit form with add the information that have been added till then and they can change any part they desire and then click on edit button at the bottom of the page.
-  - If user decided to not change the informations they can click on the cancle buttton next to edit buttton.
+  - If user decided to not change the informations they can click on the cancel buttton next to edit buttton.
 
 - Delete buttton
 
   - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
   - In mobile view devices the delete buttton in "All Recipes" page is hidden and shown on top of the edit form instead.
   - When the user tries to delete a recipe, they will be asked to confirm if that is what they want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake. 
+
+- Add category and marks
+  - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
+
 # Features Left to Impliment
 1 - Adding like/sidlike button for recipies and the number of likes for each Recipe to put the attention of the users on more liked recipies.
 2 - Adding the liked recipes in a new section in profile page.
 3 - Adding a footer with social media sites for the app.
+4 - Seperating the recipes in different sections for each category.
 --- 
 # Technologies Used 
 - [HTML5](https://en.wikipedia.org/wiki/HTML)
@@ -115,9 +130,9 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - [JQuery](https://en.wikipedia.org/wiki/JQuery)
   - JQuery has been used to give the site its functionality as well as making DOM manipulation simpler.
   - Pages that include functionality are:
-    - recipes.html for Admin users only
-    - my_recipes.html for all users
-    - add_recipe.html for all users
+    - get_categories, get_marks, add_categories and add_marks for Admin users only
+    - get_recipies.html, register.html and login.html for all users
+    - profile.html for registered users only
 - [MongoDB](https://en.wikipedia.org/wiki/MongoDB) 
   - As the data entered by users can always be different from one to the next, the project uses MongoDB to store its data as MongoDB is a Document Based Database.
 - [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
@@ -131,9 +146,12 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
     - session
     - url_for
     - PyMongo
+- [bson.objectid](https://www.npmjs.com/package/bson-objectid)
     - ObjectId
+- [werkzeug.security](https://werkzeug.palletsprojects.com/en/1.0.x/utils/)
     - generate_password_hash
     - check_password_hash
+- [datetime](https://docs.python.org/3/library/datetime.html)
     - datetime
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
   - Python is working very closely with Flask to manipulate data and HTML across multiple pages within the app.
@@ -157,11 +175,12 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Step 2 - Enter password (5 character minimum).
   - Step 3 - Click the 'Register' button.
   - Step 4 - Be presented by flash message containing "Username already exists!".
-- Test 3 - Register with less than 5 characters - Test Passed ✓
-  - Step 1 - While on 'register.html', enter username '1234'..
-  - Step 2 - Enter password '1234'.
-  - Step 3 - As the 'Required' and minlength=5 has been added, the form will not be submitted.
-  - Step 4 - Change username and password to '12345' and form will submit. (Although matching usernames and passwords are never recommended!).
+- Test 3 - Register with less than 2 Alphabet for first and last name and less than 5 characters for username - Test Passed ✓
+  - step 1 - While on 'register.html', enter first or last name with numbers or less than 2 alphabet is shown invalid.
+  - Step 2 - While on 'register.html', enter username or password with less than 5 charecters is shown invalid.
+  - Step 3 - As the 'Required' and minlength=2 for first and last name, and minlength=5 for username and password has been added, the form will not be submitted.
+  - Step 4 - Changing first and last name to more than 1 alphabet, and username and password to more than 4 charecters will submit the form.
+  - step 5 - All the tooltips are shown an the page by hovering over the input icon.
 ## Login.html
 - Test 1 - Log In - Test Passed ✓
   - Step 1 - Enter your Username.
@@ -176,48 +195,53 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - Test 1 - Adding a New Recipe - Test Passed ✓
   - Step 1 - Log In.
   - Step 2 - Be redirected to get_recipes.
-  - Step 3 - Click button labeled 'Add Recipe'.
+  - Step 3 - Click the button labeled 'Add Recipe'.
   - Step 4 - Be redirected to the form for user to fill in.
   - Step 5 - Form is tried to be submitted with empty fields for required fields and faild; user is notified of missing items.
   - Step 6 - There is 1 form fields called marks that is not required and the form still successfully post if this field is empty.
-  - Step 7 - Once the form is filled out to the satsfaction of the constraints, the user will click the 'Add Recipe!' button.
-  - Step 8 - Be redirected to 'profile.html' where the user can see their newly inputted recipe located alphabeticly in.
-  - Step 7 - Check the contents of the newly added recipe right away by clicking the 'Full Recipe" link located within the recipe tile.
-  - Step 8 - Be redirected to 'full_recipe.html' and have all data presented in a user-friendly fashoin.
+  - Step 7 - There is a cancel button provided on the bottom of the form. If the user don't want to add the recipe can click on this button and get redirected to their profile page.
+  - Step 8 - Once the form is filled out to the satsfaction of the constraints and the 'Add Recipe!' button is clicked user will be redirected to 'profile.html' where the user can see their newly added recipe located alphabeticly in the colapsible dropdown list with the first input field open to make the page more appealing. User also be notified that the new recipe added by flash notifications.
+  - Step 7 - Check the contents of the newly added recipe right away by clicking on that recipe on the list.
 ## Editing/Deleting a Recipe 
 - Test 1 - Editing a Recipe - Test Passed ✓
-  - Step 1 - Navigate to my_recipes.
-  - Step 2 - Click the button labeled "RECIPE EDITOR".
-  - Step 3 - Navitgate to the recipe that the user wishes to edit, note - the user can only edit their own recipes.
-  - Step 4 - Click on the green circle button.
-  - Step 5 - Be redirected to edit_recipe.html. This is a copy of the 'add recipe' form with all of the fields already populated, ready for the user to edit.
-  - Step 6 - Should the user wish to cancel the action, they can click on the canel button located on bottom right. 
-    - Step 6.5 - If you click cancel, then you will be redirected to my_recipes and all changes will be disregarded. 
-  - Step 7 - Once the user has made their changes to the recipe, they will click 'UPDATE RECIPE".
-  - Step 8 - Be redirected to my_recipes
+  - Step 1 - Navigate to profile or All recdipe page.
+  - Step 2 - Click the button labeled "EDIT" for the desired recipe.
+  - Step 3 - Navitgate to the part of the recipe that the user wishes to edit, note - normal user can only edit their own recipes but admin can edit all the recipes from the All recipies page.
+  - Step 4 - Click on the blue button, "EDIT RECIPE" at the bottom of the page to edit the recipe.
+  - Step 5 - Be redirected to profile.html( if not admin) and a flash message notifing the user that the recipe is updated. Admin will be redirected to get_recipies.html with the same message shown by flash.
+  - Step 6 - Should the user wish to cancel the action, they can click on the cancel button located on bottom left.
+    - Step 7 - If user clicks the cancel button he/she will be redirected to profile page and all changes will be disregarded. 
 - Test 2 - Deleting a Recipe - Test Passed ✓
-  - Step 1 - Navigate to my_recipes.
-  - Step 2 - Click the button labeled "RECIPE EDITOR".
-  - Step 3 - User navigates to recipe which they would like to delete.
-  - Step 4 - User clicks red circle button.
-  - Step 5 - Recipe is deleted, user is redirected to my_recipes.
+  - Step 1 - Navigate to All Recipes, or profile page.
+  - Step 2 - Click the button labeled "DELETE". (In mobile phone view this button can be found on top of the edit form)
+  - Step 3 - User gets a message if they are sure to delete this recipe.
+  - step 4 - If confirm the recipe deletes and user redirects to their profile page(admin redirects to All Recipes page) but if press cancel, recipe stayes unchanged and the user will be redirected to their profile page.
 ## Admin Capability
 - Test 1 - Edit any Recipe - Test Passed ✓ 
-  - Step 1 - Navigate to recipes.html as admin.
-  - Step 2 - Click the 'RECIPE EDITOR' button.
-  - Step 3 - Edit the recipe as user sees fit.
-  - Step 4 - Click "UPDATE RECIPE".
+  - Step 1 - Navigate to get_recipes.html as admin.
+  - Step 2 - Edit and Delete option is shown on all recipies.
+  - Step 3 - Open the edit form by clicking on the edit button.
+  - Step 4 - Click "Edit RECIPE" at the bottom of the page after changing the recipe.
   - Step 5 - Be redirected to recipes.html.
 - Test 2 - Delete any Recipe - Test Passed ✓
-  - Step 1 - Navigate to my_recipes.
-  - Step 2 - Click the button labeled "RECIPE EDITOR".
-  - Step 3 - User navigates to recipe which they would like to delete.
-  - Step 4 - User clicks red circle button.
-  - Step 5 - Recipe is deleted, user is redirected to my_recipes.
+  - Step 1 - Navigate to get_recipes.
+  - Step 2 - Click the button labeled "Delete".( If on mobile phone view this option is provided after clicking on edit button, on top of the edit form)
+  - Step 3 - User navigates to the recipe which he/she would like to delete.
+  - Step 4 - User clicks the red delete button.
+  - step 5 - User should confirm if he/she really wishes to delete this recipe.
+  - step 6 - If press "Ok" recipe deletes and user redirects to All recipies page.
+  - Step 7 - If press "cancel" recipe doesn't delete.
+- Test 3 - Add, edit or delete categories or marks - Test Passed ✓
+  - step 1 - Click on the Manage Categries to manage the categories or Manage Marks to manage the marks.
+  - step 2 - Admin can sees all the categories in manage categories and all the marks in manage marks in a seperate card with an option of delete or edit and an Add button on top of the page to add a new category or mark.
+  - step 3 - By clicking on the add button, a one input field form, called add category or add mark opens regardingly.
+  - step 4 - Admin can write doen the desired name for the new category/mark and press the Add category or Add mark at the bottom of the form.
+  - step 5 - Admin is provided also with a cancel button in both pages if he/she decided to not add any new category or mark.
+  - step 6 - Pressing this key redirects the admin to the get_categories if in add category form, or get_marks if in add marks form.
 ---
 ## Validators
 The validators that have been used on the project are as followed:
- 
+
   - [HTML Validator](https://validator.w3.org/nu/) - No issues apart from jinja templating
   - [CSS Validator](https://jigsaw.w3.org/css-validator/) - No issues
   - [JavaScript Validator](https://jshint.com/) - No issues 
@@ -237,7 +261,7 @@ For the project to successfully deploy, the following are requirements are neede
 ### **Heroku Deployment**
   - Step 1 - Within the terminal, type 'pip freeze > requirements.txt' - this command will generate a .txt file with all of the requirements necessary for Heroku to run the app.
   - Step 2 - Within the terminal, type 'echo web: python app.py > Procfile' - This tells Heroku that this is a web based app.
-  - Step 3 - Assuming you have an account, log in to Heroku and set up a new app with the region that is closest to you (Europe/America).
+  - Step 3 - Assuming you have an account, log in to Heroku and set up a new app with the region that is closest to you.
   - Step 4 - You will need to set up your own config vars both on Heroku and within env.py for the app to access the data properly, these will include:
     - IP 
     - PORT 
@@ -248,32 +272,18 @@ For the project to successfully deploy, the following are requirements are neede
   ---
 # Credits 
 ### Recipes
-All recipes currently on the page have all been added my Maria herself
+All recipes currently on the page have all been added from google by Behnaz Khoshnood.
 ### Recipe Images 
 All images used on the page are linked below:
-- Almond Flour Buns
-  - https://www.bakingmad.com/BakingMad/media/content/Recipes/Bread-Dough/Easy-wholemeal-bread-rolls/1-Wholegrain-bread-rolls-WEB.jpg
-- Naan Bread 
-  - https://www.jocooks.com/wp-content/uploads/2011/04/naan-bread-1-500x500.jpg
-- Carrot Burgers
-  - https://www.rachaelraymag.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQzMjU4OTI2NzU1MDMwODk0/carrot-top-burgers.jpg
-- Cheesecake
-  - https://www.californiastrawberries.com/wp-content/uploads/2018/07/Strawberry-No-Bake-Cheesecake_1024x1024.png
-- Raw Balls
-  - https://www.theflavorbender.com/wp-content/uploads/2014/09/Chia-Bliss-Balls-Featured-4.jpg
-  
-- Cheese Nachos
-  - https://www.wholesomeyum.com/wp-content/uploads/2016/05/wholesomeyum-low-carb-keto-nachos-recipe-with-spicy-chicken-26.jpg
-  
-- Bruschetta 
-  - https://www.jessicagavin.com/wp-content/uploads/2020/07/bruschetta-17-1200.jpg
-  
-- Roasted Cauliflower
-  -  https://minimalistbaker.com/wp-content/uploads/2018/07/How-to-roast-cauliflower-SQUARE.jpg
-- Pear Cake
-  - https://marisasitaliankitchen.com/wp-content/uploads/2019/09/Pear-Honey-Rosemary-Bundt-Cake-7-of-10-500x500.jpg
-- Cauliflower Pizza
-  - https://realhousemoms.com/wp-content/uploads/Cauliflower-Pizza-Crust-IG1.jpg
+- Adas polo
+  - https://www.saveur.com/resizer/Wnizk_4UQkqFMI5XmMydgOXf4J8=/1200x628/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/L2N233EB3VWQE43J7IJHYBS3Z4.jpg
+- Chicken enchilada dip
+  - https://www.familyfreshmeals.com/wp-content/uploads/2014/06/Cheesy-Chicken-Enchilada-Dip-BEAUTY_1-768x512.jpg
+- Chicken nuggets
+  - https://www.gimmesomeoven.com/wp-content/uploads/2014/08/Baked-Parmesan-Chicken-Nuggets-31-260x195.jpg
+- Chicken tikka masala
+  - https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-chicken-tikka-masala-jpg-1526059261.jpg
+- 
 ### Materialize
 For this project, I have used and modified content from the Materialize Docs. Aspects include:
   - Navbar 

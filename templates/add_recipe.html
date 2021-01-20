@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content%}
 
-<h3 class="deep-purple-text text-darken-1 center-align">Add Recipes</h3>
+<h3 class="deep-purple-text text-darken-1 center-align">Add Recipe</h3>
 
 <div class="row card-panel gray lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
-                <select id="marks" name="marks[]" multiple class="validate" required>
+                <select id="marks" name="marks[]" multiple class="validate">
                     <option value="" disabled selected>Choose your marks( Optional )</option>
                     {% for mark in marks %}
                     <option value="{{ mark.mark }}">{{ mark.mark|capitalize }}</option>
@@ -74,6 +74,9 @@
         <!-- submit btn -->
         <div class="row">
             <div class="col s12 center-align">
+            <!-- cancel btn -->
+            <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large cancel-btn text-shadow"><i class="fas fa-window-close right"></i> cancel</a>
+            <!-- submit btn -->
                 <button id="submit-btn" type="submit" class="btn-large deep-purple darken-1 text-shadow">Add Recipe <i
                         class="fas fa-plus-square right"></i></button>
             </div>
