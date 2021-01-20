@@ -15,11 +15,16 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 
 - As a returning user, I would like to see all of my own recipes seperate from other users.
   - I have achieved this by creating the 'profile.html' page. This page consists of all of the recipes that are created by the session user.
+- As a returning User, I want to be able to edit or delete the recipies that are added by myself.
+  - I have achived this by providing the edit and delete button on the colapsible header of these recipies in profile page.
+- As a returning User, I don't want my recipies be changed by the Admin.
+  - I have achived this by providing only delete button for recipes added by not admin users and not gave the option to edit the recipes to the admin user.
+*Admin User*
 
-*Admin Users*
-
-- As an Admin User, I want total control of all recipes on the page (To edit and delete recipes added by other users).
-  - I have achieved this by creating a loop over all the edit and delete buttons specialized for the admin. other users can only edit or delete their own recipies.
+- As an Admin User, I want to be able to delete the unrelated or spams from the recipies.
+  - I have achieved this by creating a loop over all delete buttons specialized for the admin. other users can edit or delete their own recipies.
+- As an Admin User, I want to be able to edit or delete the recipies that are added by myself.
+- I have achived this by providing the edit and delete button on the colapsible header of these recipies in admin profile page.
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
@@ -62,13 +67,14 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 # Features
 - All Recipes
 
+  - First collapsible body is open on loading the page to make the page more appealing.
   - Unregistered users and all the other users are able to view all recipes that have been uploaded by registered users on All recipes page.
   - Upon registering/loggin in, the user will be greeted with the flash note on top of the "All Recipes" page(get_recipes.html)
   - All recipies are shown in a collapsible drop down list.
-  - The recipe name, created_by and date of the recipe is shown on the header of the collapsible list for desktop view but in smaller views just the recipe name is shown on the header and the user name and date of insertion is added on top of the body section of the collapsible.
-  - First collapsible body is open on loading the page to make the page more appealing.
+  - The recipe name, created_by, date of the recipe, edit button and delete button is shown on the header of the collapsible list, for desktop view. In smaller views just the recipe name is shown on the header and the user name and date of insertion is added on top of the body section of the collapsible. 
   - Recipes information like recipe category, marks, ingredients, cooking steps and recipe image are included in body of the collapsible.
-  - Admin Users, will be able to delete or edit the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own.
+  - Admin Users, will be able to delete the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own recipies.
+  - Delete button is shown in all views to the admin in the colapsible header whereas for other users this button will change position to the top of edit form in mobile view.
 
 - Register/Login
 
@@ -100,14 +106,16 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 
 - Edit form
 
-  - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. This button will reveal the efit form with add the information that have been added till then and they can change any part they desire and then click on edit button at the bottom of the page.
+  - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. For admin, this button can be found only on profile page.
+  By clicking on edit button, edit form will reveal with the information that have been added to the form by then.
+  - User can change any part they desire and then click on edit button at the bottom of the page.
   - If user decided to not change the informations they can click on the cancel buttton next to edit buttton.
 
 - Delete buttton
 
-  - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
-  - In mobile view devices the delete buttton in "All Recipes" page is hidden and shown on top of the edit form instead.
-  - When the user tries to delete a recipe, they will be asked to confirm if that is what they want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake. 
+  - If users ever decide that they would like to delete any of the data, all they need to do is click on the delete button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
+  - In mobile view devices the delete buttton in "All Recipes" page is hidden and shown on top of the edit form instead.( exept for the admin)
+  - When the user tries to delete a recipe, they will be asked to confirm if that is what they really want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake. 
 
 - Add category and marks
   - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
@@ -117,6 +125,8 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 2 - Adding the liked recipes in a new section in profile page.
 3 - Adding a footer with social media sites for the app.
 4 - Seperating the recipes in different sections for each category.
+5 - Give more accessibility to the admin if needed.
+6 - More secure pathway for the admin.
 --- 
 # Technologies Used 
 - [HTML5](https://en.wikipedia.org/wiki/HTML)
@@ -132,7 +142,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Pages that include functionality are:
     - get_categories, get_marks, add_categories and add_marks for Admin users only
     - get_recipies.html, register.html and login.html for all users
-    - profile.html for registered users only
+    - profile.html, add_recipe and edit_recipe for registered users only
 - [MongoDB](https://en.wikipedia.org/wiki/MongoDB) 
   - As the data entered by users can always be different from one to the next, the project uses MongoDB to store its data as MongoDB is a Document Based Database.
 - [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
@@ -213,7 +223,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
     - Step 7 - If user clicks the cancel button he/she will be redirected to profile page and all changes will be disregarded. 
 - Test 2 - Deleting a Recipe - Test Passed ✓
   - Step 1 - Navigate to All Recipes, or profile page.
-  - Step 2 - Click the button labeled "DELETE". (In mobile phone view this button can be found on top of the edit form)
+  - Step 2 - Click the button labeled "DELETE". (In mobile phone view this button can be found on top of the edit form for ordinary users)
   - Step 3 - User gets a message if they are sure to delete this recipe.
   - step 4 - If confirm the recipe deletes and user redirects to their profile page(admin redirects to All Recipes page) but if press cancel, recipe stayes unchanged and the user will be redirected to their profile page.
 ## Admin Capability

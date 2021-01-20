@@ -205,6 +205,9 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
     .brand-logo{
         margin-left: 10px;
     }
+    .admin-delete-btn{
+        margin-left: -100px
+    }
 }
 
 .card .card-content .card-title{

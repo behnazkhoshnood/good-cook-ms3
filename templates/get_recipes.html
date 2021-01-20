@@ -25,8 +25,7 @@
                 <div class="col s6 center-align edit-delete-div">
                     {% if session.user|lower == "admin" %}
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
-                            class="btn-small delete-btn hide-on-small-only">Delete</a>
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                            class="btn-small delete-btn admin-delete-btn">Delete</a>
                     {% endif %}
                     {% if session.user|lower == recipe.created_by|lower and session.user|lower != "admin" %}
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"

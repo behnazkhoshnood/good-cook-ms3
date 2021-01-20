@@ -246,6 +246,13 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Category Successfully Deleted")
+    return redirect(url_for('get_categories'))
+
+
 @app.route("/add_mark", methods=["GET", "POST"])
 def add_mark():
     if request.method == "POST":
@@ -271,6 +278,13 @@ def edit_mark(mark_id):
 
     mark = mongo.db.marks.find_one({"_id": ObjectId(mark_id)})
     return render_template("edit_mark.html", mark=mark)
+
+
+@app.route("/delete_mark/<mark_id>")
+def delete_mark(mark_id):
+    mongo.db.marks.remove({"_id": ObjectId(mark_id)})
+    flash("Mark Successfully Deleted")
+    return redirect(url_for('get_marks'))
 
 
 if __name__ == "__main__":
