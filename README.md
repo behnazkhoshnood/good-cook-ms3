@@ -1,45 +1,291 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Good Cook! - Milestone Project 3
+A site that allows users to add their own recipes to be viewed publicly!
+To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
+---
+## UX Design
+### User Stories
+*First Time Users*
 
-Welcome Behnaz Khoshnood,
+- As a first time user, I would like to be able to easily navigate to the recipes.
+  - I have achieved this by having a button on get_recipies.html that will take the user to the recipes page. There is also a clear description of where the button will take the user.
+- As a first time user, I would like to be told how I can add my own recipes.
+  - I have achieved this by indicating for not registered users on get_recipies.html page, that the user is able to add recipes to the page by registering a profile, once the user has registered they can add recipes by clicking on add recipe on the top navbar. There is also a note for users that haven't add any recipies yet to their profile page that guides them to add recipe buttton in the top navbar.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+*Returning Users*
 
-## Gitpod Reminders
+- As a returning user, I would like to see all of my own recipes seperate from other users.
+  - I have achieved this by creating the 'my_profile.html' page. This page consists of all of the recipes that are created by the session user.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+*Admin Users*
 
-`python3 -m http.server`
+- As an Admin User, I want total control of all recipes on the page (To edit and delete recipes added by other users).
+  - I have achieved this by creating a loop over all the edit and delete buttons specialized for the admin. other users can only edit or delete their own recipies.
+### Wireframes
+- Home Page
+  - Desktop
+  ![homepage desktop](wireframes/homepage_desktop.png)
+  - Tablet
+  ![homepage tablet](wireframes/homepage_tablet.png)
+  - Tablet - nav
+  ![homepage tablet-nav](wireframes/homepage_tablet_nav.png)
+  - Mobile
+  ![homepage mobile](wireframes/homepage_mobile.png)
+  - Mobile - nav
+  ![homepage mobile-nav](wireframes/homepage_mobile_nav.png)
+- Recipes
+  - Desktop
+  ![recipes desktop](wireframes/recipes_desktop.png)
+  - Tablet
+  ![recipes tablet](wireframes/recipes_tablet.png)
+  - Mobile
+  ![recipes mobile](wireframes/recipes_mobile.png)
+- Login
+  - Desktop
+  ![login desktop](wireframes/login_desktop.png)
+  - Tablet 
+  
+  ![login tablet](wireframes/login_tablet.png)
+  - Mobile
+  ![login mobile](wireframes/login_mobile.png)
+- Register 
+  - Desktop 
+  ![register desktop](wireframes/register_desktop.png)
+  - Tablet 
+  ![register tablet](wireframes/register_tablet.png)
+  - Mobile 
+  ![register mobile](wireframes/register_mobile.png)
+- Add Recipe Form 
+  ![add recipe form](wireframes/add_recipe_form.png)
+---
+# Features
+- All Recipes
 
-A blue button should appear to click: *Make Public*,
+  - Unregistered users and all the other users are able to view all recipes that have been uploaded by registered users on All recipes page.
+  - Upon registering/loggin in, the user will be greeted with the flash note on top of the "All Recipes" page(get_recipes.html)
+  - All recipies are shown in a collapsible drop down list.
+  - The recipe name, created_by and date of insertion of the recipe is shown on the header of the collapsible list for desktop view but in smaller views just the recipe name is shown on the header and the user name and date of insertion is added on top of the body section of the collapsible.
+  - First collapsible body is open on loading the page and recipe informations like recipe category, marks, ingredients, cooking steps and recipe image are included in body of the collapsible.
+  - Admin Users, will be able to delete or edit the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own.
 
-Another blue button should appear to click: *Open Browser*.
+- Register/Login
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+  - On registeration user is asked to enter their first and last name, username and a password and confirmation for the password.
+  - A user will need to register a profile to be able to add any recipes, this infomation is on get_recipe.html.
+  - If a user tries to register a username which is used by someone else already, they will not be allowed to use that username. The user will be notified of this by use of Flash Messages - "Username already exists!".
+  - If a user password and confirm password dosen't match user gets a flash message - "Passwords do not match, please re-enter"
+  - When a user has successfully registered their new profile, they will be redirected to 'get_recipes.html'.
+  - When a returning user logs in successfully, they will also be redirected to 'get_recipes.html'.
+  - If a registered user puts their infomation in incorrectly when loging in, they will be notified by the use of Flash Messages - "Incorrect Username and/or Password".
 
-A blue button should appear to click: *Make Public*,
+- Profile
 
-Another blue button should appear to click: *Open Browser*.
+  - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by that user and have an option to delete or edit these recipes. This option is also available in All recipies page but only for the recipies that have been created by this user.
+  - Once the user has added the required information for the recipe, they will see it on their profile page with a flash message of top on the page indicating that the recipe added.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- Add Recipe
 
-## Updates Since The Instructional Video
+  - The 'Add Recipe' button will redirect the users to the form template that the users will need to fill out to add their recipes. 
+  - When users are adding a new recipe, they are guided through with notifications of what to do and requirements. 
+  - The form will not be able to be submitted with any required boxes not filled out by the user.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- Edit form
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+  - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. This button will reveal the efit form with add the information that have been added till then and they can change any part they desire and then click on edit button at the bottom of the page.
+  - If user decided to not change the informations they can click on the cancle buttton next to edit buttton.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- Delete buttton
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+  - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
+  - In mobile view devices the delete buttton in "All Recipes" page is hidden and shown on top of the edit form instead.
+  - When the user tries to delete a recipe, they will be asked to confirm if that is what they want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake. 
+# Features Left to Impliment
+1 - Adding like/sidlike button for recipies and the number of likes for each Recipe to put the attention of the users on more liked recipies.
+2 - Adding the liked recipes in a new section in profile page.
+3 - Adding a footer with social media sites for the app.
+--- 
+# Technologies Used 
+- [HTML5](https://en.wikipedia.org/wiki/HTML)
+  - To give the page its structure and presenting static data.
+  - All HTML files are located within the 'templates' directory.
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+  - CSS has been used to style and customise the content of this project.
+- [Materialize](https://materializecss.com/)
+  - This is a framework that I have used to simplify CSS classes, features that have been used and modified include the navbar, responsive design classes, and colors for backgrounds and text.
+  
+- [JQuery](https://en.wikipedia.org/wiki/JQuery)
+  - JQuery has been used to give the site its functionality as well as making DOM manipulation simpler.
+  - Pages that include functionality are:
+    - recipes.html for Admin users only
+    - my_recipes.html for all users
+    - add_recipe.html for all users
+- [MongoDB](https://en.wikipedia.org/wiki/MongoDB) 
+  - As the data entered by users can always be different from one to the next, the project uses MongoDB to store its data as MongoDB is a Document Based Database.
+- [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
+  - Flask is a framework that allows developers to easily present data in an orderly fashion. All data entered by a user, such as the Recipe Name, is presented to users with a few lines of code embedded into the HTML.
+  - Modules from Flask that have been included are:
+    - Flask
+    - flash
+    - render_template
+    - redirect
+    - request
+    - session
+    - url_for
+    - PyMongo
+    - ObjectId
+    - generate_password_hash
+    - check_password_hash
+    - datetime
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+  - Python is working very closely with Flask to manipulate data and HTML across multiple pages within the app.
+- [Heroku](https://en.wikipedia.org/wiki/Heroku)
+  - Heroku has been used to deploy and host the app as it meets the need of being able to handle python.
+- [Google Fonts](https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Yusei+Magic&display=swap" rel="stylesheet)
+  - The font I have used for the body of this project is called Montserrat and for the headers, input and labels I used Yusei Magic font with sans-serif as a backup font.
+--- 
+# Testing 
+## Register.html
+- Test 1 - Register - Test Passed ✓ 
+  - Step 1 - Click the register button on the navbar for desktop view devices or side navbar for tablet or mobile view devices.
+  - Step 2 - Put in a first name(2 character minimum).
+  - Step 3 - Put in a last name (also 2 character minimum).
+  - Step 4 - Put in a username which is unique (5 character minimum).
+  - Step 5 - Put in a password (also 5 character minimum).
+  - Step 6 - Click 'Register' button.
+  - Step 7 - Be redirected to 'get_recipes.html' with a flash message, welcoming the user.
+- Test 2 - Register with a username which already exists - Test Passed ✓ 
+  - Step 1 - While on 'register.html', enter username 'admin' or any username existing in our data base.
+  - Step 2 - Enter password (5 character minimum).
+  - Step 3 - Click the 'Register' button.
+  - Step 4 - Be presented by flash message containing "Username already exists!".
+- Test 3 - Register with less than 5 characters - Test Passed ✓
+  - Step 1 - While on 'register.html', enter username '1234'..
+  - Step 2 - Enter password '1234'.
+  - Step 3 - As the 'Required' and minlength=5 has been added, the form will not be submitted.
+  - Step 4 - Change username and password to '12345' and form will submit. (Although matching usernames and passwords are never recommended!).
+## Login.html
+- Test 1 - Log In - Test Passed ✓
+  - Step 1 - Enter your Username.
+  - Step 2 - Enter your Password.
+  - Step 3 - Click the 'log in' buttton.
+  - Step 4 - Be redirected to 'get_recipes.html' with flash message containing "Welcome, [ user ]".
+- Test 2 - Log in attempt with incorrect info - Test Passed ✓
+  - Step 1 - Enter credentials that are incorrect.  
+  - Step 2 - Click the 'log in' button.
+  - Step 3 - Be redirected to the log in page with a flash message containing "Incorrect Username and/or Password".
+## Adding a New Recipe 
+- Test 1 - Adding a New Recipe - Test Passed ✓
+  - Step 1 - Log In.
+  - Step 2 - Be redirected to get_recipes.
+  - Step 3 - Click button labeled 'Add Recipe'.
+  - Step 4 - Be redirected to the form for user to fill in.
+  - Step 5 - Form is tried to be submitted with empty fields for required fields and faild; user is notified of missing items.
+  - Step 6 - There is 1 form fields called marks that is not required and the form still successfully post if this field is empty.
+  - Step 7 - Once the form is filled out to the satsfaction of the constraints, the user will click the 'Add Recipe!' button.
+  - Step 8 - Be redirected to 'profile.html' where the user can see their newly inputted recipe located alphabeticly in.
+  - Step 7 - Check the contents of the newly added recipe right away by clicking the 'Full Recipe" link located within the recipe tile.
+  - Step 8 - Be redirected to 'full_recipe.html' and have all data presented in a user-friendly fashoin.
+## Editing/Deleting a Recipe 
+- Test 1 - Editing a Recipe - Test Passed ✓
+  - Step 1 - Navigate to my_recipes.
+  - Step 2 - Click the button labeled "RECIPE EDITOR".
+  - Step 3 - Navitgate to the recipe that the user wishes to edit, note - the user can only edit their own recipes.
+  - Step 4 - Click on the green circle button.
+  - Step 5 - Be redirected to edit_recipe.html. This is a copy of the 'add recipe' form with all of the fields already populated, ready for the user to edit.
+  - Step 6 - Should the user wish to cancel the action, they can click on the canel button located on bottom right. 
+    - Step 6.5 - If you click cancel, then you will be redirected to my_recipes and all changes will be disregarded. 
+  - Step 7 - Once the user has made their changes to the recipe, they will click 'UPDATE RECIPE".
+  - Step 8 - Be redirected to my_recipes
+- Test 2 - Deleting a Recipe - Test Passed ✓
+  - Step 1 - Navigate to my_recipes.
+  - Step 2 - Click the button labeled "RECIPE EDITOR".
+  - Step 3 - User navigates to recipe which they would like to delete.
+  - Step 4 - User clicks red circle button.
+  - Step 5 - Recipe is deleted, user is redirected to my_recipes.
+## Admin Capability
+- Test 1 - Edit any Recipe - Test Passed ✓ 
+  - Step 1 - Navigate to recipes.html as admin.
+  - Step 2 - Click the 'RECIPE EDITOR' button.
+  - Step 3 - Edit the recipe as user sees fit.
+  - Step 4 - Click "UPDATE RECIPE".
+  - Step 5 - Be redirected to recipes.html.
+- Test 2 - Delete any Recipe - Test Passed ✓
+  - Step 1 - Navigate to my_recipes.
+  - Step 2 - Click the button labeled "RECIPE EDITOR".
+  - Step 3 - User navigates to recipe which they would like to delete.
+  - Step 4 - User clicks red circle button.
+  - Step 5 - Recipe is deleted, user is redirected to my_recipes.
+---
+## Validators
+The validators that have been used on the project are as followed:
+ 
+  - [HTML Validator](https://validator.w3.org/nu/) - No issues apart from jinja templating
+  - [CSS Validator](https://jigsaw.w3.org/css-validator/) - No issues
+  - [JavaScript Validator](https://jshint.com/) - No issues 
+  - [Python Validator](http://pep8online.com/) - No issues
+---
+# Deployment 
+For the project to successfully deploy, the following are requirements are needed:
+- Python
+- Github account or similar IDE 
+- MongoDB
+- Heroku 
+### **Cloning the Project**
+  - Step 1 - log in to your github account and go to the repository.
+  - Step 2 - Click on 'Code'.
+  - Step 3 - Click the link to copy
+  - step 4 - Within the gitpod/IDE type 'GIT CLONE' into the terminal followed by the link and press enter.
+### **Heroku Deployment**
+  - Step 1 - Within the terminal, type 'pip freeze > requirements.txt' - this command will generate a .txt file with all of the requirements necessary for Heroku to run the app.
+  - Step 2 - Within the terminal, type 'echo web: python app.py > Procfile' - This tells Heroku that this is a web based app.
+  - Step 3 - Assuming you have an account, log in to Heroku and set up a new app with the region that is closest to you (Europe/America).
+  - Step 4 - You will need to set up your own config vars both on Heroku and within env.py for the app to access the data properly, these will include:
+    - IP 
+    - PORT 
+    - SECRET_KEY
+    - MONGO_URI
+    - MONGO_DBNAME
+  - Step 5 - Select deploy method of choice. I have set up Automatic Deployments by connecting to my github account and enabled automatic deployments from the master branch
+  ---
+# Credits 
+### Recipes
+All recipes currently on the page have all been added my Maria herself
+### Recipe Images 
+All images used on the page are linked below:
+- Almond Flour Buns
+  - https://www.bakingmad.com/BakingMad/media/content/Recipes/Bread-Dough/Easy-wholemeal-bread-rolls/1-Wholegrain-bread-rolls-WEB.jpg
+- Naan Bread 
+  - https://www.jocooks.com/wp-content/uploads/2011/04/naan-bread-1-500x500.jpg
+- Carrot Burgers
+  - https://www.rachaelraymag.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTQzMjU4OTI2NzU1MDMwODk0/carrot-top-burgers.jpg
+- Cheesecake
+  - https://www.californiastrawberries.com/wp-content/uploads/2018/07/Strawberry-No-Bake-Cheesecake_1024x1024.png
+- Raw Balls
+  - https://www.theflavorbender.com/wp-content/uploads/2014/09/Chia-Bliss-Balls-Featured-4.jpg
+  
+- Cheese Nachos
+  - https://www.wholesomeyum.com/wp-content/uploads/2016/05/wholesomeyum-low-carb-keto-nachos-recipe-with-spicy-chicken-26.jpg
+  
+- Bruschetta 
+  - https://www.jessicagavin.com/wp-content/uploads/2020/07/bruschetta-17-1200.jpg
+  
+- Roasted Cauliflower
+  -  https://minimalistbaker.com/wp-content/uploads/2018/07/How-to-roast-cauliflower-SQUARE.jpg
+- Pear Cake
+  - https://marisasitaliankitchen.com/wp-content/uploads/2019/09/Pear-Honey-Rosemary-Bundt-Cake-7-of-10-500x500.jpg
+- Cauliflower Pizza
+  - https://realhousemoms.com/wp-content/uploads/Cauliflower-Pizza-Crust-IG1.jpg
+### Materialize
+For this project, I have used and modified content from the Materialize Docs. Aspects include:
+  - Navbar 
+  - Color classes 
+  - JQuery Initialization
+  - Card
+### Font Awesome 
+- Icons used on this site have been taken from [font awesome](https://fontawesome.com/).
+### Google Fonts 
+- The font family used on this site is called Abel and can be seen [here](https://fonts.google.com/?query=abel)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+#### This project is purely educational, please contact me if there are any issues with Copyright.
+behnaz.khoshnood@gmail.com

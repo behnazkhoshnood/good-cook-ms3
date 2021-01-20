@@ -1,63 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
 
+    {% if not session.user|lower %}
+    <div class="row">
+        <br>
+        <div class="col s8 offset-s2">
+            <div class="card deep-purple darken-1">
+                <div class="card-content white-text center-align">
+                    <h6>If you wish to add your own recipies you need to register first and click on add recipe on the menu.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
 <h3 class="deep-purple-text text-darken-1 center-align">All Recipes</h3>
 
 <!-- Recipe Details -->
 <ul class="collapsible">
     {% for recipe in recipes %}
-    <li class="collapsible-li">
-        <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
-            <i class="fas fa-caret-down caret"></i>
-            <div class="col s6 center-align edit-delete-div">
-                {% if session.user|lower == recipe.created_by|lower %}
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small delete-btn hide-on-small-only">Delete</a>
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
-                {% endif %}
-            </div>
-            <div class="col s6 head-div">
-                <h6>
-                    {{ recipe.recipe_name|capitalize }} 
-                    <small class="hide-on-med-and-down name">
-                    Created by : {{ recipe.created_by|capitalize }} on {{ recipe.date_added }}
-                    </small>
-                </h6>
-            </div>
-        </div>
-        <div class="collapsible-body">
-            <h6 class="hide-on-large-only center-align">
-                Created by : {{ recipe.created_by|capitalize }}<br>
-                on {{ recipe.date_added }}
-            </h6>
-            <strong>{{ recipe.category_name|capitalize }}</strong><br>
-
-            {% for mark in recipe.marks %}
-                {{ mark|capitalize }}<br>
-            {% endfor %}
-            <br>
-            <div class="row">
-                <ul class="col l6 s12">
-                    {% for ingredient in recipe.recipe_ingredients %}
-                            <li class="ingredient-list">
-                                 {{ ingredient|capitalize }}<br>
-                            </li>
-                    {% endfor %}
-                    <br>
-                </ul>
-                <div class="col l6 s12">
-                    <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
+        <li class="collapsible-li">
+            <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
+                <i class="fas fa-caret-down caret"></i>
+                <div class="col s6 center-align edit-delete-div">
+                    {% if session.user|lower == "admin" %}
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                            class="btn-small delete-btn hide-on-small-only">Delete</a>
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                    {% endif %}
+                    {% if session.user|lower == recipe.created_by|lower and session.user|lower != "admin" %}
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                            class="btn-small delete-btn hide-on-small-only">Delete</a>
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
+                    {% endif %}
+                </div>
+                <div class="col s6 head-div">
+                    <h6>
+                        {{ recipe.recipe_name|capitalize }}
+                        <small class="hide-on-med-and-down name">
+                            Created by : {{ recipe.created_by|capitalize }} on {{ recipe.date_added }}
+                        </small>
+                    </h6>
                 </div>
             </div>
-            <ol>
-                {% for step in recipe.cooking_steps %}
-                <li>
-                    {{ step|capitalize }}<br>
-                </li>
+            <div class="collapsible-body">
+                <h6 class="hide-on-large-only center-align">
+                    Created by : {{ recipe.created_by|capitalize }}<br>
+                    on {{ recipe.date_added }}
+                </h6>
+                <strong>{{ recipe.category_name|capitalize }}</strong><br>
+                <br>
+
+                {% for mark in recipe.marks %}
+                    {{ mark|capitalize }}<br>
                 {% endfor %}
-            </ol>
-        </div>
-    </li>
-    {% endfor %}
+                <br>
+                <div class="row">
+                    <ul class="col l6 s12">
+                        {% for ingredient in recipe.recipe_ingredients %}
+                            <li class="ingredient-list">
+                                {{ ingredient|capitalize }}<br>
+                            </li>
+                        {% endfor %}
+                        <br>
+                    </ul>
+                    <div class="col l6 s12">
+                        <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
+                    </div>
+                </div>
+                <ol>
+                    {% for step in recipe.cooking_steps %}
+                        <li>
+                            {{ step|capitalize }}<br>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </li>
+        {% endfor %}
 </ul>
 
 {% endblock %}

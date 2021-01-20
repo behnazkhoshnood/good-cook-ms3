@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Yusei+Magic&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+header,
+input,
+label,
+strong{
+    font-family: 'Yusei Magic', sans-serif;
+}
+
 .text-shadow{
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -83,54 +96,59 @@ ul:not(.browser-default)> .ingredient-list {
 }
 
 /* ------------------------------------------------------invalid input style */
+input.invalid:not([type]),
+input.invalid:not([type]):focus,
 input.invalid[type=text]:not(.browser-default),
+input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default),
-textarea.materialize-textarea.invalid{
+input.invalid[type=password]:not(.browser-default):focus,
+input.invalid[type=url]:not(.browser-default),
+input.invalid[type=url]:not(.browser-default):focus,
+input.invalid[type=search]:not(.browser-default),
+input.invalid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.invalid,textarea.materialize-textarea.invalid:focus,
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
     border-bottom: 1px solid #ad1457;
     -webkit-box-shadow: 0 1px 0 0 #ad1457;
-    box-shadow: 0 1px 0 #ad1457;
+    box-shadow: 0 1px 0 0 #ad1457;
 }
 
-input.invalid[type=text]:not(.browser-default):focus,
-input.invalid[type=password]:not(.browser-default):focus,
-textarea.materialize-textarea.invalid:focus,
-input[type=text]:not(.browser-defult):focus:not([readonly]),
-input[type=password]:not(.browser-defult):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]){
-    border-bottom: 1px solid #ad1457 ;
-    -webkit-box-shadow: 0 1px 0 0 #ad1457;
-    box-shadow: 0 2px 0 #ad1457;
-}
-
-input[type=text]:not(.browser-defult):focus:not([readonly])+label,
-input[type=password]:not(.browser-defult):focus:not([readonly])+label,
+input:not([type]):focus.invalid ~ label,
+input[type=text]:not(.browser-default):focus.invalid ~ label,
+input[type=password]:not(.browser-default):focus.invalid ~ label,
+input[type=url]:not(.browser-default):focus.invalid ~ label,
+input[type=search]:not(.browser-default):focus.invalid ~ label, textarea.materialize-textarea:focus.invalid ~ label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label{
     color: #ad1457;
 }
 
 /* ------------------------------------------------------valid input style */
+input.valid:not([type]),
+input.valid:not([type]):focus,
 input.valid[type=text]:not(.browser-default),
+input.valid[type=text]:not(.browser-default):focus,
 input.valid[type=password]:not(.browser-default),
-textarea.materialize-textarea.valid,
-.select-wrapper input.select-dropdown:focus:not([readonly])+label,
-.select-wrapper input.select-dropdown:focus,
-.select-wrapper input.select-dropdown:focus:not([readonly]){
+input.valid[type=password]:not(.browser-default):focus,
+input.valid[type=url]:not(.browser-default),
+input.valid[type=url]:not(.browser-default):focus,
+input.valid[type=search]:not(.browser-default),
+input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus{
     border-bottom: 1px solid #4527a0 ;
     -webkit-box-shadow: 0 1px 0 0 #4527a0;
     box-shadow: 0 1px 0 #4527a0;
 }
 
-input.valid[type=text]:not(.browser-default):focus,
-input.valid[type=password]:not(.browser-default):focus,
-textarea.materialize-textarea.valid:focus{
-    border-bottom: 1px solid #4527a0 ;
-    -webkit-box-shadow: 0 1px 0 0 #4527a0;
-    box-shadow: 0 2px 0 #4527a0;
-}
-
-input.valid[type=text]:not(.browser-default):focus.valid ~ label,
-input.valid[type=password]:not(.browser-default):focus.valid ~ label,
-textarea.materialize-textarea.valid:focus ~ label{
+input:not([type]):focus.valid ~ label,
+input[type=text]:not(.browser-default):focus.valid ~ label,
+input[type=password]:not(.browser-default):focus.valid ~ label,
+input[type=url]:not(.browser-default):focus.valid ~ label,
+input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materialize-textarea:focus.valid ~ label{
     color: #4527a0;
 }
 

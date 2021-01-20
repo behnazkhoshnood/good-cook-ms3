@@ -131,7 +131,7 @@ def add_recipe():
         todays_date = datetime.today().strftime('%Y-%m-%d')
         recipe = {
             "category_name": request.form.get("category_name"),
-            "recipe_name": request.form.get("recipe_name"),
+            "recipe_name": request.form.get("recipe_name").lower(),
             "image_url": request.form.get("image_url"),
             "created_by": session["user"],
             "date_added": todays_date
@@ -164,7 +164,7 @@ def add_recipe():
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted!")
-    return redirect(url_for('profile', username=session['user']))
+    return redirect(url_for("get_recipes"))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -173,7 +173,7 @@ def edit_recipe(recipe_id):
         todays_date = datetime.today().strftime('%Y-%m-%d')
         submit = {
             "category_name": request.form.get("category_name"),
-            "recipe_name": request.form.get("recipe_name"),
+            "recipe_name": request.form.get("recipe_name").lower(),
             "image_url": request.form.get("image_url"),
             "created_by": session["user"],
             "date_added": todays_date
