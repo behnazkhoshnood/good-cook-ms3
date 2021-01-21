@@ -24,6 +24,12 @@ h6{
     line-height: 25px;
 }
 
+.head-div h6{
+    margin-top: 15px;
+    margin-left: 15px;
+    padding-left: 15px;
+}
+
 .flashes h4{
     line-height: 2;
 }
@@ -36,6 +42,10 @@ h6{
     float: right;
 }
 
+#submit-btn:hover,
+.add-mark-btn:hover,
+.add-category-btn:hover,
+.search-btn:hover,
 nav ul li:hover,
 #register-btn:hover,
 .select-dropdown li.disabled>span{
@@ -52,25 +62,24 @@ ul:not(.browser-default)> .ingredient-list {
     list-style-type: disc;
 }
 
+.cancel-btn,
+.cancel-btn:focus,
+.reset-btn,
 .delete-btn,
 .delete-btn:focus{
-    background-color:#f23863fc;
+    background-color:#d81b60;
 }
 
-.delete-btn:hover{
-    background-color: #d41f6d;
+.reset-btn:hover,
+.delete-btn:hover,
+.cancel-btn:hover{
+    background-color: #ad1457;
 }
 
-.cancel-btn,
-.cancel-btn:focus{
-    background-color:#13af8dfc;
+
+.reset-btn{
     margin-top: 10px;
     margin-bottom: 10px;
-    
-}
-
-.cancel-btn:hover{
-    background-color:#0f9276fc;
 }
 
 .edit-btn,
@@ -163,13 +172,14 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
 
 .caret{
     max-width: 20px;
-    line-height: 42px;
+    vertical-align: middle;
+    padding-top: 15px;
 }
 
-@media screen and (max-width: 400px) {
-  .edit-delete-profile-div {
-    max-width: 80px;
-  }
+.card .card-content .card-title{
+    font-size: 20px;
+    margin-bottom: 5px;
+    line-height: 29px;
 }
 
 @media screen and (max-width: 600px) {
@@ -179,43 +189,21 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
         font-size: 20px;
         font-weight: 600;
     }
-
-    .head-div h6{
-        padding-left: 10px;
-        margin-left: 10px;
-        font-size: 13px;
-  }
 }
 
-@media screen and (min-width: 401px) and (max-width: 980px) {
-    .edit-delete-profile-div {
-        min-width: 165px;
-  }
+@media screen and (min-width: 601px) {
+    .edit-delete-div{
+        margin-top: 10px;
+    }
     .head-div h6{
-        padding-left: 5px;
-        margin-left: 5px;
-  }
+    margin-top: 25px;
+    margin-left: 15px;
+    padding-left: 15px;
+}
 }
 
 @media screen and (min-width: 981px){
-    .edit-delete-div,
-    .edit-delete-profile-div {
-    min-width: 200px;
-  }
     .brand-logo{
         margin-left: 10px;
     }
-    .admin-delete-btn{
-        margin-left: -100px
-    }
-}
-
-.card .card-content .card-title{
-    font-size: 20px;
-    margin-bottom: 5px;
-    line-height: 29px;
-}
-
-.manage-title{
-    height: 90px;
 }

@@ -58,6 +58,22 @@ $(document).ready(function () {
             return false;
         }
     });
+        $('.cancel-btn').click(function () {
+        var checkstr = confirm('are you sure you want to cancel?');
+        if (checkstr == true) {
+            // do your code
+        } else {
+            return false;
+        }
+    });
+
+    var manageTitleHight = 0;
+
+$(".manage-title").each(function(){
+   if ($(this).height() > manageTitleHight) { manageTitleHight = $(this).height(); }
+});
+
+$(".manage-title").height(manageTitleHight);
 });
 
 

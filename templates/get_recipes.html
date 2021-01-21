@@ -4,25 +4,39 @@
     {% if not session.user|lower %}
     <div class="row">
         <br>
-        <div class="col s8 offset-s2">
-            <div class="card deep-purple darken-1">
-                <div class="card-content white-text center-align">
-                    <h6>If you wish to add your own recipies you need to register first and click on add recipe on the menu.</h6>
-                </div>
-            </div>
+        <div class="card-content pink-text text-darken-3 center-align">
+            <strong>If you wish to add your own recipes you need to register first.</strong>
         </div>
-    </div>
     {% endif %}
 
 <h3 class="deep-purple-text text-darken-1 center-align">All Recipes</h3>
 
+<div class="row card-panel grey lighten-5">
+    <form action="{{ url_for('search') }}" method="post" class="col s12">
+        <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m8">
+                <i class="fas fa-search prefix deep-purple-text text-darken-1"></i>
+                <input type="text" name="query" id="query" minlenght="3" class="validate" required>
+                <label for="query">Search</label>
+            </div>
+            <div class="col s12 m4">
+                <a href="{{ url_for('get_recipes') }}" class="reset-btn btn text-shadow">Reset</a>
+                <button type="submit" class="deep-purple darken-1 btn text-shadow search-btn">
+                    <i class="fas fa-search left hide-on-small-only"></i> Search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if recipes|length > 0 %}
 <!-- Recipe Details -->
 <ul class="collapsible">
     {% for recipe in recipes %}
         <li class="collapsible-li">
             <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
                 <i class="fas fa-caret-down caret"></i>
-                <div class="col s6 center-align edit-delete-div">
+                <div class="col center-align edit-delete-div">
                     {% if session.user|lower == "admin" %}
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                             class="btn-small delete-btn admin-delete-btn">Delete</a>
@@ -33,7 +47,7 @@
                         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small edit-btn">Edit</a>
                     {% endif %}
                 </div>
-                <div class="col s6 head-div">
+                <div class="col head-div">
                     <h6>
                         {{ recipe.recipe_name|capitalize }}
                         <small class="hide-on-med-and-down name">
@@ -47,6 +61,12 @@
                     Created by : {{ recipe.created_by|capitalize }}<br>
                     on {{ recipe.date_added }}
                 </h6>
+                {% if session.user|lower == recipe.created_by|lower %}
+                    <div class="center-align">
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                        class="btn-small delete-btn hide-on-med-and-up -align">Delete Recipe</a>
+                    </div>
+                {% endif %}
                 <strong>{{ recipe.category_name|capitalize }}</strong><br>
                 <br>
 
@@ -78,5 +98,9 @@
         </li>
         {% endfor %}
 </ul>
+{% else %}
+    <h3 class="pink-text text-darken-3 center-align">No Results Found</h3>
+{% endif %}
+
 
 {% endblock %}

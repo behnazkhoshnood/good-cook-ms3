@@ -25,16 +25,16 @@
             <!-- username -->
                     <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-user-plus deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Username must be between 5 to 15 characters!"></i>
-                        <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9.@$!%*#?&]{5,15}$" type="text" class="validate" required>
+                        <i class="fas fa-user-plus deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Username must be between 5 to 15 characters! (Only alphabets and numbers are allowed)"></i>
+                        <input id="username" name="username" minlength="5" maxlength="15" pattern="^[a-zA-z0-9]{5,15}$" type="text" class="validate" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
                 <!-- password -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-user-lock deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Password must be between 5 to 15 characters!"></i>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9.@$!%*#?&]{5,15}$" class="validate" required>
+                        <i class="fas fa-user-lock deep-purple-text text-darken-1 prefix tooltipped" data-position="left" data-tooltip="Password must be between 5 to 15 characters! (Only alphabets and numbers are allowed)"></i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-z0-9]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
 						<i class="fas fa-user-check prefix deep-purple-text text-darken-1 prefix tooltipped"
                         data-position="left" data-tooltip="Please re-enter your password? Password and confirmation must match"></i>
 						<input id="confirm-password" name="confirm-password" type="password" minlength="5" maxlength="15" 
-                            pattern="^[a-zA-Z0-9.@$!%*#?&]{5,15}$" class="validate" required>
+                            pattern="^[a-zA-z0-9]{5,15}$" class="validate" required>
 						<label for="confirm-password">Confirm Password</label>
 					</div>
 				</div>

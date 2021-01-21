@@ -28,6 +28,15 @@ def get_recipes():
         recipes=recipes)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template(
+        "get_recipes.html",
+        recipes=recipes)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -164,7 +173,10 @@ def add_recipe():
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted!")
-    return redirect(url_for('profile', username=session['user']))
+    if session['user'] != "admin":
+        return redirect(url_for('profile', username=session['user']))
+    else:
+        return redirect(url_for('profile', username=session['user']))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
