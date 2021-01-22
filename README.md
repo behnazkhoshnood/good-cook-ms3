@@ -28,11 +28,11 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
-- Home Page
+- All Recipes
   - Desktop
-  ![Good Cook desktop not registered user](wireframes/homepage_desktop.png)
+  ![Not registered user](/workspace/tadig-restaurant-ms3/static/wireframes/good-cook-desktop-view-not-registered-users.png)
   - Tablet
-  ![homepage tablet](wireframes/homepage_tablet.png)
+  ![Registered users](wireframes/homepage_tablet.png)
   - Tablet - nav
   ![homepage tablet-nav](wireframes/homepage_tablet_nav.png)
   - Mobile
