@@ -7,30 +7,30 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 *First Time Users*
 
 - As a first time user, I would like to be able to easily navigate to the recipes.
-  - I have achieved this by having a button on get_recipies.html that will take the user to the recipes page. There is also a clear description of where the button will take the user.
+  - I have achieved this by having a button on get_recipes.html that will take the user to the recipes page. There is also a clear description of where the button will take the user.
 - As a first time user, I would like to be told how I can add my own recipes.
-  - I have achieved this by indicating for not registered users on get_recipies.html page, that the user is able to add recipes to the page by registering a profile, once the user has registered they can add recipes by clicking on add recipe on the top navbar. There is also a note for users that haven't add any recipies yet to their profile page, when they enter their profile, that guides them to add recipe buttton in the top navbar in order to add their own recipes.
+  - I have achieved this by indicating for not registered users on get_recipes.html page, that the user is able to add recipes to the page by registering a profile, once the user has registered they can add recipes by clicking on add recipe on the top navbar. There is also a note for users that haven't add any recipes yet to their profile page, when they enter their profile, that guides them to add recipe buttton in the top navbar in order to add their own recipes.
 
 *Returning Users*
 
 - As a returning user, I would like to see all of my own recipes seperate from other users.
   - I have achieved this by creating the 'profile.html' page. This page consists of all of the recipes that are created by the session user.
-- As a returning User, I want to be able to edit or delete the recipies that are added by myself.
-  - I have achived this by providing the edit and delete button on the colapsible header of these recipies in profile page. Delete button change position to the top of collapsible body in mobile view devices
-- As a returning User, I don't want my recipies be edited by the Admin.
+- As a returning User, I want to be able to edit or delete the recipes that are added by myself.
+  - I have achived this by providing the edit and delete button on the colapsible header of these recipes in profile page. Delete button change position to the top of collapsible body in mobile view devices
+- As a returning User, I don't want my recipes be edited by the Admin.
   - I have achived this by providing only delete button for recipes added by regular users and not gave the option to edit the recipes to the admin user.
 *Admin User*
 
-- As an Admin User, I want to be able to delete the unrelated or spams from the recipies.
-  - I have achieved this by creating a loop over all delete buttons on all recipes specialized for the admin. Other users can edit or delete only their own recipies.
-- As an Admin User, I want to be able to edit or delete the recipies that are added by myself.
-- I have achived this by providing the edit and delete button on the collapsible header of these recipies in admin profile page. Delete btn moved to the head on the collapsible body in mobile viewdevices.
+- As an Admin User, I want to be able to delete the unrelated or spams from the recipes.
+  - I have achieved this by creating a loop over all delete buttons on all recipes specialized for the admin. Other users can edit or delete only their own recipes.
+- As an Admin User, I want to be able to edit or delete the recipes that are added by myself.
+- I have achived this by providing the edit and delete button on the collapsible header of these recipes in admin profile page. Delete btn moved to the head on the collapsible body in mobile viewdevices.
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
 - Home Page
   - Desktop
-  ![homepage desktop](wireframes/homepage_desktop.png)
+  ![Good Cook desktop not registered user](wireframes/homepage_desktop.png)
   - Tablet
   ![homepage tablet](wireframes/homepage_tablet.png)
   - Tablet - nav
@@ -70,10 +70,10 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - First collapsible body is open on loading the page to make the page more appealing.
   - Unregistered users and all the other users are able to view all recipes that have been uploaded by registered users on All recipes page.
   - Upon registering/loggin in, the user will be greeted with the flash note on top of the "All Recipes" page(get_recipes.html)
-  - All recipies are shown in a collapsible drop down list.
+  - All recipes are shown in a collapsible drop down list.
   - The recipe name, created_by, date of the recipe, edit button and delete button is shown on the header of the collapsible list, for desktop view. In mobile views just the recipe name and edit button is shown on the header and the user name and date of insertion and delete button is added on top of the body section of the collapsible. 
   - Recipes information like recipe category, marks, ingredients, cooking steps and recipe image are included in body of the collapsible.
-  - Admin Users, will be able to delete the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own recipies.
+  - Admin Users, will be able to delete the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own recipes.
   - Delete button is shown in all views to the admin in the colapsible header whereas for other users this button will change position to the top of collapsible body.
 
 - Register/Login
@@ -95,7 +95,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 
 - Profile
 
-  - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by that user and have an option to delete or edit these recipes. This option is also available in All recipies page but only for the recipies that have been created by this user( exept the admin that can delete any recipe)
+  - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by that user and have an option to delete or edit these recipes. This option is also available in All recipes page but only for the recipes that have been created by this user( exept the admin that can delete any recipe)
   - Once the user has added the required information for the recipe, they will see it on their profile page with a flash message of top on the page indicating that the recipe added.
 
 - Add Recipe
@@ -121,7 +121,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
 
 # Features Left to Impliment
-1 - Adding like/sidlike button for recipies and the number of likes for each Recipe to put the attention of the users on more liked recipies.
+1 - Adding like/sidlike button for recipes and the number of likes for each Recipe to put the attention of the users on more liked recipes.
 2 - Adding the liked recipes in a new section in profile page.
 3 - Adding a footer with social media sites for the app.
 4 - Seperating the recipes in different sections for each category.
@@ -141,7 +141,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - JQuery has been used to give the site its functionality as well as making DOM manipulation simpler.
   - Pages that include functionality are:
     - get_categories, get_marks, add_categories and add_marks for Admin users only
-    - get_recipies.html, register.html and login.html for all users
+    - get_recipes.html, register.html and login.html for all users
     - profile.html, add_recipe and edit_recipe for registered users only
 - [MongoDB](https://en.wikipedia.org/wiki/MongoDB) 
   - As the data entered by users can always be different from one to the next, the project uses MongoDB to store its data as MongoDB is a Document Based Database.
@@ -236,7 +236,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Step 2 - User navigates to the recipe which he/she would like to delete.
   - Step 3 - User clicks the red delete button.
   - step 4 - User should confirm if he/she really wishes to delete this recipe.
-  - step 5 - If press "Ok" recipe deletes and user redirects to All recipies page.
+  - step 5 - If press "Ok" recipe deletes and user redirects to All recipes page.
   - Step 7 - If press "cancel" recipe stayes untouched.
 - Test 3 - Add, edit or delete categories or marks - Test Passed ✓
   - step 1 - Click on the Manage Categries to manage the categories or Manage Marks to manage the marks.
