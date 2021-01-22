@@ -199,7 +199,7 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
     margin-top: 25px;
     margin-left: 15px;
     padding-left: 15px;
-}
+    }
 }
 
 @media screen and (min-width: 981px){

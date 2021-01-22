@@ -212,6 +212,8 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Step 7 - There is a cancel button provided on the bottom of the form. If the user don't want to add the recipe. he/she can click on this button and get redirected to their profile page.
   - Step 8 - Once the form is filled out to the satsfaction of the constraints and the 'Add Recipe!' button is clicked user will be redirected to 'profile.html' where the user can see their newly added recipe located alphabeticly in the colapsible dropdown list with the first input field open to make the page more appealing. User also be notified that the new recipe added by flash notifications.
   - Step 7 - Check the contents of the newly added recipe right away by clicking on that recipe in the dropdown list.
+- Test 2 - Avoids empty strings in out textarea fields - Test Passed ✓
+  - If empty lines are added to the ingredients or cooking steps text areas it would be removed when showing the recipe in the all recipes or profile page.
 ## Editing/Deleting a Recipe 
 - Test 1 - Editing a Recipe - Test Passed ✓
   - Step 1 - Navigate to profile or All recdipe page.
@@ -226,6 +228,8 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Step 2 - Click the button labeled "DELETE". In mobile phone view this button can be found on top of the recipe collapsible body.
   - Step 3 - User gets a message if they are sure to delete this recipe.
   - step 4 - If confirm the recipe deletes and user redirects to their profile page but if press cancel, recipe stayes unchanged and the user will be redirected to their profile page.
+- Test 3 - Avoid duplication in multi choice dropdown input field - Test Passed ✓
+  - step 1 - In edit form in marks field user can just add one of each choices.
 ## Admin Capability
 - Test 1 - Delete any Recipe - Test Passed ✓
   - Step 1 - Navigate to get_recipes.
@@ -233,14 +237,15 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Step 3 - User clicks the red delete button.
   - step 4 - User should confirm if he/she really wishes to delete this recipe.
   - step 5 - If press "Ok" recipe deletes and user redirects to All recipies page.
-  - Step 7 - If press "cancel" recipe doesn't delete.
+  - Step 7 - If press "cancel" recipe stayes untouched.
 - Test 3 - Add, edit or delete categories or marks - Test Passed ✓
   - step 1 - Click on the Manage Categries to manage the categories or Manage Marks to manage the marks.
   - step 2 - Admin can sees all the categories in manage categories and all the marks in manage marks in a seperate card with an option of delete or edit and an Add button on top of the page to add a new category or mark.
   - step 3 - By clicking on the add button, a one input field form, called add category or add mark opens regardingly.
-  - step 4 - Admin can write doen the desired name for the new category/mark and press the Add category or Add mark at the bottom of the form.
+  - step 4 - Admin can write the desired name for the new category/mark and press the Add category or Add mark at the bottom of the form.
   - step 5 - Admin is provided also with a cancel button in both pages if he/she decided to not add any new category or mark.
-  - step 6 - Pressing this key redirects the admin to the get_categories if in add category form, or get_marks if in add marks form.
+  - step 6 - Pressing this key bring up a note if he/she is sure not to add any category or mark.
+  - step 7 - if press ok, admin redirects to the get_categories if in add category form, or get_marks if in add marks form.
 ---
 ## Validators
 The validators that have been used on the project are as followed:

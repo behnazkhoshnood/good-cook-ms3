@@ -176,7 +176,7 @@ def delete_recipe(recipe_id):
     if session['user'] != "admin":
         return redirect(url_for('profile', username=session['user']))
     else:
-        return redirect(url_for('profile', username=session['user']))
+        return redirect(url_for('get_recipes'))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
