@@ -4,6 +4,10 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+#search-area{
+    padding: 2px;
+}
+
 header,
 input,
 label,

@@ -30,16 +30,20 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 ### Wireframes
 - All Recipes
   - Desktop
-  ![Not registered user](/workspace/tadig-restaurant-ms3/static/wireframes/good-cook-desktop-view-not-registered-users.png)
-  - Tablet
-  ![Registered users](wireframes/homepage_tablet.png)
-  - Tablet - nav
-  ![homepage tablet-nav](wireframes/homepage_tablet_nav.png)
+
+  ![Not registered user](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-not-registered-users.png?raw=true)
+  ![Registered users](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-registered-user.png?raw=true)
+
+  ![Admin](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-admin.png?raw=true)
+
   - Mobile
-  ![homepage mobile](wireframes/homepage_mobile.png)
-  - Mobile - nav
-  ![homepage mobile-nav](wireframes/homepage_mobile_nav.png)
-- Recipes
+
+  ![Not registered user]()
+  ![Registered users]()
+  ![Admin]()
+
+
+- Profile
   - Desktop
   ![recipes desktop](wireframes/recipes_desktop.png)
   - Tablet
