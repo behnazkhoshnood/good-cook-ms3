@@ -1,7 +1,9 @@
 # Good Cook! - Milestone Project 3
 A site that allows users to add their own recipes to be viewed publicly!
 To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
----
+
+![Good Cook](static/wireframes/good-cook.png)
+
 ## UX Design
 ### User Stories
 *First Time Users*
@@ -28,45 +30,55 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
-- All Recipes
-  - Desktop
+- #### All Recipes
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/good-cook-desktop-view-admin.png) | ![Admin](static/wireframes/good-cook-mobile-view-admin.png)
+  ![Registered users](static/wireframes/good-cook-desktop-view-registered-user.png) |  ![Registered users](static/wireframes/good-cook-mobile-view-registered-user.png)
+  ![Not registered user](static/wireframes/good-cook-desktop-view-not-registered-users.png) | ![Not registered user](static/wireframes/good-cook-mobile-view-not-registered-user.png)
 
-  ![Not registered user](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-not-registered-users.png?raw=true)
-  ![Registered users](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-registered-user.png?raw=true)
+- #### Profile
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/profile-desktop-view-admin.png) | ![Admin](static/wireframes/profile-mobile-view-admin.png) 
+  ![Registered users](static/wireframes/profile-desktop-view-registered-users.png) | ![Registered users](static/wireframes/profile-mobile-view-registered-user.png)
 
-  ![Admin](https://github.com/behnazkhoshnood/good-cook-ms3/blob/master/static/wireframes/good-cook-desktop-view-admin.png?raw=true)
+- #### Add Recipe
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/add-recipe-desktop-view-admin.png) | ![Admin](static/wireframes/add-recipe-mobile-view-admin.png) 
+  ![Registered users](static/wireframes/add-recipe-desktop-view-registered-users.png) | ![Registered users](static/wireframes/add-recipe-mobile-view-registered-user.png)
 
-  - Mobile
+- #### Login
+ Desktop view | Mobile view
+- | -
+  ![All users](static/wireframes/log-in-desktop-view-all-users.png) | ![All users](static/wireframes/log-in-mobile-view-all-users.png)
 
-  ![Not registered user]()
-  ![Registered users]()
-  ![Admin]()
+- #### Register
+ Desktop view | Mobile view
+- | -
+  ![All users](static/wireframes/register-desktop-view-all-users.png) | ![All users](static/wireframes/register-mobile-view-all-users.png)
 
+- #### Manage Categories
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/manage-categories-desktop-view-admin.png) | ![Admin](static/wireframes/manage-categories-mobile-view-admin.png)
 
-- Profile
-  - Desktop
-  ![recipes desktop](wireframes/recipes_desktop.png)
-  - Tablet
-  ![recipes tablet](wireframes/recipes_tablet.png)
-  - Mobile
-  ![recipes mobile](wireframes/recipes_mobile.png)
-- Login
-  - Desktop
-  ![login desktop](wireframes/login_desktop.png)
-  - Tablet 
-  
-  ![login tablet](wireframes/login_tablet.png)
-  - Mobile
-  ![login mobile](wireframes/login_mobile.png)
-- Register 
-  - Desktop 
-  ![register desktop](wireframes/register_desktop.png)
-  - Tablet 
-  ![register tablet](wireframes/register_tablet.png)
-  - Mobile 
-  ![register mobile](wireframes/register_mobile.png)
-- Add Recipe Form 
-  ![add recipe form](wireframes/add_recipe_form.png)
+- #### Manage Marks
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/manage-marks-desktop-view-admin.png) | ![Admin](static/wireframes/manage-marks-mobile-view-admin.png)
+
+- #### Add Categories
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/add-category-desktop-view-admin.png) | ![Admin](static/wireframes/add-category-mobile-view-admin.png)
+
+- #### Add Marks
+ Desktop view | Mobile view
+- | -
+  ![Admin](static/wireframes/add-mark-desktop-view-admin.png) | ![Admin](static/wireframes/add-mark-mobile-view-admin.png)
+
 ---
 # Features
 - All Recipes
