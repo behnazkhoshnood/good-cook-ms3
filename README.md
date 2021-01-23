@@ -30,56 +30,58 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
 ### Wireframes
-- #### All Recipes
+
+ #### <p align="center">All Recipes</p>
+
+Desktop view | Mobile view
+- | -
+![Admin](static/wireframes/good-cook-desktop-view-admin.png) Admin | ![Admin](static/wireframes/good-cook-mobile-view-admin.png)
+![Registered users](static/wireframes/good-cook-desktop-view-registered-user.png) Registered users | ![Registered users](static/wireframes/good-cook-mobile-view-registered-user.png)
+![Not registered user](static/wireframes/good-cook-desktop-view-not-registered-users.png) Not registered users | ![Not registered user](static/wireframes/good-cook-mobile-view-not-registered-user.png)
+
+ #### <p align="center">Profile</p>
+
+Desktop view | Mobile view
+- | -
+![Admin](static/wireframes/profile-desktop-view-admin.png) Admin | ![Admin](static/wireframes/profile-mobile-view-admin.png) 
+![Registered users](static/wireframes/profile-desktop-view-registered-users.png)Registered users | ![Registered users](static/wireframes/profile-mobile-view-registered-user.png)
+
+ #### <p align="center">Add Recipes</p>
  Desktop view | Mobile view
 - | -
-  ![Admin](static/wireframes/good-cook-desktop-view-admin.png) | ![Admin](static/wireframes/good-cook-mobile-view-admin.png)
-  ![Registered users](static/wireframes/good-cook-desktop-view-registered-user.png) |  ![Registered users](static/wireframes/good-cook-mobile-view-registered-user.png)
-  ![Not registered user](static/wireframes/good-cook-desktop-view-not-registered-users.png) | ![Not registered user](static/wireframes/good-cook-mobile-view-not-registered-user.png)
+![Admin](static/wireframes/add-recipe-desktop-view-admin.png) Admin | ![Admin](static/wireframes/add-recipe-mobile-view-admin.png) 
+![Registered users](static/wireframes/add-recipe-desktop-view-registered-users.png) Registered users | ![Registered users](static/wireframes/add-recipe-mobile-view-registered-user.png)
 
-- #### Profile
+ #### <p align="center">Login</p>
  Desktop view | Mobile view
 - | -
-  ![Admin](static/wireframes/profile-desktop-view-admin.png) | ![Admin](static/wireframes/profile-mobile-view-admin.png) 
-  ![Registered users](static/wireframes/profile-desktop-view-registered-users.png) | ![Registered users](static/wireframes/profile-mobile-view-registered-user.png)
+![All users](static/wireframes/log-in-desktop-view-all-users.png)  All users| ![All users](static/wireframes/log-in-mobile-view-all-users.png)
 
-- #### Add Recipe
+ #### <p align="center">Register</p>
+Desktop view | Mobile view
+- | -
+![All users](static/wireframes/register-desktop-view-all-users.png) All users | ![All users](static/wireframes/register-mobile-view-all-users.png)
+
+ #### <p align="center">Manage Categories</p>
  Desktop view | Mobile view
 - | -
-  ![Admin](static/wireframes/add-recipe-desktop-view-admin.png) | ![Admin](static/wireframes/add-recipe-mobile-view-admin.png) 
-  ![Registered users](static/wireframes/add-recipe-desktop-view-registered-users.png) | ![Registered users](static/wireframes/add-recipe-mobile-view-registered-user.png)
+![Admin](static/wireframes/manage-categories-desktop-view-admin.png) Admin | ![Admin](static/wireframes/manage-categories-mobile-view-admin.png)
 
-- #### Login
+ #### <p align="center">Manage Marks</p>
+Desktop view | Mobile view
+- | -
+![Admin](static/wireframes/manage-marks-desktop-view-admin.png) Admin | ![Admin](static/wireframes/manage-marks-mobile-view-admin.png)
+
+ #### <p align="center">Add Category</p>
  Desktop view | Mobile view
 - | -
-  ![All users](static/wireframes/log-in-desktop-view-all-users.png) | ![All users](static/wireframes/log-in-mobile-view-all-users.png)
+![Admin](static/wireframes/add-category-desktop-view-admin.png) Admin| ![Admin](static/wireframes/add-category-mobile-view-admin.png)
 
-- #### Register
+ #### <p align="center">Add Mark</p>
  Desktop view | Mobile view
 - | -
-  ![All users](static/wireframes/register-desktop-view-all-users.png) | ![All users](static/wireframes/register-mobile-view-all-users.png)
+![Admin](static/wireframes/add-mark-desktop-view-admin.png) Admin | ![Admin](static/wireframes/add-mark-mobile-view-admin.png)
 
-- #### Manage Categories
- Desktop view | Mobile view
-- | -
-  ![Admin](static/wireframes/manage-categories-desktop-view-admin.png) | ![Admin](static/wireframes/manage-categories-mobile-view-admin.png)
-
-- #### Manage Marks
- Desktop view | Mobile view
-- | -
-  ![Admin](static/wireframes/manage-marks-desktop-view-admin.png) | ![Admin](static/wireframes/manage-marks-mobile-view-admin.png)
-
-- #### Add Categories
- Desktop view | Mobile view
-- | -
-  ![Admin](static/wireframes/add-category-desktop-view-admin.png) | ![Admin](static/wireframes/add-category-mobile-view-admin.png)
-
-- #### Add Marks
- Desktop view | Mobile view
-- | -
-  ![Admin](static/wireframes/add-mark-desktop-view-admin.png) | ![Admin](static/wireframes/add-mark-mobile-view-admin.png)
-
----
 # Features
 - All Recipes
 
@@ -137,12 +139,13 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
   - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
 
 # Features Left to Impliment
-1 - Adding like/sidlike button for recipes and the number of likes for each Recipe to put the attention of the users on more liked recipes.
-2 - Adding the liked recipes in a new section in profile page.
-3 - Adding a footer with social media sites for the app.
-4 - Seperating the recipes in different sections for each category.
-5 - Give more accessibility to the admin if needed.
-6 - More secure pathway for the admin.
+
+ - Adding a like/dislike button for each Recipe and sort the recipes from the most to least favorites.
+ - Adding the liked recipes in a new section in profile page.
+ - Adding a footer with social media sites for the app.
+ - Seperating the recipes in different sections for each category.
+ - Give more accessibility to the admin if needed.
+ - More secure pathway for the admin.
 --- 
 # Technologies Used 
 - [HTML5](https://en.wikipedia.org/wiki/HTML)
@@ -179,7 +182,7 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
     - check_password_hash
 - [datetime](https://docs.python.org/3/library/datetime.html)
     - datetime
-- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Python](https://www.python.org/)
   - Python is working very closely with Flask to manipulate data and HTML across multiple pages within the app.
 - [Heroku](https://en.wikipedia.org/wiki/Heroku)
   - Heroku has been used to deploy and host the app as it meets the need of being able to handle python.
