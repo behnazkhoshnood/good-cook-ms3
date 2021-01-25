@@ -159,7 +159,7 @@ Desktop view | Mobile view
  - Seperating the recipes in different sections for each category.
  - Give more accessibility to the admin if needed.
  - More secure pathway for the admin.
---- 
+
 # **Technologies Used** 
 - [HTML5](https://en.wikipedia.org/wiki/HTML)
   - To give the page its structure and presenting static data.
@@ -304,7 +304,7 @@ Desktop view | Mobile view
   - **step 5** - Admin is provided also with a cancel button in both pages if he/she decided to not add any new category or mark.
   - **step 6** - Pressing this key bring up a note if he/she is sure not to add any category or mark.
   - **step 7** - if press ok, admin redirects to the get_categories if in add category form, or get_marks if in add marks form.
----
+
 ## **Validators**
 
 The validators that have been used on the project are as followed:
