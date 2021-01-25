@@ -1,4 +1,6 @@
-# **Good Cook! - Milestone Project 3**
+# **Milestone Project 3**
+**Good Cook**
+
 A site that allows users to add their own recipes to be viewed publicly!
 To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
 
