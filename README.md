@@ -1,11 +1,11 @@
-# Good Cook! - Milestone Project 3
+# **Good Cook! - Milestone Project 3**
 A site that allows users to add their own recipes to be viewed publicly!
 To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
 
-![Good Cook](static/wireframes/good-cook.png)
+![Good Cook](static/images/good-cook.png)
 
-## UX Design
-### User Stories
+## **UX Design**
+### **User Stories**
 **First Time Users**
 
 - As a first time user, I would like to be able to easily navigate to the recipes.
@@ -200,8 +200,10 @@ Desktop view | Mobile view
 - [Google Fonts](https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Yusei+Magic&display=swap")
   - The font I have used for the body of this project is called Montserrat and for the headers, input and labels I used Yusei Magic font with sans-serif as a backup font.
 
-# **Testing** 
+# **Testing**
+
 ## **Register.html**
+
 - **Test 1 - Register - Test Passed ✓**
 
   - **Step 1** - Click the register button on the navbar for desktop view devices or side navbar for tablet or mobile view devices.
@@ -226,7 +228,9 @@ Desktop view | Mobile view
   - **Step 3** - As the 'Required' and minlength=2 for first and last name, and minlength=5 for username and password has been added, the form will not be submitted.
   - **Step 4** - Changing first and last name to more than 1 alphabet, and username and password to more than 4 charecters will submit the form.
   - **step 5** - All the tooltips are shown an the page by hovering over the input icon.
+
 ## **Login.html**
+
 - **Test 1 - Log In - Test Passed ✓**
   - **Step 1** - Enter your Username.
   - **Step 2** - Enter your Password.
@@ -258,7 +262,8 @@ Desktop view | Mobile view
   - **Step 3** - click on "Add Recipe" button.
   - **Step 4** - Empty lines will be removed when showing the recipe in the "All Recipes" or "Profile" page.
 
-## **Editing/Deleting a Recipe** 
+## **Editing/Deleting a Recipe**
+
 - **Test 1 - Editing a Recipe - Test Passed ✓**
 
   - **Step 1** - Navigate to profile or All recdipe page.
@@ -299,6 +304,7 @@ Desktop view | Mobile view
   - **step 7** - if press ok, admin redirects to the get_categories if in add category form, or get_marks if in add marks form.
 ---
 ## **Validators**
+
 The validators that have been used on the project are as followed:
 
   - [HTML Validator](https://validator.w3.org/nu/) - No issues apart from jinja templating
@@ -306,7 +312,7 @@ The validators that have been used on the project are as followed:
   - [JavaScript Validator](https://jshint.com/) - No issues 
   - [Python Validator](http://pep8online.com/) - No issues
 
-# Deployment 
+# **Deployment**
 For the project to successfully deploy, the following are requirements are needed:
 - Python
 - Github account or similar IDE 
@@ -329,7 +335,7 @@ For the project to successfully deploy, the following are requirements are neede
     - MONGO_DBNAME
   - **Step 5** - Select deploy method of choice. I have set up Automatic Deployments by connecting to my github account and enabled automatic deployments from the master branch
 
-# Credits 
+# **Credits**
 ### **Recipes**
 All recipes currently on the page have all been added from google by Behnaz Khoshnood.
 ### **Recipe Images** 
