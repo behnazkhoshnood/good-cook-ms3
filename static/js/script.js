@@ -7,13 +7,11 @@ $(document).ready(function () {
     $('input#username, input#password, input#confirm-password, input#first_name, input#last_name').characterCounter();
     $('select').formSelect();
     $('li').filter(function () {
-        return $(this).text().trim() === ''
-    }).remove();
+        return $(this).text().trim() === '';}).remove();
     $('.edit-delete-div').filter(function () {
-        return $(this).text().trim() === ''
-    }).remove();
+        return $(this).text().trim() === '';}).remove();
     $('.profile-list').filter(function () {
-        return $(this).text().trim() === ''
+        return $(this).text().trim() === '';
     }).append("<h6 class='profile-note'>You didn't add any recipe yet. Click on add recipe in the menu to add your recipe.</h6>").removeClass('collapsible');
  validateMaterializeSelect();
     function validateMaterializeSelect() {
