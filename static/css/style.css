@@ -4,6 +4,10 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
+.card{
+    margin-top: 15px;
+}
+
 #search-area{
     padding: 2px;
 }

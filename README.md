@@ -106,6 +106,10 @@ Desktop view | Mobile view
   - Admin Users, will be able to delete the data of recipes entered by all users, whereas everyone else will only be able to edit or delete their own recipes.
   - Delete button is shown in all views to the admin in the colapsible header whereas for other users this button will change position to the top of collapsible body.
 
+Desktop view | Mobile view
+- | -
+![Admin](static/wireframes/good-cook-desktop-view-admin.png) **Admin** | ![Admin](static/wireframes/good-cook-mobile-view-admin.png)
+
 - **Register/Login**
 
   - On registeration user is asked to enter their first and last name, username and a password and confirmation for the password.
@@ -314,32 +318,85 @@ The validators that have been used on the project are as followed:
   - [JavaScript Validator](https://jshint.com/) - No issues 
   - [Python Validator](http://pep8online.com/) - No issues
 
-# **Deployment**
-For the project to successfully deploy, the following are requirements are needed:
-- Python
-- Github account or similar IDE 
-- MongoDB
-- Heroku 
-### **Cloning the Project**
-  - Step 1 - log in to your github account and go to the repository.
-  - Step 2 - Click on 'Code'.
-  - Step 3 - Click the link to copy
-  - step 4 - Within the gitpod/IDE type 'GIT CLONE' into the terminal followed by the link and press enter.
-### **Heroku Deployment**
-  - **Step 1** - Within the terminal, type 'pip freeze > requirements.txt' - this command will generate a .txt file with all of the requirements necessary for Heroku to run the app.
-  - **Step 2** - Within the terminal, type 'echo web: python app.py > Procfile' - This tells Heroku that this is a web based app.
-  - **Step 3** - Assuming you have an account, log in to Heroku and set up a new app with the region that is closest to you.
-  - **Step 4** - You will need to set up your own config vars both on Heroku and within env.py for the app to access the data properly, these will include:
-    - IP 
-    - PORT 
-    - SECRET_KEY
-    - MONGO_URI
-    - MONGO_DBNAME
-  - **Step 5** - Select deploy method of choice. I have set up Automatic Deployments by connecting to my github account and enabled automatic deployments from the master branch
+## **Deployment**
 
-# **Credits**
-### **Recipes**
-All recipes currently on the page have all been added from google by Behnaz Khoshnood.
+This project is stored in a GitHub repository and hosted on Heroku.
+
+### **How to deploy to Github**
+
+1. Click [here](https://github.com/robinwesterback/creative-hub/ "Creative Hub Repository") to get to the projects repository.
+
+2. Click on 'Settings' to the far right in navigation menu below your repository name.
+
+3. Scroll down to 'GitHub Pages' and select 'master branch' as the source.
+
+4. Click save.
+
+5. The link to the site hosted on GitHub Pages should appear at the top of the section.
+
+### **How to clone this repository in order to run the code locally on your machine**
+
+1. Click [here](https://github.com/robinwesterback/creative-hub/ "Creative Hub Repository") to get to the projects repository.
+
+2. Click "Clone or Download".
+
+3. Click the "copy" icon.
+
+4. Open Git Bash in your local IDE.
+
+5. Change your current working directory to where you want the cloned directory to be made.
+
+6. Type `$ git clone` and then paste the URL you copied earlier.
+
+   `git clone https://github.com/USERNAME/REPOSITORY`
+
+7. When you press enter your local clone will be ready.
+
+### **How to clone this repository in order to run the code locally on your machine**
+
+1. Created a new application using the Heroku dashboard.
+
+2. Go to settings tab, click on 'reveal config vars' and add config vars such as IP (0.0.0.0), PORT (5000), MongoDB Name, MongoDB URI (URL with DB name and password).
+
+3. Install Heroku via the console using 'npm install -g Heroku'.
+
+4. Log into Heroku via the console using 'heroku login' and follow the on screen instructions to log in.
+
+5. Create a requirements.txt via the console using 'pip3 freeze > requirements.txt'.
+
+6. Create a Procfile via the console using 'echo web: python app.py > Procfile'.
+
+7. Connect GitHub to Heroku via the console using 'heroku git:remote a creative-hub'
+
+8. Commit all files in your project via the console using 'git add .' and 'git commit -m "Message"'.
+
+9. Deploy your project to Heroku via the consol using 'git push heroku master'.
+
+### **Running the application locally using Gitpod**
+
+1. Clone the repository as outlined above and upload it to GitPod.
+
+2. Install the necessary libraries specified in the requirements.txt.
+
+3. Set your environment variables by creating and adding them into a env.py file.
+
+4. Create a .gitignore file in the root directory and add the env.py file to avoid it being pushed to GitHub.
+
+5. Import the env.py file into the app.py file.
+
+6. Run the application.
+
+## **Credits**
+
+### **Content**
+
+All recipes currently on the page have all been added from google by me.
+The design was inspired by [Materialize](https://materializecss.com/ "Materialize").
+
+### **Media**
+
+The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
+
 ### **Recipe Images** 
 All images used on the page are linked below:
 - [Adas polo](https://www.saveur.com/resizer/Wnizk_4UQkqFMI5XmMydgOXf4J8=/1200x628/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/L2N233EB3VWQE43J7IJHYBS3Z4.jpg)
@@ -351,6 +408,20 @@ All images used on the page are linked below:
 - [Mojito](https://kitchenswagger.com/wp-content/uploads/2020/07/mojito-recipe3.jpg)
 - [Pepper & walnut hummus](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/houmous_0-a0c19df.jpg?quality=90&webp=true&resize=375,341)
 - [Sex in a pan dessert](https://www.wholesomeyum.com/wp-content/uploads/2017/01/wholesomeyum_sex-in-a-pan-sugar-free-low-carb-gluten-free-1.jpg)
+
+### **Acknowledgements**
+
+Big thanks to my mentor who provided me with tips, support and some helpful resources.
+
+## **Resources**
+
+Below is a list of the resources used to create this project:
+
+- [Log in system](https://www.youtube.com/watch?v=vVx1737auSE&ab_channel=PrettyPrinted "Log in system")
+- [Materialize](https://materializecss.com/ "Materialize")
+- [EmailJS](https://emailjs.com/ "EmailJS")
+- [Flask Cheatcheet](https://s3.us-east-2.amazonaws.com/prettyprinted/flask_cheatsheet.pdf "Flask Cheatcheet")
+
 ### **Materialize**
 For this project, I have used and modified content from the Materialize Docs. Aspects include:
   - Navbar 
@@ -360,7 +431,7 @@ For this project, I have used and modified content from the Materialize Docs. As
 ### **Font Awesome** 
 - Icons used on this site have been taken from [font awesome](https://fontawesome.com/).
 ### **Google Fonts** 
-- The font family used on this site is called Abel and can be seen [here](https://fonts.google.com/?query=abel)
+- The font families used on this site is called Montserrat and Yusei and can be seen [here](https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Yusei+Magic&display=swap")
 
 
 
