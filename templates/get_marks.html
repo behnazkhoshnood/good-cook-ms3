@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content%}
-
+    {% if session.user == admin %}
     <h3 class="deep-purple-text text-darken-1 center-align">Manage Marks</h3>
     <br>
         <div class="row">
@@ -26,4 +26,7 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+    <h3 class="pink-text text-darken-3 center-align">Access allowed to admin only.</h3>
+{% end if %}
 {% endblock %}

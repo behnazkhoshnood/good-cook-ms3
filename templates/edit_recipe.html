@@ -1,96 +1,99 @@
 {% extends "base.html" %}
 {% block content%}
+    {% if session.user == recipe.created_by %}
+    <h3 class="deep-purple-text text-darken-1 center-align">Edit Recipe</h3>
 
-<h3 class="deep-purple-text text-darken-1 center-align">Edit Recipe</h3>
-
-<div class="row card-panel gray lighten-5">
-    <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
-        <!-- categories -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-folder-open prefix deep-purple-text text-darken-1"></i>
-                <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled>Choose your recipe category</option>
-                    {% for category in categories %}
-                        {% if category.category_name == recipe.category_name %}
-                            <option value="{{ category.category_name }}" selected>{{ category.category_name|capitalize }}
-                            </option>
-                        {% else %}
-                            <option value="{{ category.category_name }}">{{ category.category_name|capitalize }}
-                            </option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="category_name">Category</label>
+    <div class="row card-panel gray lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+            <!-- categories -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix deep-purple-text text-darken-1"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled>Choose your recipe category</option>
+                        {% for category in categories %}
+                            {% if category.category_name == recipe.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name|capitalize }}
+                                </option>
+                            {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name|capitalize }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label for="category_name">Category</label>
+                </div>
             </div>
-        </div>
-        <!-- marks -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
-                <select id="mark" name="mark[]" multiple class="validate">
-                    <option value="" disabled>Choose your marks( Optional )</option>
-                    {% for mark in recipe.marks %}
-                        <option value="{{ mark }}" selected>{{- mark|capitalize -}}
-                    {% endfor %}
-                    {% for mark in marks %}
-                    <option value="{{ mark.mark }}">{{ mark.mark|capitalize }}</option>
-                    {% endfor %}
-                    </option>
-                </select>
-                <label for="mark">Marks</label>
+            <!-- marks -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
+                    <select id="mark" name="mark[]" multiple class="validate">
+                        <option value="" disabled>Choose your marks( Optional )</option>
+                        {% for mark in recipe.marks %}
+                            <option value="{{ mark }}" selected>{{- mark|capitalize -}}
+                        {% endfor %}
+                        {% for mark in marks %}
+                        <option value="{{ mark.mark }}">{{ mark.mark|capitalize }}</option>
+                        {% endfor %}
+                        </option>
+                    </select>
+                    <label for="mark">Marks</label>
+                </div>
             </div>
-        </div>
-        <!-- recipe name -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-pencil-alt prefix deep-purple-text text-darken-1"></i>
-                <input id="recipe_name" name="recipe_name" minlength="5" value="{{ recipe.recipe_name }}" maxlength="30" type="text" class="validate" required>
-                <label for="recipe_name">Recipe Name</label>
+            <!-- recipe name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix deep-purple-text text-darken-1"></i>
+                    <input id="recipe_name" name="recipe_name" minlength="5" value="{{ recipe.recipe_name }}" maxlength="30" type="text" class="validate" required>
+                    <label for="recipe_name">Recipe Name</label>
+                </div>
             </div>
-        </div>
-        <!-- ingredients -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-cookie-bite prefix deep-purple-text text-darken-1"></i>
-                    <textarea id="recipe_ingredients" name="recipe_ingredients[]" aria-multiline="true"
-                    class="materialize-textarea validate lines" required>{% for ingredients in recipe.recipe_ingredients %}{{- ingredients -}}{% endfor %}</textarea>
-                <label for="recipe_ingredients">Ingredients</label>
-                <span class="helper-text">Each ingredient must be entered on a new line.</span>
+            <!-- ingredients -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-cookie-bite prefix deep-purple-text text-darken-1"></i>
+                        <textarea id="recipe_ingredients" name="recipe_ingredients[]" aria-multiline="true"
+                        class="materialize-textarea validate lines" required>{% for ingredients in recipe.recipe_ingredients %}{{- ingredients -}}{% endfor %}</textarea>
+                    <label for="recipe_ingredients">Ingredients</label>
+                    <span class="helper-text">Each ingredient must be entered on a new line.</span>
+                </div>
             </div>
-        </div>
-        <!-- cooking steps -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-utensils prefix deep-purple-text text-darken-1"></i>
-                <textarea id="cooking_steps" name="cooking_steps[]" aria-multiline="true"
-                    class="materialize-textarea validate lines" required>{% for steps in recipe.cooking_steps %}{{- steps -}}{% endfor %}</textarea>
-                <label for="cooking_steps">Cooking Steps</label>
-                <span class="helper-text">Add each step in the recipe on a new line.</span>
+            <!-- cooking steps -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-utensils prefix deep-purple-text text-darken-1"></i>
+                    <textarea id="cooking_steps" name="cooking_steps[]" aria-multiline="true"
+                        class="materialize-textarea validate lines" required>{% for steps in recipe.cooking_steps %}{{- steps -}}{% endfor %}</textarea>
+                    <label for="cooking_steps">Cooking Steps</label>
+                    <span class="helper-text">Add each step in the recipe on a new line.</span>
+                </div>
             </div>
-        </div>
-        <!-- Add an image -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-images prefix deep-purple-text text-darken-1"></i>
-                <input id="image_url" name="image_url" type="text" minlength="5"  value="{{ recipe.image_url }}"  pattern="https://.*" class="validate"
-                    required />
-                <label for="image_url">Add an image</label>
-                <span class="helper-text">To add an image to your recipe, paste an image URL here. You must
-                    include 'https://'</span>
+            <!-- Add an image -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-images prefix deep-purple-text text-darken-1"></i>
+                    <input id="image_url" name="image_url" type="text" minlength="5"  value="{{ recipe.image_url }}"  pattern="https://.*" class="validate"
+                        required />
+                    <label for="image_url">Add an image</label>
+                    <span class="helper-text">To add an image to your recipe, paste an image URL here. You must
+                        include 'https://'</span>
+                </div>
             </div>
-        </div>
-        <!-- submit btn -->
-        <div class="row">
-            <div class="col s12 center-align">
-                <!-- cancel btn -->
-                <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large cancel-btn text-shadow"><i class="fas fa-window-close right"></i> cancel</a>
-                <!-- edit btn-->
-                <button id="submit-btn" type="submit" class="btn-large edit-btn text-shadow"><i class="fas fa-edit prefix right"></i> Edit Recipe </button>
+            <!-- submit btn -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <!-- cancel btn -->
+                    <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large cancel-btn text-shadow"><i class="fas fa-window-close right"></i> cancel</a>
+                    <!-- edit btn-->
+                    <button id="submit-btn" type="submit" class="btn-large edit-btn text-shadow"><i class="fas fa-edit prefix right"></i> Edit Recipe </button>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+    {% else %}
+        <h3 class="pink-text text-darken-3 center-align">Access allowed to recipe creator only.</h3>
+    {% end if %}
 {% endblock %}
     {% block scripts %}
         <script src="{{ url_for('static',filename='js/edit.js') }}"></script>
