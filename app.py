@@ -187,59 +187,51 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    if (not recipe or
-        recipe.created_by != session['user'] or
-            not session['user']):
-        return render_template('500.html')
-    else:
-        if request.method == "POST":
-            todays_date = datetime.today().strftime('%Y-%m-%d')
-            submit = {
-                "category_name": request.form.get("category_name"),
-                "recipe_name": request.form.get("recipe_name").lower(),
-                "image_url": request.form.get("image_url"),
-                "created_by": session["user"],
-                "date_added": todays_date
-            }
-            marks = {
-                "marks": request.form.getlist("marks[]")
-            }
-            recipe_ingredients = {
-                "recipe_ingredients": request.form.get(
-                    "recipe_ingredients[]").split("\n")
-            }
-            cooking_steps = {
-                "cooking_steps": request.form.get(
-                    "cooking_steps[]").split("\n")
-            }
-            submit.update(marks)
-            submit.update(recipe_ingredients)
-            submit.update(cooking_steps)
-            mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-            flash("Your Recipe Successfully Updated")
-            return redirect(url_for('profile', username=session['user']))
+    if request.method == "POST":
+        todays_date = datetime.today().strftime('%Y-%m-%d')
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name").lower(),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"],
+            "date_added": todays_date
+        }
+        marks = {
+            "marks": request.form.getlist("marks[]")
+        }
+        recipe_ingredients = {
+            "recipe_ingredients": request.form.get(
+                "recipe_ingredients[]").split("\n")
+        }
+        cooking_steps = {
+            "cooking_steps": request.form.get(
+                "cooking_steps[]").split("\n")
+        }
+        submit.update(marks)
+        submit.update(recipe_ingredients)
+        submit.update(cooking_steps)
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Your Recipe Successfully Updated")
+        return redirect(url_for('profile', username=session['user']))
 
-        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        categories = mongo.db.categories.find().sort("category_name", 1)
-        marks = mongo.db.marks.find().sort("mark", 1)
-        return render_template(
-            "edit_recipe.html",
-            recipe=recipe,
-            categories=categories,
-            marks=marks)
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    marks = mongo.db.marks.find().sort("mark", 1)
+    return render_template(
+        "edit_recipe.html",
+        recipe=recipe,
+        categories=categories,
+        marks=marks)
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    if (session['user'] == 'admin' or
-            session['user'] == mongo.db.recipe.created_by):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if session['user'] == 'admin' or session['user'] == username:
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash("Recipe Successfully Deleted!")
-        if 'admin' != mongo.db.recipe.created_by:
-            return redirect(url_for('get_recipes'))
-        else:
-            return redirect(url_for('profile', username=session['user']))
+        return redirect(url_for('profile', username=session['user']))
 
 
 @app.route("/get_categories")
