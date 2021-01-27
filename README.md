@@ -123,17 +123,14 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![All users](static/images/desktopview-all-users.png) **All users** | ![All users](static/images/mobile-view-all-users.png)
+![register All users desktop](static/images/desktopview-all-users.png) | ![register All users mobile](static/images/mobile-view-all-users.png)
+![log in All users desktop](static/images/login-desktop-all-users.png) **All users** | ![log in All users mobile](static/images/login-mobile-all-users.png)
 
 - **Log Out**
 
   - user is provided by the option to log out when clicking on the button provided on the navbar.
   - By clicking on "Log Out" button user get a message to check if they really want to log out.
   - On log out user redirects to log in page and getting a flash message - "You have been logged out!"
-
-Desktop view | Mobile view
-- | -
-![All users](static/images/login-desktop-all-users.png) **All users** | ![All users](static/images/login-mobile-all-users.png)
 
 - **Profile**
 
@@ -142,7 +139,7 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/images/profile-desktop-view.png) **Admin** | ![Admin](static/images/profile-mobile-view.png)
+![profile admin desktop view](static/images/profile-desktop-view.png) **Admin** | ![profile admin mobile view](static/images/profile-mobile-view.png)
 
 - **Add Recipe**
 
@@ -152,7 +149,7 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/images/add-desktop-admin.png) **Admin** | ![Admin](static/images/add-mobile-admin.png)
+![add recipe admin desktop view](static/images/add-desktop-admin.png) **Admin** | ![add recipe admin mobile view](static/images/add-mobile-admin.png)
 
 - **Edit form**
 
@@ -163,7 +160,7 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/images/edit-desktop-admin.png) **Admin** | ![Admin](static/images/edit-mobile-admin.png)
+![edit form admin desktop view](static/images/edit-desktop-admin.png) **Admin** | ![edit form admin mobile view](static/images/edit-mobile-admin.png)
 
 - **Manage category and marks**
 
@@ -171,7 +168,10 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/images/edit-desktop-admin.png) **Admin** | ![Admin](static/images/edit-mobile-admin.png)
+![manage categories desktop](static/images/manage-categories-desktop.png) | ![manage categories mobile](static/images/manage-categories-mobile.png)
+![manage marks desktop](static/images/manage-marks-desktop.png) | ![manage marks mobile](static/images/manage-marks-mobile.png)
+![add categories desktop](static/images/add-category-desktop.png) | ![add categories mobile](static/images/add-category-mobile.png)
+![add marks desktop](static/images/add-mark-desktop.png) | ![add marks mobile](static/images/add-mark-mobile.png)
 
 - **Delete buttton**
 

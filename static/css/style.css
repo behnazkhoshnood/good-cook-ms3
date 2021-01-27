@@ -42,14 +42,6 @@ h6{
     line-height: 2;
 }
 
-.float-left{
-    float: left;
-}
-
-.float-right{
-    float: right;
-}
-
 #submit-btn:hover,
 .add-mark-btn:hover,
 .add-category-btn:hover,
@@ -90,8 +82,10 @@ ul:not(.browser-default)> .ingredient-list {
     margin-bottom: 10px;
 }
 
+#submit-btn,
+.delete-btn,
 .edit-btn,
-.delete-btn{
+.cancel-btn{
     margin: auto 0;
     margin-bottom: 10px;
     margin-right: 5px;
@@ -106,6 +100,7 @@ ul:not(.browser-default)> .ingredient-list {
 .edit-btn:hover{
     background-color: #3173d1
 }
+
 
 .collapsible-header .col strong{
     margin: 5px;

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content%}
-    {% if session.user == recipe.created_by %}
+    {% if session.user|lower == recipe.created_by|lower %}
         <h3 class="deep-purple-text text-darken-1 center-align">Edit Recipe</h3>
 
         <div class="row card-panel gray lighten-5">
@@ -86,7 +86,7 @@
                         <!-- cancel btn -->
                         <a href="{{ url_for('profile', username=session['user']) }}" class="btn-large cancel-btn text-shadow"><i class="fas fa-window-close right"></i> cancel</a>
                         <!-- edit btn-->
-                        <button id="submit-btn" type="submit" class="btn-large edit-btn text-shadow"><i class="fas fa-edit prefix right"></i> Edit Recipe </button>
+                        <button id="submit" type="submit" class="btn-large edit-btn text-shadow"><i class="fas fa-edit prefix right"></i> Edit Recipe </button>
                     </div>
                 </div>
             </form>
