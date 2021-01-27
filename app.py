@@ -22,13 +22,11 @@ mongo = PyMongo(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    # note that we set the 404 status explicitly
     return render_template('404.html'), 404
 
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    # note that we set the 500 status explicitly
     return render_template('500.html'), 500
 
 
@@ -189,8 +187,13 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    if request.method == "POST":
-        if session['user'] == mongo.db.recipes.created_by:
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if (not recipe or
+        recipe.created_by != session['user'] or
+            not session['user']):
+        return render_template('500.html')
+    else:
+        if request.method == "POST":
             todays_date = datetime.today().strftime('%Y-%m-%d')
             submit = {
                 "category_name": request.form.get("category_name"),
@@ -230,10 +233,10 @@ def edit_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     if (session['user'] == 'admin' or
-            session['user'] == mongo.db.recipes.created_by):
+            session['user'] == mongo.db.recipe.created_by):
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash("Recipe Successfully Deleted!")
-        if 'admin' != mongo.db.recipes.created_by:
+        if 'admin' != mongo.db.recipe.created_by:
             return redirect(url_for('get_recipes'))
         else:
             return redirect(url_for('profile', username=session['user']))
@@ -332,4 +335,4 @@ def delete_mark(mark_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

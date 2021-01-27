@@ -417,8 +417,7 @@ This project is stored in a GitHub repository and hosted on Heroku.
 All recipes currently on the page have all been added from google.
 
 ### **Media**
-- Faviicon used for this project was from [favicon.cc](https://www.favicon.cc/)
-- The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
+The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
 
 ### **Recipe Images** 
 All images used on the page are linked below:
