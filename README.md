@@ -95,7 +95,7 @@ Desktop view | Mobile view
 ![Admin](static/wireframes/add-mark-desktop-view-admin.png) **Admin** | ![Admin](static/wireframes/add-mark-mobile-view-admin.png)
 
 # **Features**
-- **All Recipes**
+ **All Recipes**
 
   - First collapsible body is open on loading the page to make the page more appealing.
   - Unregistered users and all the other users are able to view all recipes that have been uploaded by registered users on All recipes page.
@@ -108,9 +108,9 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/images/desktop-view-admin.png) **Admin** | ![Admin](static/images/mobile-view-admin.png)
-
-- **Register/Login**
+![All recipes Admin desktop view](static/images/desktop-view-admin.png) | ![all recipes Admin mobile view](static/images/mobile-view-admin.png)
+---
+**Register/Login**
 
   - On registeration user is asked to enter their first and last name, username and a password and confirmation for the password.
   - A user will need to register a profile to be able to add any recipes, this infomation is on get_recipe.html.
@@ -124,24 +124,24 @@ Desktop view | Mobile view
 Desktop view | Mobile view
 - | -
 ![register All users desktop](static/images/desktopview-all-users.png) | ![register All users mobile](static/images/mobile-view-all-users.png)
-![log in All users desktop](static/images/login-desktop-all-users.png) **All users** | ![log in All users mobile](static/images/login-mobile-all-users.png)
-
-- **Log Out**
+![log in All users desktop](static/images/login-desktop-all-users.png) | ![log in All users mobile](static/images/login-mobile-all-users.png)
+---
+**Log Out**
 
   - user is provided by the option to log out when clicking on the button provided on the navbar.
   - By clicking on "Log Out" button user get a message to check if they really want to log out.
   - On log out user redirects to log in page and getting a flash message - "You have been logged out!"
-
-- **Profile**
+---
+**Profile**
 
   - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by that user and have an option to delete or edit these recipes. This option is also available in All recipes page but only for the recipes that have been created by this user( exept the admin that can delete any recipe)
   - Once the user has added the required information for the recipe, they will see it on their profile page with a flash message of top on the page indicating that the recipe added.
 
 Desktop view | Mobile view
 - | -
-![profile admin desktop view](static/images/profile-desktop-view.png) **Admin** | ![profile admin mobile view](static/images/profile-mobile-view.png)
-
-- **Add Recipe**
+![profile admin desktop view](static/images/profile-desktop-view.png) | ![profile admin mobile view](static/images/profile-mobile-view.png)
+---
+**Add Recipe**
 
   - The 'Add Recipe' button will redirect the users to the form template that the users will need to fill out to add their recipes. 
   - When users are adding a new recipe, they are guided through with notifications of what to do and requirements. 
@@ -150,8 +150,8 @@ Desktop view | Mobile view
 Desktop view | Mobile view
 - | -
 ![add recipe admin desktop view](static/images/add-desktop-admin.png) **Admin** | ![add recipe admin mobile view](static/images/add-mobile-admin.png)
-
-- **Edit form**
+---
+**Edit form**
 
   - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. For admin, this button can be found only on profile page for his/her own recipes.
   By clicking on edit button, edit form will reveal with all the previous information that have been added to the form.
@@ -160,9 +160,9 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![edit form admin desktop view](static/images/edit-desktop-admin.png) **Admin** | ![edit form admin mobile view](static/images/edit-mobile-admin.png)
-
-- **Manage category and marks**
+![edit form admin desktop view](static/images/edit-desktop-admin.png) | ![edit form admin mobile view](static/images/edit-mobile-admin.png)
+---
+**Manage category and marks**
 
   - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
 
@@ -172,8 +172,8 @@ Desktop view | Mobile view
 ![manage marks desktop](static/images/manage-marks-desktop.png) | ![manage marks mobile](static/images/manage-marks-mobile.png)
 ![add categories desktop](static/images/add-category-desktop.png) | ![add categories mobile](static/images/add-category-mobile.png)
 ![add marks desktop](static/images/add-mark-desktop.png) | ![add marks mobile](static/images/add-mark-mobile.png)
-
-- **Delete buttton**
+---
+**Delete buttton**
 
   - If users ever decide that they would like to delete any of the data, all they need to do is click on the delete button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
   - In mobile view devices the delete buttton is located on top of the recipe body instead.( exept for the admin)
@@ -185,7 +185,6 @@ Desktop view | Mobile view
  - Adding the liked recipes in a new section in profile page.
  - Adding a footer with social media sites for the app.
  - Seperating the recipes in different sections for each category.
- - Give more accessibility to the admin if needed.
  - More secure pathway for the admin.
 
 # **Technologies Used** 
@@ -234,7 +233,7 @@ Desktop view | Mobile view
 
 ## **Register.html**
 
-- **Test 1 - Register - Test Passed ✓**
+**Test 1 - Register - Test Passed ✓**
 
   - **Step 1** - Click the register button on the navbar for desktop view devices or side navbar for tablet or mobile view devices.
   - **Step 2** - Put in a first name(2 character minimum).
@@ -244,14 +243,14 @@ Desktop view | Mobile view
   - **Step 6** - Click 'Register' button.
   - **Step 7** - Be redirected to 'get_recipes.html' with a flash message, welcoming the user.
 
-- **Test 2 - Register with a username which already exists - Test Passed ✓**
+**Test 2 - Register with a username which already exists - Test Passed ✓**
 
   - **Step 1** - While on 'register.html', enter username 'admin' or any username existing in our data base.
   - **Step 2** - Enter password (5 character minimum).
   - **Step 3** - Click the 'Register' button.
   - **Step 4** - Be presented by flash message containing "Username already exists!".
   
-- **Test 3 - Register with less than 2 Alphabet for first and last name and less than 5 characters for username - Test Passed ✓**
+**Test 3 - Register with less than 2 Alphabet for first and last name and less than 5 characters for username - Test Passed ✓**
 
   - **step 1** - While on 'register.html', enter first or last name with numbers or less than 2 alphabet is shown invalid.
   - **Step 2** - While on 'register.html', enter username or password with less than 5 charecters is shown invalid.
@@ -261,13 +260,13 @@ Desktop view | Mobile view
 
 ## **Login.html**
 
-- **Test 1 - Log In - Test Passed ✓**
+**Test 1 - Log In - Test Passed ✓**
   - **Step 1** - Enter your Username.
   - **Step 2** - Enter your Password.
   - **Step 3** - Click the 'log in' buttton.
   - **Step 4** - Be redirected to 'get_recipes.html' with flash message containing "Welcome, [ user ]".
 
-- **Test 2 - Log in attempt with incorrect info - Test Passed ✓**
+**Test 2 - Log in attempt with incorrect info - Test Passed ✓**
 
   - **Step 1** - Enter credentials that are incorrect.  
   - **Step 2** - Click the 'log in' button.
@@ -275,7 +274,7 @@ Desktop view | Mobile view
 
 ## **Adding a New Recipe**
 
-- **Test 1 - Adding a New Recipe - Test Passed ✓**
+**Test 1 - Adding a New Recipe - Test Passed ✓**
   - **Step 1** - Log In.
   - **Step 2** - Be redirected to get_recipes.
   - **Step 3** - Click the button labeled 'Add Recipe'.
@@ -286,7 +285,7 @@ Desktop view | Mobile view
   - **Step 8** - Once the form is filled out to the satisfaction of the constraints and the 'Add Recipe!' button is clicked user will be redirected to 'profile.html' where the user can see their newly added recipe located alphabeticly in the collapsible dropdown list. User also be notified that the new recipe added by flash notifications.
   - **Step 9** - Check the contents of the newly added recipe right away by clicking on that recipe in the dropdown list.
 
-- **Test 2 - Avoids empty strings in out textarea fields - Test Passed ✓**
+**Test 2 - Avoids empty strings in out textarea fields - Test Passed ✓**
   - **Step 1** - Fill in all the required feilds in "Add Recipe" form.
   - **Step 2** - Add an empty line to the ingredients or cooking steps textarea.
   - **Step 3** - click on "Add Recipe" button.
@@ -294,7 +293,7 @@ Desktop view | Mobile view
 
 ## **Editing/Deleting a Recipe**
 
-- **Test 1 - Editing a Recipe - Test Passed ✓**
+**Test 1 - Editing a Recipe - Test Passed ✓**
 
   - **Step 1** - Navigate to profile or All recdipe page.
   - **Step 2** - Click the button labeled "EDIT" for the desired recipe.
@@ -304,18 +303,18 @@ Desktop view | Mobile view
   - **Step 6** - Should the user wish to cancel the action, they can click on the cancel button located on bottom left.
     - **Step 7** - If user clicks the cancel button he/she will be redirected to profile page and all changes will be disregarded.
 
-- **Test 2 - Deleting a Recipe - Test Passed ✓**
+**Test 2 - Deleting a Recipe - Test Passed ✓**
   - **Step 1** - Navigate to All Recipes, or profile page.
   - **Step 2** - Click the button labeled "DELETE". In mobile phone view this button can be found on top of the recipe collapsible body.
   - **Step 3** - User gets a message if they are sure to delete this recipe.
   - **step 4** - If confirm the recipe deletes and user redirects to their profile page but if press cancel, recipe stayes unchanged and the user will be redirected to their profile page.
 
-- **Test 3 - Avoid duplication in multi choice dropdown input field - Test Passed ✓**
+**Test 3 - Avoid duplication in multi choice dropdown input field - Test Passed ✓**
   - **step 1** - In edit form in marks field user can just add one of each choices.
 
 ## **Admin Capability**
 
-- **Test 1 - Delete any Recipe - Test Passed ✓**
+**Test 1 - Delete any Recipe - Test Passed ✓**
 
   - **Step 1** - Navigate to get_recipes.
   - **Step 2** - User navigates to the recipe which he/she would like to delete.
@@ -323,7 +322,8 @@ Desktop view | Mobile view
   - **step 4** - User should confirm if he/she really wishes to delete this recipe.
   - **step 5** - If press "Ok" recipe deletes and user redirects to All recipes page.
   - **Step 6** - If press "cancel" recipe stayes untouched.
-- **Test 3 - Add, edit or delete categories or marks - Test Passed ✓**
+
+**Test 2 - Add, edit or delete categories or marks - Test Passed ✓**
 
   - **step 1** - Click on the Manage Categries to manage the categories or Manage Marks to manage the marks.
   - **step 2** - Admin can sees all the categories in manage categories and all the marks in manage marks in a seperate card with an option of delete or edit and an Add button on top of the page to add a new category or mark.
@@ -414,8 +414,7 @@ This project is stored in a GitHub repository and hosted on Heroku.
 
 ### **Content**
 
-All recipes currently on the page have all been added from google by me.
-The design was inspired by [Materialize](https://materializecss.com/ "Materialize").
+All recipes currently on the page have all been added from google.
 
 ### **Media**
 - Faviicon used for this project was from [favicon.cc](https://www.favicon.cc/)
@@ -441,10 +440,9 @@ Big thanks to my mentor who provided me with tips, support and some helpful reso
 
 Below is a list of the resources used to create this project:
 
-- [Log in system](https://www.youtube.com/watch?v=vVx1737auSE&ab_channel=PrettyPrinted "Log in system")
-- [Materialize](https://materializecss.com/ "Materialize")
-- [EmailJS](https://emailjs.com/ "EmailJS")
-- [Flask Cheatcheet](https://s3.us-east-2.amazonaws.com/prettyprinted/flask_cheatsheet.pdf "Flask Cheatcheet")
+- [Handeling Applications Errors -- Flask Documentation](https://flask.palletsprojects.com/en/master/errorhandling/#error-handlers)
+- [(Totorial) Docstring in Python](https://www.datacamp.com/community/tutorials/docstrings-python)
+- [Stack Overflow](https://stackoverflow.com/)
 
 ### **Materialize**
 For this project, I have used and modified content from the Materialize Docs. Aspects include:

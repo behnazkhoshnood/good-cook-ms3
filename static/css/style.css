@@ -2,6 +2,9 @@
 
 body{
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .card{
@@ -191,6 +194,9 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
     div span{
         font-size: 20px;
         font-weight: 600;
+    }
+    .select-wrapper input.select-dropdown{
+        font-size: 14px;
     }
 }
 
