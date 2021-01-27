@@ -108,7 +108,7 @@ Desktop view | Mobile view
 
 Desktop view | Mobile view
 - | -
-![Admin](static/wireframes/good-cook-desktop-view-admin.png) **Admin** | ![Admin](static/wireframes/good-cook-mobile-view-admin.png)
+![Admin](static/images/desktop-view-admin.png) **Admin** | ![Admin](static/images/mobile-view-admin.png)
 
 - **Register/Login**
 
@@ -121,22 +121,38 @@ Desktop view | Mobile view
   - When a returning user logs in successfully, they will also be redirected to 'get_recipes.html'.
   - If a registered user puts their infomation in incorrectly when loging in, they will be notified by the use of Flash Messages - "Incorrect Username and/or Password".
 
+Desktop view | Mobile view
+- | -
+![All users](static/images/desktopview-all-users.png) **All users** | ![All users](static/images/mobile-view-all-users.png)
+
 - **Log Out**
 
   - user is provided by the option to log out when clicking on the button provided on the navbar.
   - By clicking on "Log Out" button user get a message to check if they really want to log out.
   - On log out user redirects to log in page and getting a flash message - "You have been logged out!"
 
+Desktop view | Mobile view
+- | -
+![All users](static/images/login-desktop-all-users.png) **All users** | ![All users](static/images/login-mobile-all-users.png)
+
 - **Profile**
 
   - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by that user and have an option to delete or edit these recipes. This option is also available in All recipes page but only for the recipes that have been created by this user( exept the admin that can delete any recipe)
   - Once the user has added the required information for the recipe, they will see it on their profile page with a flash message of top on the page indicating that the recipe added.
+
+Desktop view | Mobile view
+- | -
+![Admin](static/images/profile-desktop-view.png) **Admin** | ![Admin](static/images/profile-mobile-view.png)
 
 - **Add Recipe**
 
   - The 'Add Recipe' button will redirect the users to the form template that the users will need to fill out to add their recipes. 
   - When users are adding a new recipe, they are guided through with notifications of what to do and requirements. 
   - The form will not be able to be submitted with any required boxes not filled out by the user.
+
+Desktop view | Mobile view
+- | -
+![Admin](static/images/add-desktop-admin.png) **Admin** | ![Admin](static/images/add-mobile-admin.png)
 
 - **Edit form**
 
@@ -145,15 +161,23 @@ Desktop view | Mobile view
   - User can change any part they desire and then click on edit button at the bottom of the page.
   - If user decided to not change the informations they can click on the cancel buttton next to edit buttton.
 
+Desktop view | Mobile view
+- | -
+![Admin](static/images/edit-desktop-admin.png) **Admin** | ![Admin](static/images/edit-mobile-admin.png)
+
+- **Manage category and marks**
+
+  - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
+
+Desktop view | Mobile view
+- | -
+![Admin](static/images/edit-desktop-admin.png) **Admin** | ![Admin](static/images/edit-mobile-admin.png)
+
 - **Delete buttton**
 
   - If users ever decide that they would like to delete any of the data, all they need to do is click on the delete button on the head part of the collapsible on either "All Recipe" page or "Profile" page.
   - In mobile view devices the delete buttton is located on top of the recipe body instead.( exept for the admin)
   - When the user tries to delete a recipe, they will be asked to confirm if that is what they really want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake. 
-
-- **Manage category and marks**
-
-  - Admin can add, edit or delete the categories or marks by clicking on these options provided for them in two buttons provided only for admin in the navbar.
 
 # **Features Left to Impliment**
 
@@ -324,7 +348,7 @@ This project is stored in a GitHub repository and hosted on Heroku.
 
 ### **How to deploy to Github**
 
-1. Click [here](https://github.com/robinwesterback/creative-hub/ "Creative Hub Repository") to get to the projects repository.
+1. Click [here](https://github.com/behnazkhoshnood/good-cook-ms3") to get to the projects repository.
 
 2. Click on 'Settings' to the far right in navigation menu below your repository name.
 
@@ -336,7 +360,7 @@ This project is stored in a GitHub repository and hosted on Heroku.
 
 ### **How to clone this repository in order to run the code locally on your machine**
 
-1. Click [here](https://github.com/robinwesterback/creative-hub/ "Creative Hub Repository") to get to the projects repository.
+1. Click [here](https://github.com/behnazkhoshnood/good-cook-ms3") to get to the projects repository.
 
 2. Click "Clone or Download".
 
@@ -394,8 +418,8 @@ All recipes currently on the page have all been added from google by me.
 The design was inspired by [Materialize](https://materializecss.com/ "Materialize").
 
 ### **Media**
-
-The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
+- Faviicon used for this project was from [favicon.cc](https://www.favicon.cc/)
+- The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
 
 ### **Recipe Images** 
 All images used on the page are linked below:

@@ -91,9 +91,7 @@
                 </div>
             </form>
         </div>
-    {% else %}
-        <h3 class="pink-text text-darken-3 center-align">Access allowed to recipe creator only.</h3>
-    {% end if %}
+    {% endif %}
 {% endblock %}
     {% block scripts %}
         <script src="{{ url_for('static',filename='js/edit.js') }}"></script>

@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 {% block content%}
     {% if session.user == admin %}
-    <h3 class="deep-purple-text text-darken-1 center-align">Manage Marks</h3>
-    <br>
-        <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('add_mark') }}" class="btn-large deep-purple darken-1 text-shadow add-mark-btn">
-                Add Mark <i class="fas fa-align-left right"></i>
-            </a>
+        <h3 class="deep-purple-text text-darken-1 center-align">Manage Marks</h3>
+        <br>
+            <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('add_mark') }}" class="btn-large deep-purple darken-1 text-shadow add-mark-btn">
+                    Add Mark <i class="fas fa-align-left right"></i>
+                </a>
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        {% for mark in marks %}
-            <div class="col s12 m4 l3">
-                <div class="card center-align text-shadow">
-                    <div class="card-content deep-purple darken-1 white-text manage-title">
-                        <span class="card-title">{{ mark.mark|capitalize }}</span>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('edit_mark', mark_id=mark._id) }}" class="btn-small edit-btn">Edit</a>
-                        <a href="{{ url_for('delete_mark', mark_id=mark._id) }}" class="btn-small delete-btn">Delete</a>
+        <br>
+        <div class="row">
+            {% for mark in marks %}
+                <div class="col s12 m4 l3">
+                    <div class="card center-align text-shadow">
+                        <div class="card-content deep-purple darken-1 white-text manage-title">
+                            <span class="card-title">{{ mark.mark|capitalize }}</span>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ url_for('edit_mark', mark_id=mark._id) }}" class="btn-small edit-btn">Edit</a>
+                            <a href="{{ url_for('delete_mark', mark_id=mark._id) }}" class="btn-small delete-btn">Delete</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <h3 class="pink-text text-darken-3 center-align">Access allowed to admin only.</h3>
-{% end if %}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
