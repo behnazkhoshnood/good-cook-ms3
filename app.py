@@ -187,20 +187,6 @@ def add_recipe():
             "add_recipe.html", categories=categories, marks=marks)
 
 
-@app.route("/delete_recipe/<recipe_id>")
-def delete_recipe(recipe_id):
-    if (session['user'] == 'admin' or
-            session['user'] == mongo.db.recipes.created_by):
-        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-        flash("Recipe Successfully Deleted!")
-        if 'admin' != mongo.db.recipes.created_by:
-            return redirect(url_for('get_recipes'))
-        else:
-            return redirect(url_for('profile', username=session['user']))
-    else:
-        return url_for('500.html')
-
-
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
@@ -239,6 +225,18 @@ def edit_recipe(recipe_id):
             recipe=recipe,
             categories=categories,
             marks=marks)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    if (session['user'] == 'admin' or
+            session['user'] == mongo.db.recipes.created_by):
+        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+        flash("Recipe Successfully Deleted!")
+        if 'admin' != mongo.db.recipes.created_by:
+            return redirect(url_for('get_recipes'))
+        else:
+            return redirect(url_for('profile', username=session['user']))
 
 
 @app.route("/get_categories")
