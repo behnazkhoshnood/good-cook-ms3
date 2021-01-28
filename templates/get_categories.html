@@ -27,5 +27,19 @@
                 </div>
             {% endfor %}
         </div>
+    {% else %}
+        <div class="row center-align">
+            <div class="col s12 center-align">
+                <div class="card deep-purple darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Error 500</span>
+                        <p>Oh no! Something bad happened. Please come back later when we fixed that problem. Thanks</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('get_recipes') }}">Go back to All Recipes page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}

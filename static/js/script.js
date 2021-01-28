@@ -72,6 +72,7 @@ $(".manage-title").each(function(){
 });
 
 $(".manage-title").height(manageTitleHight);
+$(".delete-btn, .edit-btn").contextmenu(function () { return false; });
 });
 
 

@@ -98,10 +98,10 @@ ul:not(.browser-default)> .ingredient-list {
 
 .edit-btn,
 .edit-btn:focus{
-    background-color: #297ef6;
+    background-color: #2979ff;
 }
 .edit-btn:hover{
-    background-color: #3173d1
+    background-color: #2962ff
 }
 
 

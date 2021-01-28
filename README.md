@@ -1,7 +1,11 @@
 # **Milestone Project 3**
 **Good Cook**
 
-A site that allows users to add their own recipes to be viewed publicly!
+Practical Python and Data-Centric Development Milestone Project.
+
+The main purpose of this full-stack MongoDB-based Flask project is to create a database of recipes that allows users to create, read, update and delete (CRUD) recipes. "Good Cook" gives an access to all the recipes in the database for non-registered users. At the same time, it gives the opportunity to create an account and benifit from having convenient access to all features of the website. Registered users can add new recipes, edit and delete their own ones.
+Admin user can also delete other users recipes.
+Sign in, get inspired, contribute, cook and enjoy!
 To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
 
 ![Good Cook](static/images/good-cook.png)
@@ -32,8 +36,41 @@ To view the live version of the site, please click [here](https://good-cook-bk.h
 - I have achived this by providing the edit and delete button on the collapsible header of these recipes in admin profile page. Delete btn moved to the head on the collapsible body in mobile viewdevices.
 - As an admin User, I want to be able to manage the categories and marks for the recipes.
   - I have achived this by making 2 seperated pages for the admin to go through all the categories and marks and add, edit or delete each on on them.
+
+### **Design**
+The goal in design was to create a website that is overall user friendly, has a modern feel with emphasis on providing information about recipes in a readable and eye-catching way. Therefore, following design choices were made:
+
+#### **Framework**
+Materialize, front-end framework based on Material Design was chosen for this project for its modern interface and ease of use. It was used for creating features such as navbar, cards and forms as well as for its grid.
+JQuery was used for initializing some Materialize elements.
+
+#### **Colour Scheme**
+The idea of using different shades of the same colour is implemented accross the website. The primary colour used for main buttons and headings is deep purple as it seems to create a nice contrast with white backgrounds. The secondary colour used for icons, dividers and some other buttons is blue and pink.
+
+**Main colour palette**
+
+#5e35b1 deep-purple darken-1 used for navbar, collapsible header flash text and add buttons.
+
+#7e57c2 deep-purple lighten-1 used for hover effect on navbar and add buttons.
+
+#d81b60 pink darken-1 used for reset, delete and cancel buttons and some info texts.
+
+#ad1457 pink darken-3 used for hover effect on reset, delete and cancel buttons.
+
+#2979ff blue accent-3 used for edit buttons.
+
+#2962ff blue accent-4 used for hover effect on edit buttons.
+
+#### **Typography**
+There are two fonts used across the project: Montserrat-the main primary font and Yusei Magic - the secondary font, used for some headings,inputs and labels.
+
+#### **Icons**
+
+I used FontAwesome as the main icon library across the project (e.g. for forms and buttons).
+
 ### **Wireframes**
 ---
+[Balsamiq Wireframes](https://balsamiq.com/wireframes/) was used to create all wireframes for the project.
 
  #### <center>All Recipes<center>
 
@@ -411,13 +448,11 @@ This project is stored in a GitHub repository and hosted on Heroku.
 6. Run the application.
 
 ## **Credits**
-
 ### **Content**
-
-All recipes currently on the page have all been added from google.
+All recipes currently on the page have been added from google.
 
 ### **Media**
-The Icons used for this project was from [Materialize](https://materializecss.com/ "Materialize").
+All recipe images currently on the page have been added from google.
 
 ### **Recipe Images** 
 All images used on the page are linked below:
@@ -441,6 +476,8 @@ Below is a list of the resources used to create this project:
 
 - [Handeling Applications Errors -- Flask Documentation](https://flask.palletsprojects.com/en/master/errorhandling/#error-handlers)
 - [(Totorial) Docstring in Python](https://www.datacamp.com/community/tutorials/docstrings-python)
+- [quick start -- Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/)
+- [Adding a favicon -- Flask documentations](https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/)
 - [Stack Overflow](https://stackoverflow.com/)
 
 ### **Materialize**
