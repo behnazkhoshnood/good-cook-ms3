@@ -129,9 +129,9 @@ def profile(username):
     categories = mongo.db.categories.find().sort("category_name", 1)
 
     # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     if session["user"]:
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
         return render_template(
             "profile.html",
             username=username,
@@ -187,9 +187,6 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    marks = mongo.db.marks.find().sort("mark", 1)
     if request.method == "POST":
         todays_date = datetime.today().strftime('%Y-%m-%d')
         submit = {
@@ -217,6 +214,9 @@ def edit_recipe(recipe_id):
         flash("Your Recipe Successfully Updated")
         return redirect(url_for('profile', username=session['user']))
 
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    marks = mongo.db.marks.find().sort("mark", 1)
     return render_template(
         "edit_recipe.html",
         recipe=recipe,
@@ -230,15 +230,15 @@ def delete_recipe(recipe_id):
             {"username": session["user"]})["username"]
     recipe = mongo.db.recipes.find(
         {"_id": ObjectId(recipe_id), "created_by": username})
+    if session['user'] == 'admin':
+        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+        return redirect(request.referrer)
+
     if (session['user'] == username and
             recipe == recipe):
         mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
         flash("Recipe Successfully Deleted!")
         return redirect(url_for('profile', username=session['user']))
-    if session['user'] == 'admin':
-        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-        flash("Recipe Successfully Deleted!")
-        return redirect(url_for('get_recipes'))
 
 
 @app.route("/get_categories")

@@ -1,16 +1,59 @@
 # **Milestone Project 3**
+**Practical Python and Data-Centric Development Milestone Project.**
+
 **Good Cook**
 
-Practical Python and Data-Centric Development Milestone Project.
-
-The main purpose of this full-stack MongoDB-based Flask project is to create a database of recipes that allows users to create, read, update and delete (CRUD) recipes. "Good Cook" gives an access to all the recipes in the database for non-registered users. At the same time, it gives the opportunity to create an account and benifit from having convenient access to all features of the website. Registered users can add new recipes, edit and delete their own ones.
-Admin user can also delete other users recipes.
-Sign in, get inspired, contribute, cook and enjoy!
+The main purpose of this full-stack MongoDB-based Flask project is to create a database of recipes that allows users to create, read, update and delete (CRUD) recipes.
 To view the live version of the site, please click [here](https://good-cook-bk.herokuapp.com/)
 
 ![Good Cook](static/images/good-cook.png)
 
-## **UX Design**
+## **UX**
+"Good Cook" gives an access to all the recipes in the database for non-registered users. At the same time, it gives the opportunity to create an account and benifit from having convenient access to all features of the website. Registered users can add new recipes, edit and delete their own ones.
+Admin user can also delete other users recipes.
+Sign in, get inspired, contribute, cook and enjoy!
+
+### **Database structure**
+
+There are 4 collection in the database:
+- categories:
+```
+{
+  "_id":                   <ObjectId>,
+  "category_name":         <string>,
+}
+```
+- marks:
+```
+{
+  "_id":             <ObjectId>,
+  "mark":            <string>,
+}
+```
+- users:
+```
+{
+"_id":                   <ObjectId>,
+"first_name":            <string>,
+"last_name":             <string>,
+"username":              <string>,
+"password":              <Binary>
+}
+```
+- recipes:
+```
+{
+"_id":                       <ObjectId>,
+"category_name":             <string>,
+"recipe_name":               <string>,
+"img_url":                   <string>,
+"created_by":                <string>,
+"date_added":                <string>,
+"marks":                     <array>,
+"recipe_ingredients":        <array>,
+"cooking_steps":             <array>
+}
+```
 ### **User Stories**
 **First Time Users**
 

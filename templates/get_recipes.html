@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- not registered user note -->
     {% if not session.user|lower %}
     <div class="row">
         <br>
@@ -10,7 +10,7 @@
     {% endif %}
 
 <h3 class="deep-purple-text text-darken-1 center-align">All Recipes</h3>
-
+<!-- search input -->
 <div class="row card-panel grey lighten-5" id="search-area">
     <form action="{{ url_for('search') }}" method="post" class="col s12">
         <div class="row valign-wrapper center-align">
@@ -37,10 +37,12 @@
             <div class="collapsible-header white-text deep-purple darken-1 text-shadow">
                 <i class="fas fa-caret-down caret"></i>
                 <div class="col center-align edit-delete-div">
+                    <!-- admin delete btn -->
                     {% if session.user|lower == "admin" %}
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                             class="btn-small delete-btn admin-delete-btn">Delete</a>
                     {% endif %}
+                    <!-- recipe created_by edit and delete btn -->
                     {% if session.user|lower == recipe.created_by|lower and session.user|lower != "admin" %}
                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                             class="btn-small delete-btn hide-on-small-only">Delete</a>
@@ -57,6 +59,7 @@
                 </div>
             </div>
             <div class="collapsible-body">
+                <!-- recipe created_by and delete btn in s and m views -->
                 <h6 class="hide-on-large-only center-align">
                     Created by : {{ recipe.created_by|capitalize }}<br>
                     on {{ recipe.date_added }}
@@ -67,14 +70,16 @@
                         class="btn-small delete-btn hide-on-med-and-up -align">Delete Recipe</a>
                     </div>
                 {% endif %}
+                <!-- recipe category -->
                 <strong>{{ recipe.category_name|capitalize }}</strong><br>
                 <br>
-
+                <!-- recipe marks -->
                 {% for mark in recipe.marks %}
                     {{ mark|capitalize }}<br>
                 {% endfor %}
                 <br>
                 <div class="row">
+                    <!-- recipe ingredients -->
                     <ul class="col l6 s12">
                         {% for ingredient in recipe.recipe_ingredients %}
                             <li class="ingredient-list">
@@ -83,10 +88,12 @@
                         {% endfor %}
                         <br>
                     </ul>
+                    <!-- recipe image -->
                     <div class="col l6 s12">
                         <img class="responsive-img" src="{{ recipe.image_url }}" alt="image of {{ recipe.recipe_name }}" />
                     </div>
                 </div>
+                <!-- cooking steps -->
                 <ol>
                     {% for step in recipe.cooking_steps %}
                         <li>
@@ -98,6 +105,7 @@
         </li>
         {% endfor %}
 </ul>
+<!-- if no recipe found -->
 {% else %}
     <h3 class="pink-text text-darken-3 center-align">No Results Found</h3>
 {% endif %}

@@ -6,13 +6,14 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     $('input#username, input#password, input#confirm-password, input#first_name, input#last_name').characterCounter();
     $('select').formSelect();
-    $('li').filter(function () {
+       // to avoid empty strings
+    $('li, .edit-delete-div').filter(function () {
         return $(this).text().trim() === '';}).remove();
-    $('.edit-delete-div').filter(function () {
-        return $(this).text().trim() === '';}).remove();
+       // profile info note
     $('.profile-list').filter(function () {
         return $(this).text().trim() === '';
     }).append("<h6 class='profile-note'>You didn't add any recipe yet. Click on add recipe in the menu to add your recipe.</h6>").removeClass('collapsible');
+       // fixing select validation
  validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4527a0", "box-shadow": "0 1px 0 0 #4527a0" };
@@ -40,10 +41,10 @@ $(document).ready(function () {
             }
         });
     }
+       // Warrning notes
     $('.delete-btn').click(function () {
         var checkstr = confirm('are you sure you want to delete this recipe?');
         if (checkstr == true) {
-            // do your code
         } else {
             return false;
         }
@@ -51,7 +52,6 @@ $(document).ready(function () {
     $('.log-out').click(function () {
         var checkstr = confirm('are you sure you want to log out?');
         if (checkstr == true) {
-            // do your code
         } else {
             return false;
         }
@@ -59,12 +59,11 @@ $(document).ready(function () {
         $('.cancel-btn').click(function () {
         var checkstr = confirm('are you sure you want to cancel?');
         if (checkstr == true) {
-            // do your code
         } else {
             return false;
         }
     });
-
+   // to make the height of the cards header equal
     var manageTitleHight = 0;
 
 $(".manage-title").each(function(){
@@ -72,6 +71,7 @@ $(".manage-title").each(function(){
 });
 
 $(".manage-title").height(manageTitleHight);
+   // to avoid copying the link of the delete and edit btns
 $(".delete-btn, .edit-btn").contextmenu(function () { return false; });
 });
 

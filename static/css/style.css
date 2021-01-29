@@ -1,18 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Yusei+Magic&display=swap');
 
+/* ------------------------------------------------------- general */
 body{
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-}
-
-.card{
-    margin-top: 15px;
-}
-
-#search-area{
-    padding: 2px;
 }
 
 header,
@@ -35,30 +28,25 @@ h6{
     line-height: 25px;
 }
 
-.head-div h6{
-    margin-top: 15px;
-    margin-left: 15px;
-    padding-left: 15px;
-}
-
 .flashes h4{
     line-height: 2;
-}
-
-#submit-btn:hover,
-.add-mark-btn:hover,
-.add-category-btn:hover,
-.search-btn:hover,
-nav ul li:hover,
-#register-btn:hover,
-.select-dropdown li.disabled>span{
-    background-color: #7e57c2 !important;
-    color: #ffffff;
 }
 
 .dropdown-content li>a,
 .dropdown-content li>span{
     color: #7e57c2;
+}
+
+/* --------------------------------------- get recipes and profile page */
+#search-area{
+    padding: 2px;
+}
+
+
+.head-div h6{
+    margin-top: 15px;
+    margin-left: 15px;
+    padding-left: 15px;
 }
 
 ul:not(.browser-default)> .ingredient-list {
@@ -110,12 +98,30 @@ ul:not(.browser-default)> .ingredient-list {
     line-height: 42px;
 }
 
+.caret{
+    max-width: 20px;
+    vertical-align: middle;
+    padding-top: 15px;
+}
+
 .profile-note{
     background-color: #5e35b1 ;
     color: #ffffff;
     line-height: 80px;
     text-align: center;
     
+}
+
+/* --------------------------------------------------------------- add pages */
+#submit-btn:hover,
+.add-mark-btn:hover,
+.add-category-btn:hover,
+.search-btn:hover,
+nav ul li:hover,
+#register-btn:hover,
+.select-dropdown li.disabled>span{
+    background-color: #7e57c2 !important;
+    color: #ffffff;
 }
 
 /* ------------------------------------------------------invalid input style */
@@ -176,10 +182,9 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
     color: #4527a0;
 }
 
-.caret{
-    max-width: 20px;
-    vertical-align: middle;
-    padding-top: 15px;
+/* ------------------------------------------------------manage pages */
+.card{
+    margin-top: 15px;
 }
 
 .card .card-content .card-title{
@@ -188,6 +193,7 @@ input[type=search]:not(.browser-default):focus.valid ~ label, textarea.materiali
     line-height: 29px;
 }
 
+/* ------------------------------------------------------maedias */
 @media screen and (max-width: 600px) {
     h3,
     h4,

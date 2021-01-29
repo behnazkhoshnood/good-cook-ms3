@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content%}
+<!-- only admin accessibility -->
     {% if session.user|lower == "admin" %}
         <h3 class="deep-purple-text text-darken-1 center-align">Manage Categories</h3>
         <br>
@@ -27,6 +28,7 @@
                 </div>
             {% endfor %}
         </div>
+        <!-- if not admin -->
     {% else %}
         <div class="row center-align">
             <div class="col s12 center-align">
