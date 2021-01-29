@@ -151,7 +151,7 @@ def logout():
 # Add a Recipe Function
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    if session["user"]:
+    if "user" in session:
         if request.method == "POST":
             todays_date = datetime.today().strftime('%Y-%m-%d')
             recipe = {
@@ -183,11 +183,20 @@ def add_recipe():
         marks = mongo.db.marks.find().sort("mark", 1)
         return render_template(
             "add_recipe.html", categories=categories, marks=marks)
+    else:
+        return render_template("unauthorized.html")
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    if request.method == "POST":
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if not recipe:
+        return render_template("unauthorized.html")
+    elif "user" in session and recipe["created_by"] != session["user"]:
+        return render_template("unauthorized.html")
+    elif (request.method == "POST" and
+            "user" in session and
+            recipe["created_by"] == session["user"]):
         todays_date = datetime.today().strftime('%Y-%m-%d')
         submit = {
             "category_name": request.form.get("category_name"),
@@ -213,32 +222,38 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Your Recipe Successfully Updated")
         return redirect(url_for('profile', username=session['user']))
-
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    marks = mongo.db.marks.find().sort("mark", 1)
-    return render_template(
-        "edit_recipe.html",
-        recipe=recipe,
-        categories=categories,
-        marks=marks)
+    elif (request.method == "GET" and
+            "user" in session and
+            recipe["created_by"] == session["user"]):
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        marks = mongo.db.marks.find().sort("mark", 1)
+        return render_template(
+            "edit_recipe.html",
+            recipe=recipe,
+            categories=categories,
+            marks=marks)
+    else:
+        return render_template("unauthorized.html")
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-    recipe = mongo.db.recipes.find(
-        {"_id": ObjectId(recipe_id), "created_by": username})
-    if session['user'] == 'admin':
-        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-        return redirect(request.referrer)
+    if "user" in session:
+        username = mongo.db.users.find_one(
+                {"username": session["user"]})["username"]
+        recipe = mongo.db.recipes.find(
+            {"_id": ObjectId(recipe_id), "created_by": username})
+        if session['user'] == 'admin':
+            mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+            return redirect(request.referrer)
 
-    if (session['user'] == username and
-            recipe == recipe):
-        mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-        flash("Recipe Successfully Deleted!")
-        return redirect(url_for('profile', username=session['user']))
+        if (session['user'] == username and
+                recipe == recipe):
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("Recipe Successfully Deleted!")
+            return redirect(url_for('profile', username=session['user']))
+    else:
+        return render_template("unauthorized.html")
 
 
 @app.route("/get_categories")
@@ -334,4 +349,4 @@ def delete_mark(mark_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
