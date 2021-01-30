@@ -184,16 +184,16 @@ def add_recipe():
         return render_template(
             "add_recipe.html", categories=categories, marks=marks)
     else:
-        return render_template("unauthorized.html")
+        return render_template("401.html")
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if not recipe:
-        return render_template("unauthorized.html")
+        return render_template("401.html")
     elif "user" in session and recipe["created_by"] != session["user"]:
-        return render_template("unauthorized.html")
+        return render_template("401.html")
     elif (request.method == "POST" and
             "user" in session and
             recipe["created_by"] == session["user"]):
@@ -233,7 +233,7 @@ def edit_recipe(recipe_id):
             categories=categories,
             marks=marks)
     else:
-        return render_template("unauthorized.html")
+        return render_template("401.html")
 
 
 @app.route("/delete_recipe/<recipe_id>")
@@ -242,9 +242,10 @@ def delete_recipe(recipe_id):
         username = mongo.db.users.find_one(
                 {"username": session["user"]})["username"]
         recipe = mongo.db.recipes.find(
-            {"_id": ObjectId(recipe_id), "created_by": username})
+            {"_id": ObjectId(recipe_id)})
         if session['user'] == 'admin':
             mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+            flash("Recipe Successfully Deleted!")
             return redirect(request.referrer)
 
         if (session['user'] == username and
@@ -253,28 +254,44 @@ def delete_recipe(recipe_id):
             flash("Recipe Successfully Deleted!")
             return redirect(url_for('profile', username=session['user']))
     else:
-        return render_template("unauthorized.html")
+        return render_template("401.html")
 
 
 @app.route("/get_categories")
 def get_categories():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template(
-        "get_categories.html",
-        categories=categories)
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
+        categories = list(
+            mongo.db.categories.find().sort(
+                "category_name", 1))
+        return render_template(
+            "get_categories.html",
+            categories=categories)
 
 
 @app.route("/get_marks")
 def get_marks():
-    marks = list(mongo.db.marks.find().sort("mark", 1))
-    return render_template(
-        "get_marks.html",
-        marks=marks)
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
+        marks = list(mongo.db.marks.find().sort("mark", 1))
+        return render_template(
+            "get_marks.html",
+            marks=marks)
 
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
-    if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
         if request.method == "POST":
             category = {
                 "category_name": request.form.get("category_name")
@@ -282,14 +299,18 @@ def add_category():
             mongo.db.categories.insert_one(category)
             flash("New Category Added")
             return redirect(url_for('get_categories'))
-
-        return render_template("add_category.html")
+        if request.method == "POST":
+            return render_template("add_category.html")
 
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
-    if request.method == "POST":
-        if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
+        if request.method == "POST":
             submit = {
                 "category_name": request.form.get("category_name")
             }
@@ -297,13 +318,19 @@ def edit_category(category_id):
             flash("Category Successfully Updated")
             return redirect(url_for('get_categories'))
 
-        category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-        return render_template("edit_category.html", category=category)
+        if request.method == "GET":
+            category = mongo.db.categories.find_one(
+                {"_id": ObjectId(category_id)})
+            return render_template("edit_category.html", category=category)
 
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
-    if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
         mongo.db.categories.remove({"_id": ObjectId(category_id)})
         flash("Category Successfully Deleted")
         return redirect(url_for('get_categories'))
@@ -311,7 +338,11 @@ def delete_category(category_id):
 
 @app.route("/add_mark", methods=["GET", "POST"])
 def add_mark():
-    if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
         if request.method == "POST":
             mark = {
                 "mark": request.form.get("mark")
@@ -320,12 +351,17 @@ def add_mark():
             flash("New Mark Added")
             return redirect(url_for('get_marks'))
 
-        return render_template("add_mark.html")
+        if request.method == "GET":
+            return render_template("add_mark.html")
 
 
 @app.route("/edit_mark/<mark_id>", methods=["GET", "POST"])
 def edit_mark(mark_id):
-    if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
         if request.method == "POST":
             submit = {
                 "mark": request.form.get("mark")
@@ -334,13 +370,18 @@ def edit_mark(mark_id):
             flash("Mark Successfully Updated")
             return redirect(url_for('get_marks'))
 
+    if request.method == "POST":
         mark = mongo.db.marks.find_one({"_id": ObjectId(mark_id)})
         return render_template("edit_mark.html", mark=mark)
 
 
 @app.route("/delete_mark/<mark_id>")
 def delete_mark(mark_id):
-    if session["user"] == "admin":
+    if "user" not in session:
+        return render_template("401.html")
+    if ("user" in session and session['user'] != 'admin'):
+        return render_template("401.html")
+    else:
         mongo.db.marks.remove({"_id": ObjectId(mark_id)})
         flash("Mark Successfully Deleted")
         return redirect(url_for('get_marks'))
