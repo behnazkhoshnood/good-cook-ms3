@@ -23,17 +23,20 @@
                     <label for="category_name">Category</label>
                 </div>
                 </div>
-                <!-- marks -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
-                        <select id="marks" name="marks[]" multiple class="validate">
-                            <option value="" disabled selected>Choose your marks( Optional )</option>
-                            {% for mark in marks %}
-                            <option value="{{ mark.mark }}">{{ mark.mark|capitalize }}</option>
-                            {% endfor %}
-                        </select>
-                        <label for="mark">Marks</label>
+        <!-- marks -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix deep-purple-text text-darken-1"></i>
+                <select id="marks" name="marks[]" multiple class="validate">
+                    <option value="" disabled>Choose your marks( Optional )</option>
+                    {% for mark in recipe.marks %}
+                        <option value="{{ mark }}" selected>{{ mark|capitalize }}</option>
+                    {% endfor %}
+                    {% for mark in marks %}
+                        <option value="{{ mark.mark }}">{{ mark.mark.capitalize() }}</option>
+                    {% endfor %}
+                </select>
+                <label for="marks">Marks</label>
                     </div>
                 </div>
                 <!-- recipe name -->

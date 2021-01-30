@@ -160,19 +160,12 @@ Desktop view | Mobile view
     - Admin Users, will be able to delete any recipes entered by any users, whereas everyone else will only be able to edit or delete their own recipes.
     - Delete button is shown in all views to the admin in the colapsible header whereas for other users this button will change position to the top of collapsible body.
 
-  Desktop view | Mobile view
-  - | -
-  ![All recipes Admin desktop view](static/images/desktop-view-admin.png) | ![all recipes Admin mobile view](static/images/mobile-view-admin.png)
-  ---
+---
   - **Profile**
     - By clicking on the profile buttton on the top navbar user can see the recipes that have been added by this user and have an option to delete or edit these recipes. This option is also available in All recipes page but only for the recipes that have been created by this user.( except the admin that can delete any recipe.)
 
     - If this user didn't add any recipe to this page yet they recive a small note and instructed how to do so.
-
-  Desktop view | Mobile view
-  - | -
-  ![profile admin desktop view](static/images/profile-desktop-view.png) | ![profile admin mobile view](static/images/profile-mobile-view.png)
-  ---
+---
   - **Add Recipe page**
 
     - The 'Add Recipe' button will redirect the users to the form template that the users will need to fill out to add their recipes. 
@@ -181,11 +174,7 @@ Desktop view | Mobile view
     - The cancel button also provided in the bottom of this page in case the user decided to not add the recipe.
     - A warning pop-up note provided to ask the user if they are sure that they don't want to add any recipe, when clicking on cancel bottom. If user confirms he/she will be redirected to profile page without adding a recipe.
     - Once the user has added the required information for the recipe, they will see it on their profile page with a flash message of top on the page indicating that the recipe added.
-
-  Desktop view | Mobile view
-  - | -
-  ![add recipe admin desktop view](static/images/add-desktop-admin.png) **Admin** | ![add recipe admin mobile view](static/images/add-mobile-admin.png)
-  ---
+---
   - **Edit form**
 
     - If users ever decide that they would like to edit any of the data, all they need to do is click on the edit button on the head part of the collapsible on either "All Recipe" page or "Profile" page. For admin, this button can be found only on profile page for his/her own recipes.
@@ -193,26 +182,19 @@ Desktop view | Mobile view
     - User can change any part they desire and then click on edit button at the bottom of the page.
     - If user decided to not change the informations they can click on the cancel buttton next to edit buttton.
 
-  Desktop view | Mobile view
-  - | -
-  ![edit form admin desktop view](static/images/edit-desktop-admin.png) | ![edit form admin mobile view](static/images/edit-mobile-admin.png)
-  ---
+---
   - **Delete buttton**
+
     - If user decides that they would like to delete any of their recipe, all they need to do is click on the delete button, on the head of the collapsible, on either "All Recipe" page or "Profile" page.
     - In mobile view devices the delete buttton is located on top of the recipe body instead.( exept for the admin on all recipe page. Admin delete botton stays in the collapsible header in all views in "All Recipes" page.)
     - When the user tries to delete a recipe, they will be asked to confirm if that is what they really want to do by means of a confirmation message. This is to prevent any user to delete a recipe by mistake.
-  ---
+
   - **Manage category and marks**
+
     - Admin can add, edit or delete the categories or marks by clicking on these options provided in the navbar, only for admin user, in two pages provided ("Manage Categories" and "Manage Marks").
 
-  Desktop view | Mobile view
-  - | -
-  ![manage categories desktop](static/images/manage-categories-desktop.png) | ![manage categories mobile](static/images/manage-categories-mobile.png)
-  ![manage marks desktop](static/images/manage-marks-desktop.png) | ![manage marks mobile](static/images/manage-marks-mobile.png)
-  ![add categories desktop](static/images/add-category-desktop.png) | ![add categories mobile](static/images/add-category-mobile.png)
-  ![add marks desktop](static/images/add-mark-desktop.png) | ![add marks mobile](static/images/add-mark-mobile.png)
-  ---
   - **Register/Login page**
+
     - On registeration user is asked to enter their first and last name, username and a password and confirmation for the password.
     - A user will need to register a profile to be able to add any recipes, this infomation is on get_recipe.html.
     - If a user tries to register a username which is used by someone else already, they will not be allowed to use that username. The user will be notified of this by use of Flash Messages - "Username already exists!".
@@ -221,17 +203,12 @@ Desktop view | Mobile view
     - When a user has successfully registered their new profile, they will be redirected to 'get_recipes.html'.
     - When a returning user logs in successfully, they will also be redirected to 'get_recipes.html'.
     - If a registered user puts their infomation in incorrectly when loging in, they will be notified by the use of Flash Messages - "Incorrect Username and/or Password".
-
-  Desktop view | Mobile view
-  - | -
-  ![register All users desktop](static/images/desktopview-all-users.png) | ![register All users mobile](static/images/mobile-view-all-users.png)
-  ![log in All users desktop](static/images/login-desktop-all-users.png) | ![log in All users mobile](static/images/login-mobile-all-users.png)
-  ---
+---
   - **Log Out**
     - user is provided by the option to log out when clicking on the button provided on the navbar.
     - By clicking on "Log Out" button user get a message to check if they really want to log out.
     - On log out user redirects to log in page and getting a flash message: "You have been logged out!"
-
+---
 - **Features Left to Implement**
    - Adding a like/dislike button for each Recipe and sort the recipes from the most to least favorites.
    - Adding the liked recipes in a new section in profile page.
@@ -289,11 +266,22 @@ Desktop view | Mobile view
     - [Python Validator](http://pep8online.com/) - No issues
 ---
 ## **Testing**
+- **Supported browsers and screens**
+
+  - The Website was tested on Google Chrome, Microsoft Edge, and Firefox and Opera browser.
+
+  - The website was shown responsive on a variety of emulated devices such as iphone4, 5, SE, 6, 6 plus, 7, 7plus, 8, 8plus and X, Nokia Lumia 520 and N9, Moto G4, Galaxy S5, Blackberry Z30 and playbook, Galaxy note, Microsoft Lumia 950 and 550, LG Optimus L70, Nexus 4, 5, 6, 7 and 10, 6P, Pixel 2 and 2XL, iPad mini, iPad, Kindle Fire, iPad pro and laptop with MDPI, touch, and HiDPI.
+
+  - A large amount of testing was done to ensure that all pages were linking correctly.
+
+  - Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
+
 - **Register.html**
   - **Test 1 - Register - Test Passed ✓**
 
     - **Step 1** - Click the register button on the navbar for desktop view devices or side navbar for tablet or mobile view devices.
     - **Step 2** - Put in a first name(2 character minimum).
+
     - **Step 3** - Put in a last name (also 2 character minimum).
     - **Step 4** - Put in a username which is unique (5 character minimum).
     - **Step 5** - Put in a password (also 5 character minimum).
@@ -303,32 +291,49 @@ Desktop view | Mobile view
   - **Test 2 - Register with a username which already exists - Test Passed ✓**
 
     - **Step 1** - While on 'register.html', enter username 'admin' or any username existing in our data base.
+
     - **Step 2** - Enter password (5 character minimum).
     - **Step 3** - Click the 'Register' button.
     - **Step 4** - Be presented by flash message containing "Username already exists!".
   - **Test 3 - Register with less than 2 Alphabet for first and last name and less than 5 characters for username - Test Passed ✓**
     - **step 1** - While on 'register.html', enter first or last name with numbers or less than 2 alphabet is shown invalid.
+
     - **Step 2** - While on 'register.html', enter username or password with less than 5 charecters is shown invalid.
     - **Step 3** - As the 'Required' and minlength=2 for first and last name, and minlength=5 for username and password has been added, the form will not be submitted.
     - **Step 4** - Changing first and last name to more than 1 alphabet, and username and password to more than 4 charecters will submit the form.
     - **step 5** - All the tooltips are shown an the page by hovering over the input icon.
 
+  Desktop view | Mobile view
+  - | -
+  ![register All users desktop](static/images/desktopview-all-users.png) | ![register All users mobile](static/images/mobile-view-all-users.png)
+  ---
 - **Login.html**
 
   - **Test 1 - Log In - Test Passed ✓**
+
     - **Step 1** - Enter your Username.
+
     - **Step 2** - Enter your Password.
     - **Step 3** - Click the 'log in' buttton.
     - **Step 4** - Be redirected to 'get_recipes.html' with flash message containing "Welcome, [ user ]".
 
   - **Test 2 - Log in attempt with incorrect info - Test Passed ✓**
-    - **Step 1** - Enter credentials that are incorrect.  
+
+    - **Step 1** - Enter credentials that are incorrect.
+
     - **Step 2** - Click the 'log in' button.
     - **Step 3** - Be redirected to the log in page with a flash message containing "Incorrect Username and/or Password".
 
+  Desktop view | Mobile view
+  - | -
+  ![log in All users desktop](static/images/login-desktop-all-users.png) | ![log in All users mobile](static/images/login-mobile-all-users.png)
+
 - **Adding a New Recipe**
+
   - **Test 1 - Adding a New Recipe - Test Passed ✓**
+
     - **Step 1** - Log In.
+
     - **Step 2** - Be redirected to get_recipes.
     - **Step 3** - Click the button labeled 'Add Recipe'.
     - **Step 4** - Be redirected to the form for user to fill in.
@@ -338,13 +343,21 @@ Desktop view | Mobile view
     - **Step 8** - Once the form is filled out to the satisfaction of the constraints and the 'Add Recipe!' button is clicked user will be redirected to 'profile.html' where the user can see their newly added recipe located alphabeticly in the collapsible dropdown list. User also be notified that the new recipe added by flash notifications.
     - **Step 9** - Check the contents of the newly added recipe right away by clicking on that recipe in the dropdown list.
 
+  Desktop view | Mobile view
+  - | -
+  ![add recipe admin desktop view](static/images/add-desktop-admin.png) Admin views: | ![add recipe admin mobile view](static/images/add-mobile-admin.png)
+    **note:** same for all users, except that in the admin page there is manage Catogory and manage mak buttons visable in the navbar.
+
   - **Test 2 - Avoids empty strings in out textarea fields - Test Passed ✓**
+
     - **Step 1** - Fill in all the required feilds in "Add Recipe" form.
     - **Step 2** - Add an empty line to the ingredients or cooking steps textarea.
     - **Step 3** - click on "Add Recipe" button.
     - **Step 4** - Empty lines will be removed when showing the recipe in the "All Recipes" or "Profile" page.
+
 - **Editing/Deleting a Recipe**
   - **Test 1 - Editing a Recipe - Test Passed ✓**
+
     - **Step 1** - Navigate to profile or All recdipe page.
     - **Step 2** - Click the button labeled "EDIT" for the desired recipe.
     - **Step 3** - Navitgate to the part of the recipe that the user wishes to edit.
@@ -352,21 +365,36 @@ Desktop view | Mobile view
     - **Step 5** - Be redirected to profile.html and a flash message, notifing the user that the recipe is updated.
     - **Step 6** - Should the user wish to cancel the action, they can click on the cancel button located on bottom left.
     - **Step 7** - If user clicks the cancel button he/she will be redirected to profile page and all changes will be disregarded.
+
+  Desktop view | Mobile view
+  - | -
+  ![edit form admin desktop view](static/images/edit-desktop-admin.png) | ![edit form admin mobile view](static/images/edit-mobile-admin.png)
+---
   - **Test 2 - Avoid duplication in multi choice dropdown input field - Test Passed ✓**
     - **step 1** - In edit form in marks field user can just add one of each choices to the list.
 
-  - **Test 2 - Deleting a Recipe for registered users - Test Passed ✓**
+  - **Test 3 - Deleting a Recipe for registered users - Test Passed ✓**
     - **Step 1** - Navigate to All Recipes, or profile page.
     - **Step 2** - Click the button labeled "DELETE". In mobile phone view this button can be found on top of the recipe collapsible body but in desktop view it is placed in the head of the collapsible.
     - **Step 3** - User gets a message if they are sure to delete this recipe.
     - **step 4** - If confirm the recipe deletes and user redirects to their profile page but if press cancel, recipe stays unchanged and the user will be redirected to their profile page. Admin user will stay in any page that they deleted the recipe from.
 
+  Desktop view | Mobile view
+  - | -
+  ![profile admin desktop view](static/images/profile-desktop-view.png) | ![profile admin mobile view](static/images/profile-mobile-view.png)
+---
   - **Test 2 - Deleting a Recipe for Admin - Test Passed ✓**
     - **Step 1** - Navigate to All Recipes, or profile page.
     - **Step 2** - Click the button labeled "DELETE", in the head of collapsible, for each rcipe.
     - **Step 3** - User gets a message if they are sure to delete this recipe.
     - **step 4** - If confirm the recipe deletes and user redirects to their profile page but if press cancel, recipe stays unchanged and the user will be redirected to their profile page. Admin user will stay in any page that they deleted the recipe from.
+
+  Desktop view | Mobile view
+  - | -
+  ![All recipes Admin desktop view](static/images/desktop-view-admin.png) | ![all recipes Admin mobile view](static/images/mobile-view-admin.png)
+
 - ### **Manage categories and marks pages( only admin accessibility )**
+
   - **Test 1 - Add, edit or delete categories or marks - Test Passed ✓**
 
     - **step 1** - Click on the Manage Categries to manage the categories or Manage Marks to manage the marks.
@@ -378,7 +406,15 @@ Desktop view | Mobile view
     - **step 7** - if press ok, admin redirects to the get_categories if in add category form, or get_marks if in add marks form.
     - **step 8** - if press cancel, no category or mark will be added and user will be redirected to "Add Catogory" or "Add mark" regarding to which one that he/she was adding.
 
+  Desktop view | Mobile view
+  - | -
+  ![manage categories desktop](static/images/manage-categories-desktop.png) | ![manage categories mobile](static/images/manage-categories-mobile.png)
+  ![manage marks desktop](static/images/manage-marks-desktop.png) | ![manage marks mobile](static/images/manage-marks-mobile.png)
+  ![add categories desktop](static/images/add-category-desktop.png) | ![add categories mobile](static/images/add-category-mobile.png)
+  ![add marks desktop](static/images/add-mark-desktop.png) | ![add marks mobile](static/images/add-mark-mobile.png)
+  ---
 - ### **Log Out**
+
   - **Test 1 - Log out - Test Passed ✓**
     - **step 1** - Click on the "log Out" button in the navbar to log out.
     - **step 2** - Pressing this button bring up a note: "Are you sure you want to log out?".
@@ -407,6 +443,49 @@ var marks = document.getElementById("mark");
     } 
   },{});
 });
+```
+- **Issue 3** - Users could open unauthorized pages if providing it's url route path in the browser.
+
+  - I fixed this problem with adding error handlers in my python and using relative error conditions in the functions that needed like manage, add, edit and delete categories and mark pages, users profile page, add, edit and delete buttons. These codes are provided with docstrings in my [app.py](app.py) in more details.
+```
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+
+@app.errorhandler(403)
+def page_forbidden(e):
+    return render_template('403.html'), 500
+```
+- **Issue 4** - The title areas for category and marks where changing height depending on their html note.
+    - I fixed this issue with adding the code below to my script.js file
+```
+    var manageTitleHight = 0;
+
+$(".manage-title").each(function(){
+   if ($(this).height() > manageTitleHight) { manageTitleHight = $(this).height(); }
+});
+
+$(".manage-title").height(manageTitleHight);
+   // to avoid copying the link of the delete and edit btns
+$(".delete-btn, .edit-btn").contextmenu(function () { return false; });
+});
+```
+- **Issue 5** - By putting some recipe informations with both edit and delete buttons in the recipes collapsible header, mas not a good choice for smaller views.
+  - I fixed that issue by using some materialize classes to replace dome of these info in the body of the collapsible in smaller views.
+```
+This class is in the collapsible header and hide this buttton in small views.
+ <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+ class="btn-small delete-btn hide-on-small-only">Delete</a>
+
+This class is in the collapsible body and hide this buttton in medium and large views.
+ <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+class="btn-small delete-btn hide-on-med-and-up -align">Delete Recipe</a>
 ```
 ---
 ## **Deployment**
