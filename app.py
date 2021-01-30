@@ -22,22 +22,55 @@ mongo = PyMongo(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
+    '''
+    Displays the page not found error.
+
+    Parameters:
+        e (str):The string which is an error.
+
+    Returns:
+        Renders the 404.html bearing the error 404.
+    '''
     return render_template('404.html'), 404
 
 
 @app.errorhandler(500)
 def internal_server_error(e):
+    '''
+    Displays the internal server error.
+
+    Parameters:
+        e (str):The string which is an error.
+
+    Returns:
+        Renders the 500.html bearing the error 500.
+    '''
     return render_template('500.html'), 500
 
 
 @app.errorhandler(403)
 def page_forbidden(e):
+    '''
+    Displays the a forbidden page error.
+
+    Parameters:
+        e (str):The string which is an error.
+
+    Returns:
+        Renders the 403.html bearing the error 403.
+    '''
     return render_template('403.html'), 500
 
 
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
+    '''
+    Displays the recipes details.
+
+    Returns:
+        Renders the get_recipes.html bearing the recipes details.
+    '''
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     return render_template(
         "get_recipes.html",
@@ -46,6 +79,13 @@ def get_recipes():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    '''
+    Displays the search details.
+
+    Returns:
+        Renders the get_recipes.html bearing
+        the recipes with this search indexes.
+    '''
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return render_template(
@@ -55,6 +95,15 @@ def search():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    '''
+    Displays the register form.
+
+    Returns:
+        Redirects to the register.html if username already exists.
+        Redirects to the register.html if password confirmation don't match.
+        Redirects to get_recipes.html if form filled correctlly.
+        Renders register.html page bearing the registerd user details.
+    '''
     if request.method == "POST":
         # store form inputs in variables
         first_name = request.form.get("first_name")
@@ -96,6 +145,16 @@ def register():
 # Log in Function
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    '''
+    Displays the login form.
+
+    Returns:
+        Redirects to get_recipes.html if
+        user exists and and username and password are correct.
+        Redirects to login.html if invalid password.
+        Redirects to login.html if usename doesn't exist.
+        Renders the login.html bearing the user details.
+    '''
     if request.method == "POST":
         # check if the username already exist in the database
         existing_user = mongo.db.users.find_one(
@@ -125,6 +184,15 @@ def login():
 # Profile page
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    '''
+    Displays the profile details.
+
+    Parameters:
+        username (str):The string which is login name of the user.
+
+    Returns:
+        Renders the profile.html bearing this user's recipes details.
+    '''
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     categories = mongo.db.categories.find().sort("category_name", 1)
 
@@ -142,6 +210,12 @@ def profile(username):
 # Log out Function
 @app.route("/logout")
 def logout():
+    '''
+    Logs out this user.
+
+    Returns:
+        Redirects to login.html.
+    '''
     # remove user from session cookies
     flash("You have been logged out!")
     session.pop("user")
@@ -151,6 +225,15 @@ def logout():
 # Add a Recipe Function
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    '''
+    Displays the add recipe form.
+
+    Returns:
+        Redirects to user's profile.html page if form filled correctlly.
+        Renders the add_recipe.html page bearing the added recipe details.
+        Renders the 401.html page bearing the
+        unauthorized error page if not registered user.
+    '''
     if "user" in session:
         if request.method == "POST":
             todays_date = datetime.today().strftime('%Y-%m-%d')
@@ -189,9 +272,24 @@ def add_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    '''
+    Displays the edit recipe details.
+
+    Parameters:
+        recipe_id (str):The string which is this recipe id.
+
+    Returns:
+        Renders 404.html bearing a page not found error
+        if the recipe doesn't exist.
+        Renders 401.html bearing an unauthorized error
+        if user in session is not recipe creator.
+        redirects to this user profile page if
+        user in session is the recipe creator.
+        Renders the edit_recipe.html bearing the updated recipe details.
+    '''
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if not recipe:
-        return render_template("401.html")
+        return render_template("404.html")
     elif "user" in session and recipe["created_by"] != session["user"]:
         return render_template("401.html")
     elif (request.method == "POST" and
@@ -238,6 +336,18 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    '''
+    The delete recipe function.
+
+    Parameters:
+        recipe_id (str):The string which is this recipe id.
+
+    Returns:
+        Redirects the admin to which page they are in.
+        Redirect the recipe creator to their profile.
+        Renders 401.html bearing an unauthorized error if
+        user in session is not admin or recipe creator.
+    '''
     if "user" in session:
         username = mongo.db.users.find_one(
                 {"username": session["user"]})["username"]
@@ -259,6 +369,13 @@ def delete_recipe(recipe_id):
 
 @app.route("/get_categories")
 def get_categories():
+    '''
+    Displays the manage categories page details.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Renders the get_categories.html bearing the categories details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -274,6 +391,13 @@ def get_categories():
 
 @app.route("/get_marks")
 def get_marks():
+    '''
+    Displays the manage marks page details.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Renders the get_marks.html bearing the marks details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -287,6 +411,14 @@ def get_marks():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    '''
+    Displays the add category page details.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get.categories.html.
+        Renders the add_category.html bearing the added category details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -305,6 +437,17 @@ def add_category():
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
+    '''
+    Displays the edit category details.
+
+    Parameters:
+        category_id (str):The string which is this category id.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get.categories.html.
+        Renders the edit_category.html bearing the updated category details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -326,6 +469,17 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
+    '''
+    Deletes this category.
+
+    Parameters:
+        category_id (str):The string which is this category id.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get.categories.html.
+        Renders the delete_category.html deleting this category.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -338,6 +492,14 @@ def delete_category(category_id):
 
 @app.route("/add_mark", methods=["GET", "POST"])
 def add_mark():
+    '''
+    Displays the add mark page details.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get.marks.html.
+        Renders the add_mark.html bearing the added mark details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -357,6 +519,17 @@ def add_mark():
 
 @app.route("/edit_mark/<mark_id>", methods=["GET", "POST"])
 def edit_mark(mark_id):
+    '''
+    Displays the edit mark details.
+
+    Parameters:
+        mark_id (str):The string which is this mark id.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get_marks.html bearing all the marks.
+        Renders the edit_mark.html bearing the updated mark details.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
@@ -377,6 +550,16 @@ def edit_mark(mark_id):
 
 @app.route("/delete_mark/<mark_id>")
 def delete_mark(mark_id):
+    '''
+    Deletes this mark.
+
+    Parameters:
+        mark_id (str):The string which is this mark id.
+
+    Returns:
+        Renders 401.html if user in session is not admin.
+        Redirects to get_marks.html.
+    '''
     if "user" not in session:
         return render_template("401.html")
     if ("user" in session and session['user'] != 'admin'):
