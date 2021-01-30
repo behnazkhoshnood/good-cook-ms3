@@ -197,14 +197,17 @@ def profile(username):
     categories = mongo.db.categories.find().sort("category_name", 1)
 
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    if session["user"]:
-        return render_template(
-            "profile.html",
-            username=username,
-            recipes=recipes,
-            categories=categories)
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        if session["user"]:
+            return render_template(
+                "profile.html",
+                username=username,
+                recipes=recipes,
+                categories=categories)
+    else:
+        return render_template("401.html")
 
 
 # Log out Function
